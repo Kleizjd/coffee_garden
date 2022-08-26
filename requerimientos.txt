@@ -4,7 +4,7 @@ REQUERIMIENTOS
  COMPORTAMIENTO O FUNCION PARTICULAR DEL SISTEMA QUE CUMPLE CIERTAS CONDICIONES.
 
 El sitio web debe permitirle al visitante seleccionar entre los tipos de categorías presentes (bebidas, comida y café en grano).
-El sitio web le permitirá al visitante acceder al botón “MY CUENTA”.
+El sitio web le permitirá crear cuenta como cliente.
 El sitio web le permitirá al visitante visualizar los productos añadidos al “CARRITO DE COMPRAS”.
 
 
