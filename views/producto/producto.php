@@ -81,49 +81,6 @@
         </div> -->
 
         <div class="row">
-          <!-- <div class="col-md-5 mb-3">
-            <label for="country">Pais</label>
-            <select class="custom-select d-block w-100" id="country" required="">
-              <option value="">Elige...</option>
-              <option>Colombia</option>
-              <option>Unidos Estados</option>
-            </select>
-            <div class="invalid-feedback">
-              Seleccione un país válido.
-            </div>
-          </div> -->
-          <!-- <div class="col-md-4 mb-3">
-            <label for="state">Estados</label>
-            <select class="custom-select d-block w-100" id="state" required="">
-              <option value="">Elige...</option>
-              <option>California</option>
-            </select>
-            <div class="invalid-feedback">
-              Proporcione un estado válido.
-            </div>
-          </div> -->
-          <!-- <div class="col-md-3 mb-3">
-            <label for="zip">Zip</label>
-            <input type="text" class="form-control" id="zip" placeholder="" required="">
-            <div class="invalid-feedback">
-              Código postal requerido.
-            </div>
-          </div> -->
-          <!-- El sitio web debe permitirle al visitante seleccionar entre los tipos de categorías presentes (bebidas, comida y café en grano). -->
-          <!-- <div class="col-md-5 mb-3">
-            <label for="country">Productos</label>
-            <select class="custom-select d-block w-100" id="country" required="">
-              <option value="">Elige...</option>
-              <option>Bebidas</option>
-              <option>Comida</option>
-              <option>Cafe en Grano</option>
-            </select>
-            <div class="invalid-feedback">
-              Seleccione un país válido.
-            </div>
-          </div>
-        </div> -->
-
 
           <div class="mt-4 row">
             <div class="align-self-center col-3 col-lg-5">
@@ -134,67 +91,77 @@
             </div>
           </div>
         </div>
-        <!-- <hr class="mb-4">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="same-address">
-          <label class="custom-control-label" for="same-address">La dirección de envío es la misma que mi dirección de facturación</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="save-info">
-          <label class="custom-control-label" for="save-info">Guarda esta información para la próxima vez</label>
-        </div> -->
-        <!-- <hr class="mb-4"> -->
+        <h1>hey</h1>
+        <section style="min-height:100vh">
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="<?= base_url(); ?>/public/img/tienda-virtual.jpg" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="<?= base_url(); ?>/public/img/Coffe Garden.png" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="<?= base_url(); ?>/public/img/Coffe Garden.png" alt="Third slide">
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </section>
+        <h1>hey</h1>
 
-        <!-- <h4 class="mb-3">Pago</h4>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="<?= base_url(); ?>/public/img/tienda-virtual.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?= base_url(); ?>/public/img/Coffe Garden.png" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?= base_url(); ?>/public/img/Coffe Garden.png" alt="Third slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <h1>hey</h1>
 
-        <div class="d-block my-3">
-          <div class="custom-control custom-radio">
-            <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
-            <label class="custom-control-label" for="credit"> Tarjeta de Credito </label>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="<?= base_url(); ?>/public/img/tienda-virtual.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?= base_url(); ?>/public/img/Coffe Garden.png" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="<?= base_url(); ?>/public/img/Coffe Garden.png" alt="Third slide">
+            </div>
           </div>
-          <div class="custom-control custom-radio">
-            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
-            <label class="custom-control-label" for="debit">Tarjeta de débito</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
-            <label class="custom-control-label" for="paypal">PayPal</label>
-          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="cc-name">Nombre en la tarjeta</label>
-            <input type="text" class="form-control" id="cc-name" placeholder="" required="">
-            <small class="text-muted">Nombre completo como se muestra en la tarjeta</small>
-            <div class="invalid-feedback">
-              Se requiere el nombre en la tarjeta
-            </div>
-          </div>
-          <div class="col-md-6 mb-3">
-            <label for="cc-number">Número de Tarjeta de Crédito</label>
-            <input type="text" class="form-control" id="cc-number" placeholder="" required="">
-            <div class="invalid-feedback">
-              Se requiere número de tarjeta de crédito
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 mb-3">
-            <label for="cc-expiration">Vencimiento</label>
-            <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
-            <div class="invalid-feedback">
-              Fecha de vencimiento requerida
-            </div>
-          </div>
-          <div class="col-md-3 mb-3">
-            <label for="cc-cvv">CVV</label>
-            <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
-            <div class="invalid-feedback">
-              Código de seguridad requerido
-            </div>
-          </div>
-        </div>
-        <hr class="mb-4"> -->
+
         <button class="btn btn-primary btn-lg btn-block" type="submit">Continuar a la comprobación</button>
       </form>
     </div>
@@ -252,4 +219,4 @@
     </div>
   </div>
   <script src="<?= base_url(); ?>/vendor/jquery/jquery-3.3.1.min.js"></script>
-<script src="<?= base_url(); ?>/public/js/producto.js"></script>
+  <script src="<?= base_url(); ?>/public/js/producto.js"></script>
