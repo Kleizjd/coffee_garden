@@ -22,7 +22,7 @@ if (!empty($_POST)) {
                     $password = $_POST['password'];
                     $estado = "'A'";
 
-                    $sql = "SELECT DISTINCT id_usuario, CONCAT(nombres, ' ', apellido1, ' ', apellido2) AS Nombre_Completo, password, rolid FROM usuarios WHERE id_usuario='$id' AND password='$password' AND estado_usuario = " . $estado . "";
+                    $sql = "SELECT DISTINCT id_usuario, CONCAT(nombre, ' ', apellido) AS Nombre_Completo, password, rolid FROM usuarios WHERE id_usuario='$id' AND password='$password' AND estado_usuario = " . $estado . "";
 
                     $validar_sesion = $conexion->select($sql);
 
@@ -52,6 +52,8 @@ if (!empty($_POST)) {
                     // var_dump($_POST);
 
                     $id = $_POST['user_id'];
+                    $nombre = $_POST['nombre'];
+                    $apellido = $_POST['apellido'];
                     $password = $_POST['password_user'];
                     $password_verify = $_POST['password_verify'];
                     $estado = "'A'";
@@ -61,13 +63,14 @@ if (!empty($_POST)) {
                        
 
                         if ($sqlSelect == 0) {
-                            $sql = "INSERT INTO usuarios(id_usuario, password, estado_usuario, rolid) VALUES (?,?,?,?)";
-                            $arrData = array($id, $password, 'A', '2');
+                            $sql = "INSERT INTO usuarios(id_usuario, nombre, apellido, password, estado_usuario, rolid) VALUES (?,?,?,?,?,?)";
+                            // $sql = "INSERT INTO usuarios(id_usuario, nombre, apellido, password, estado_usuario, rolid) VALUES (?,?,?,?,?,?)";
+                            $arrData = array($id, $nombre, $apellido, $password, 'A', '2');
                             $sql = $conexion->insert($sql, $arrData);
 
                             $respuesta["tipoRespuesta"] = "success";
                         } else {
-                            $respuesta["tipoRespuesta"] = "error";
+                            $respuesta["tipoRespuesta"] = "exist";
                         }
                         echo json_encode($respuesta);
                     } else {

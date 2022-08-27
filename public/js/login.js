@@ -26,14 +26,11 @@
 	$("#create_account").on("submit", function (event) {
 		event.preventDefault(); // Evitar ejecutar el submit del formulario.
 		// alert("entra");
-			// var user_id = $("#user_id").val();
-			// var password_user = $("#password_user").val();
-			// var password_verify = $("#password_verify").val();
-			// alert(user_id);
-
 			var formData = new FormData(event.target);
 			formData.append("funcion", "register_user");
             formData.append('user_id', $("#user_id").val());
+            formData.append('nombre', $("#nombre").val());
+            formData.append('apellido', $("#apellido").val());
             formData.append('password_user', $("#password_user").val());
             formData.append('password_verify', $("#password_verify").val());
 
@@ -50,6 +47,8 @@
 					swal({ title: 'Usuario creado exitosamente', type: 'success' });
 				} else if (res.tipoRespuesta == "error") {
 					swal({ title: 'contraseña no coincide', type: 'warning',});
+				} else if (res.tipoRespuesta == "exist") {
+					swal({ title: 'Usuario Existente', type: 'warning',});
 				}
 			});
 	});

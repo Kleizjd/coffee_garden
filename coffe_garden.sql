@@ -58,9 +58,8 @@ INSERT INTO `tipos_productos` (`Codigo`, `Descripcion`) VALUES
 -- Volcando estructura para tabla coffe_garden.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_usuario` varchar(15) NOT NULL,
-  `nombres` varchar(50) NOT NULL,
-  `apellido1` varchar(15) NOT NULL,
-  `apellido2` varchar(15) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(25) NOT NULL,
   `password` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `estado_usuario` varchar(1) NOT NULL,
@@ -68,11 +67,12 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`id_usuario`) USING BTREE
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla coffe_garden.usuarios: 2 rows
+-- Volcando datos para la tabla coffe_garden.usuarios: 3 rows
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` (`id_usuario`, `nombres`, `apellido1`, `apellido2`, `password`, `email`, `estado_usuario`, `rolid`) VALUES
-	('1107509521', 'José Daniel ', 'Grijalba', 'Osorio', '1107509521', 'jose.jdgo97@gmail.com', 'A', 1),
-	('1107509520', 'Juan David', 'Grijalba', 'Osorio', '1107509520', 'juandgo1997@gmail.com', 'A', 2);
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `password`, `email`, `estado_usuario`, `rolid`) VALUES
+	('1107509521', 'José Daniel ', 'Grijalba', '1107509521', 'jose.jdgo97@gmail.com', 'A', 1),
+	('1107509520', 'Juan David', 'Grijalba', '1107509520', 'juandgo1997@gmail.com', 'A', 2),
+	('123', '123', '123', '123', '', 'A', 2);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
