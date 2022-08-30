@@ -14,8 +14,7 @@ if (!empty($_POST)) {
                 //========================================================================================\\
 
             case "selectCategorias":
-                $estado = "'A'";
-                $sql = "SELECT id, categoria FROM categoria WHERE estado =" . $estado . " ";
+                $sql = "SELECT id, categoria FROM categoria";
 
                 $resultado = $conexion->select_all($sql);
                 $select = "";
@@ -26,6 +25,42 @@ if (!empty($_POST)) {
                 }
 
                 echo $select;
+
+                break;
+
+            case "selectProducto":
+
+                $estado = "'A'";
+                $sql = "SELECT codigo, producto FROM productos WHERE estado =" . $estado . " ";
+
+                $resultado = $conexion->select_all($sql);
+                $select = '';
+               
+                foreach ($resultado as $row) {
+                  $select .= '<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">';
+                  $select .= '<div class="carousel-inner">';
+                    $select .= '<div class="carousel-item active">';
+                      $select .= '<img class="d-block w-100" src="../public/img/tienda-virtual.jpg" alt="First slide" height = "100" width = "100">';
+                    $select .= '</div>';
+                    $select .= '<div class="carousel-item">';
+                      $select .= '<img class="d-block w-100" src="../public/img/Coffe Garden.png" alt="Second slide" height = "100" width = "100">';
+                    $select .='</div>';
+                    $select .= '<div class="carousel-item">';
+                      $select .= '<img class="d-block w-100" src="../public/img/Coffe Garden.png" alt="Third slide" height = "100" width = "100">';
+                    $select .= '</div>';
+                  $select .= '</div>';
+                  $select .= '<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">';
+                    $select .= '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
+                    $select .= '<span class="sr-only">Previous</span>';
+                  $select .= '</a>';
+                  $select .= '<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">';
+                    $select .= '<span class="carousel-control-next-icon" aria-hidden="true"></span>';
+                    $select .= '<span class="sr-only">Next</span>';
+                  $select .= '</a>';
+                $select .= '</div>';
+                }
+
+                echo $select ;
 
                 break;
 

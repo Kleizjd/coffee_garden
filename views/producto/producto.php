@@ -1,3 +1,32 @@
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@Kleizjd 
+Kleizjd
+/
+coffe_garden
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+coffe_garden/views/producto/producto.php /
+
+Kleizjd slides
+Latest commit d2573fd 3 days ago
+ History
+ 0 contributors
+223 lines (212 sloc)  10.7 KB
+
 <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
   <div class="chartjs-size-monitor" style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
     <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
@@ -66,7 +95,6 @@
             Ingrese una dirección de correo electrónico valida para actualizaciones de envio.
           </div>
         </div>
-
         <div class="mb-3">
           <label for="address">Dirección</label>
           <input type="text" class="form-control" id="address" placeholder="ejemplo: Cra 7 t bis " required="">
@@ -91,78 +119,10 @@
             </div>
           </div>
         </div>
-        <h1>Bebidas</h1>
-        <!-- <section style="min-height:100vh"> -->
-          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img class="d-block w-100" src="<?= base_url(); ?>/public/img/tienda-virtual.jpg" alt="First slide" height = "100" width = "100">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block w-100" src="<?= base_url(); ?>/public/img/Coffe Garden.png" alt="Second  
-                slide"height = "100" width = "100">
-              </div>
-              <div class="carousel-item">
-                <img class="d-block w-100" src="<?= base_url(); ?>/public/img/Coffe Garden.png" alt="Third slide"height = "100" width = "100">
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        <!-- </section> -->
-        <h1>Comidas</h1>
-
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100" src="<?= base_url(); ?>/public/img/tienda-virtual.jpg" alt="First slide" height = "100" width = "100">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="<?= base_url(); ?>/public/img/Coffe Garden.png" alt="Second slide" height = "100" width = "100">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="<?= base_url(); ?>/public/img/Coffe Garden.png" alt="Third slide" height = "100" width = "100">
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-        <h1>Bebidas</h1>
-
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100" src="<?= base_url(); ?>/public/img/tienda-virtual.jpg" alt="First slide" height = "100" width = "100">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="<?= base_url(); ?>/public/img/Coffe Garden.png" alt="Second slide" height = "100" width = "100">
-            </div>
-            <div class="carousel-item">
-              <img class="d-block w-100" src="<?= base_url(); ?>/public/img/Coffe Garden.png" alt="Third slide" height = "100" width = "100">
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-
+        <h1>N</h1>
+      <!-- Productos -->
+          <div id="selectProducto"> </div>
+      <!-- !Productos -->
         <button class="btn btn-primary btn-lg btn-block" type="submit">Continuar a la comprobación</button>
       </form>
     </div>

@@ -8,9 +8,7 @@
   <div class="wrapper">
     <!-- HEADER -->
     <?php 
-    // require_once("Config/Config.php"); //Data que se usa al momento de conexion
 
-    // require_once("Helpers/Helpers.php");
     include_once "./partials/header.php";
     ?>
     <!-- HEADER -->
@@ -25,6 +23,7 @@
       if ($page  == 'dashboard') {
         require_once '../views/dashboard/' . $page . '.php';
       } else {
+
         require_once '../views/' . $page . '.php';
       }
       ?>
