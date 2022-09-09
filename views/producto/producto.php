@@ -15,8 +15,7 @@
                                 
                             </div>
                             <div class="col-sm-1">
-                                <!-- <button type="button" class="btn btn-primary" id="Search" title="Buscar"><i class="fa fa-search" onclick="openModal();"></i> </button> -->
-                                 <button class="btn btn-primary" data-toggle="modal" data-target="#logoutModal">Buscar</button>
+                                 <button  type="button" class="btn btn-primary" data-toggle="modal"  title="Buscar" data-target="#modalProducto"><i class="fa fa-search"></i></button>
 
                                 <!--  -->
                             </div>
@@ -68,24 +67,4 @@
         </form>
     </div>
 </div>
-<!-- Modal BUSCAR -->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
-<!-- <div class="modal fade" id="modalSearchProduct"> -->
-	<div class="modal-dialog modal-lg" role="document" style="max-width: 80%;">
-		<div class="modal-content">
-
-			<div class="text-center modal-header">
-				<h3 class="w-100 modal-title">Búsqueda de productos</h3>
-				<button type="button" class="close" data-dismiss="modal" title="Cerrar">
-					<i class="fa fa-window-close fa-2x text-danger"></i>
-				</button>
-			</div>
-
-			<div class="modal-body">
-
-			</div>
-
-		</div>
-	</div>
-</div>

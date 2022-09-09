@@ -1,3 +1,4 @@
+<?php getModal('modalCliente'); ?>
 <div class="card">
     <div class="card-header">
         <h4>Clientes</h4>
@@ -13,7 +14,7 @@
 
                             </div>
                             <div class="col-sm-1">
-                                <button type="button" class="btn btn-primary" id="SearchCustomer" title="Buscar"><i class="fa fa-search"></i> </button>
+                            <button  type="button" class="btn btn-primary" data-toggle="modal"  title="Buscar" data-target="#modalCliente"><i class="fa fa-search"></i></button>
 
                             </div>
                             <div class="col-sm-1">
@@ -85,23 +86,7 @@
         </form>
     </div>
 </div>
-<!-- Modal SEARCH -->
-<div class="modal fade" id="modalSearchCostumer">
-    <div class="modal-dialog modal-lg" role="document" style="max-width: 80%;">
-        <div class="modal-content">
 
-            <div class="text-center modal-header">
-                <h3 class="w-100 modal-title">Búsqueda de Clientes</h3>
-                <button type="button" class="close" data-dismiss="modal" title="Cerrar">
-                    <i class="fa fa-window-close fa-2x text-danger"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-            </div>
-        </div>
-    </div>
-</div>
-<!--  -->
 <script>
     $(document).ready(function() {
         /***************************/ //CREATE CLIENT// /**************************/

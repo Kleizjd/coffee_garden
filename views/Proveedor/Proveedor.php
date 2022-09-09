@@ -1,3 +1,4 @@
+<?php getModal('modalProveedor'); ?>
 <div class="card">
     <div class="card-header">
         <h4>Proveedor</h4>
@@ -13,7 +14,8 @@
 
                             </div>
                             <div class="col-sm-1">
-                                <button type="button" class="btn btn-primary" id="SearchProvider" title="Buscar"><i class="fa fa-search"></i> </button>
+                                <!--  -->
+                                <button  type="button" class="btn btn-primary" data-toggle="modal"  title="Buscar" data-target="#modalProveedor"><i class="fa fa-search"></i></button>
 
                             </div>
                             <div class="col-sm-1">
@@ -64,23 +66,7 @@
         </form>
     </div>
 </div>
-<!-- Modal SEARCH -->
-<div class="modal fade" id="modalSearchProvider">
-    <div class="modal-dialog modal-lg" role="document" style="max-width: 80%;">
-        <div class="modal-content">
 
-            <div class="text-center modal-header">
-                <h3 class="w-100 modal-title">Búsqueda de Proveedores</h3>
-                <button type="button" class="close" data-dismiss="modal" title="Cerrar">
-                    <i class="fa fa-window-close fa-2x text-danger"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-            </div>
-        </div>
-    </div>
-</div>
-<!--  -->
 <script>
     $(document).ready(function() {
         /***************************/ //CREATE PROVIDER// /**************************/

@@ -8,7 +8,7 @@ class Proveedor extends Core {
     public function Proveedor(){
 		$data['page_functions_js'] = "functions_cliente.js";
 
-        include_once "../../views/Proveedor/view.CreateProvider.php";
+        include_once "../../views/proveedor/Proveedor.php";
     }
 
     public function verProveedor(){

@@ -14,7 +14,7 @@
     <!-- <link rel="stylesheet" href="public/my_js_css/css/popuo-box.css" type="text/css" media="all" /> -->
     <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css" type="text/css">
     <link rel="stylesheet" href="vendor/sweetalert/css/sweetalert2.min.css">
-    <link rel="stylesheet" href="./public/css/login-register.css">
+    <link rel="stylesheet" href="./public/css/login_register.css">
 
     <link rel="shortcut icon" href="public/img/favicon/logo.png" type="image/x-icon">
     <title>Coffee Garden</title>

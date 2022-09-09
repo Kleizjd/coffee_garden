@@ -5,7 +5,7 @@
 	// BASE_URL =  "http://" . dirname(__DIR__) . "/www/coffe_garden";
 	// BASE_URL =  "http://" . $_SERVER["HTTP_HOST"] . "/www/coffe_garden";
 
-    const BASE_URL = "http://localhost/www/coffee_garden";
+    const BASE_URL = "http://localhost/www/coffee_garden12";
     // const BASE_URL = "http://localhost/www/coffe_garden";
 
 	const MEDIA = "/public";
@@ -15,7 +15,7 @@
 
 	//Datos de conexión a Base de Datos
 	const DB_HOST = "localhost";
-	const DB_NAME = "coffe_garden";
+	const DB_NAME = "coffee_garden";
 	const DB_USER = "root";
 	const DB_PASSWORD = "";
 	const DB_CHARSET = "utf8";

@@ -8,7 +8,7 @@ class Cliente extends Core {
 		// session_start();
 
 		$data['page_functions_js'] = "functions_cliente.js";
-        include_once "../../views/Cliente/view.CreateCustomer.php";
+        include_once "../../views/cliente/Cliente.php";
     }
 
     public function verCliente(){
