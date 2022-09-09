@@ -12381,27 +12381,27 @@ _Api.extend = function ( scope, obj, ext )
 		 *
 		 *  @example
 		 *    // Using `data` as a function to provide different information for
-		 *    // sorting, filtering and display. In this case, currency (price)
+		 *    // sorting, filtering and display. In this case, currency (valor)
 		 *    $(document).ready( function() {
 		 *      $('#example').dataTable( {
 		 *        "columnDefs": [ {
 		 *          "targets": [ 0 ],
 		 *          "data": function ( source, type, val ) {
 		 *            if (type === 'set') {
-		 *              source.price = val;
+		 *              source.valor = val;
 		 *              // Store the computed dislay and filter values for efficiency
-		 *              source.price_display = val=="" ? "" : "$"+numberFormat(val);
-		 *              source.price_filter  = val=="" ? "" : "$"+numberFormat(val)+" "+val;
+		 *              source.valor_display = val=="" ? "" : "$"+numberFormat(val);
+		 *              source.valor_filter  = val=="" ? "" : "$"+numberFormat(val)+" "+val;
 		 *              return;
 		 *            }
 		 *            else if (type === 'display') {
-		 *              return source.price_display;
+		 *              return source.valor_display;
 		 *            }
 		 *            else if (type === 'filter') {
-		 *              return source.price_filter;
+		 *              return source.valor_filter;
 		 *            }
 		 *            // 'sort', 'type' and undefined all just use the integer
-		 *            return source.price;
+		 *            return source.valor;
 		 *          }
 		 *        } ]
 		 *      } );

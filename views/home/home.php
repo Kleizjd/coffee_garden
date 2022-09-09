@@ -1,9 +1,61 @@
-<?php include_once "views/Start/partials/description.php" ?>
-<!-- Iframe -->
-<div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7965.468764380914!2d-76.5569245!3d3.41478!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sco!4v1587511385606!5m2!1ses!2sco" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-</div>
-<!-- //Iframe -->
-<!-- Footer -->
-<?php include_once "views/Start/partials/footer.php" ?>
-<!-- //Footer -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- STYLES -->
+    <!-- <script src="vendor/jquery/jquery.slim.min.js"></script> -->
+    <link rel="stylesheet" href="public/my_js_css/css/style.css">
+    <!-- Owl-Carousel-CSS -->
+    <!-- <link rel="stylesheet" href="public/my_js_css/css/owl.carousel.css" type="text/css" media="all" /> -->
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- Popup-Box-CSS -->
+    <!-- <link rel="stylesheet" href="public/my_js_css/css/popuo-box.css" type="text/css" media="all" /> -->
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="vendor/sweetalert/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="./public/css/login-register.css">
+
+    <link rel="shortcut icon" href="public/img/favicon/logo.png" type="image/x-icon">
+    <title>Coffee Garden</title>
+
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div>
+        <div class="header">
+            <!-- Navbar -->
+            <?php include_once "partials/navbar.php" ?>
+            <!-- //Navbar -->
+        </div>
+
+        <!-- BODY -->
+        <?php
+        //Se usa esta condición para navegar entre las pestañas de la vista inicial
+        $page  = isset($_GET['p']) ? strtolower($_GET['p']) : 'main';
+        if ($page  == 'main') {
+            require_once 'views/home/' . $page . '.php';
+        } else {
+            require_once 'views/' . $page . '.php';
+        }
+        ?>
+              <!-- SIDE_BAR -->
+      <!-- <div class="col-12 d-md-flex">
+        <div id="page-wrapper" class="p-5"><br>
+          <div class="container-fluid" id="cargarVista" style="width: 74rem;">
+            <?php //include_once "App/ajax.php"; ?>
+          </div>
+        </div> -->
+      </div>
+      <!-- !SIDE_BAR -->
+        <!-- SCRIPTS -->
+        <?php include_once "partials/scripts.php"; ?>
+</body>
+
+</html>
+<script src="vendor/moment/moment-with-locales.min.js"></script>
+<!-- <script type="text/javascript" src="vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script> -->
+<script src="vendor/sweetalert/js/sweetalert2.min.js"></script>
+<!-- \\SCRIPTS -->

@@ -4,7 +4,7 @@ Author: Wrappixel
 
 File: scss
 */
-@import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,600,700");
+/* @import url("https://fonts.googleapis.com/css?family=Rubik:300,400,500,600,700"); */
 /*Theme Colors*/
 /**
  * Table Of Content
@@ -33,7 +33,7 @@ Login register and recover password Page
   
   height: 100%;
   width: 100%;
-  background-image:url(http://localhost/www/CofeeGarden/public/img/background/fondo-login-1024x427.jpg);
+  background-image:url(http://localhost/www/coffe_garden/public/img/background/fondo-login-1024x427.jpg);
   background-attachment: fixed;
   }
 

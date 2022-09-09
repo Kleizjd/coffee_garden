@@ -1,0 +1,47 @@
+<?php // require_once("../Helpers/Helpers.php");
+include_once "../../Config/Config.php";
+include_once "../../App/lib/Helpers.php";
+
+?>
+
+<?php if (isset($_SESSION["id_usuario"])) :  ?>
+
+  <?php include_once "../Partials/head.php"; ?>
+
+  <body class="bg-light">
+    <div id="wrapper">
+      
+      <!-- HEADER -->
+      <?php include_once "../Partials/header.php"; ?>
+      <!-- !HEADER -->
+
+      <!-- SIDE_BAR -->
+      <div class="col-12 d-md-flex">
+        <?php include_once "../Partials/left_sidebar.php"; ?>
+        <div id="page-wrapper" class="p-5"><br>
+          <div class="container-fluid" id="cargarVista" style="width: 74rem;">
+            <?php include_once "../../App/ajax.php"; ?>
+          </div>
+        </div>
+      </div>
+      <!-- !SIDE_BAR -->
+      
+      <!-- LOG OUT Modal-->
+      <?php include_once "./../partials/log_out.php"; ?>
+      <!-- !Logout Modal-->
+
+      <!-- FOOTER -->
+      <footer><?php include_once "./../Partials/footer.php"; ?></footer>
+      <!-- !FOOTER -->
+      <!-- <script src="<?= media(); ?>/js/js_views/<?= $data['page_functions_js']; ?>"></script> -->
+      <script src="<?= media(); ?>/js/functions_producto.js"></script>
+      <!-- SCRIPTS -->
+      <div id="scripts"><?php include_once "./../Partials/scripts.php";  ?></div>
+      <!-- !SCRIPTS -->
+  </body>
+
+  </html>
+  <!-- REDIRECT TO LOGIN -- SE REDIRIGE AL LOGIN SI NO HA INICIADO SESIÓN -->
+<?php else : header("Location: ../"); ?>
+<?php endif; ?>
+<input type="hidden" name="userId" id="userId" value="<?= $_SESSION['id_usuario']; ?>">

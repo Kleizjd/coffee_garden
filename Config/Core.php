@@ -2,7 +2,7 @@
 include_once "Config.php";
 include_once "Conexion.php";
 
-class core
+class Core
 {
 
     private $server;

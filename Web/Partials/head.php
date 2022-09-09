@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- HEAD -->
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,26 +9,16 @@
     <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon">
     <meta name="Jose Daniel Grijalba Osorio" content="">
     <!-- Bootstrap Core CSS -->
-    <link href="<?= base_url(); ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>/vendor/datatable/css/dataTables.css" rel="stylesheet">
+    <link href="<?= base_url() ?>/vendor/sweetalert/css/sweetalert2.min.css" rel="stylesheet">
+    <link href="<?= base_url() ?>/vendor/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url() ?>/vendor/alertify/css/alertify.min.css?v=<?= rand(); ?>" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
+    <script src="<?= base_url() ?>/vendor/jquery/jquery-3.3.1.min.js"></script>
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <link href="<?= media(); ?>/css/dashboard.css" rel="stylesheet">
+
+    <link href="<?= media() ?>/css/dashboard.css" rel="stylesheet">
 
     <title id="titlePage">COFFEE GARDEN</title>
 </head>
