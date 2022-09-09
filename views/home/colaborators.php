@@ -1,10 +1,4 @@
-><style>body {
-  background-image: url('public/img/background/team.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;  
-  background-size: cover;
-}
-</style>
+
 
 <div class="team" id="team">
 	<h3>Equipo Desarrollador</h3>
@@ -36,4 +30,15 @@
 		</div>
 	</div>
 </div>
+<script src="vendor/jquery/jquery-3.3.1.min.js"></script>
+
 <!-- //Team -->
+<script>
+		$(document).ready(function() {
+		// document.body.classList.toggle("myStyle");
+		document.body.classList.add("fondo_colaboradores");
+		// document.body.classList.add("container-fluid");
+		// document.body.classList.add("p-3");
+
+	});
+</script>

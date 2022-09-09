@@ -80,7 +80,7 @@
 <script>
 	$(document).ready(function() {
 		// document.body.classList.toggle("myStyle");
-		document.body.classList.add("login-register");
+		document.body.classList.add("login_register");
 		// document.body.classList.add("container-fluid");
 		// document.body.classList.add("p-3");
 

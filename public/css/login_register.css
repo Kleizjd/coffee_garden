@@ -26,14 +26,14 @@ File: scss
 /*******************
 Login register and recover password Page
 ******************/
-.login-register {
+.login_register {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   
   height: 100%;
   width: 100%;
-  background-image:url(http://localhost/www/coffe_garden/public/img/background/fondo-login-1024x427.jpg);
+  background-image:url(http://localhost/www/coffee_garden/public/img/background/fondo-login-1024x427.jpg);
   background-attachment: fixed;
   }
 
@@ -58,3 +58,10 @@ Login register and recover password Page
     right: 0px;
     position: absolute;
     height: 100%; }
+
+    .fondo_colaboradores {
+      background-image: url(http://localhost/www/coffee_garden/public/img/background/team.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;  
+      background-size: cover;
+    }
