@@ -10,22 +10,24 @@ include_once "../../App/lib/Helpers.php";
 
   <body class="bg-light">
     <div id="wrapper">
-      
+
       <!-- HEADER -->
       <?php include_once "../Partials/header.php"; ?>
       <!-- !HEADER -->
 
       <!-- SIDE_BAR -->
-      <div class="col-12 d-md-flex">
-        <?php include_once "../Partials/left_sidebar.php"; ?>
-        <div id="page-wrapper" class="p-5"><br>
-          <div class="container-fluid" id="cargarVista" style="width: 74rem;">
-            <?php include_once "../../App/ajax.php"; ?>
-          </div>
+      <div class="container-fluid">
+        <div class="row">
+          <?php include_once "../Partials/left_sidebar.php"; ?>
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+              <?php include_once "../../App/ajax.php"; ?>
+            </div>
+          </main>
         </div>
       </div>
       <!-- !SIDE_BAR -->
-      
+
       <!-- LOG OUT Modal-->
       <?php include_once "./../partials/log_out.php"; ?>
       <!-- !Logout Modal-->
