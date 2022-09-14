@@ -20,13 +20,20 @@ class Producto extends Core{
     public function visualizarProducto(){
         extract($_POST);
         $sqlProduct = $this->select_all("SELECT * FROM producto WHERE codigo = $codigo");
-        include_once "../../views/producto/verProducto.php";
+        // include_once "../../views/producto/view.VerProducto.php";
+        
+        // $res=  "../../views/producto/view.VerProducto.php";
+        $res=  "<?php include_once '../../views/producto/view.VerProducto.php' ?>";
+        // echo  str_replace("/\\", "/",  $res);
+        // $response =  str_replace($res, "", str_replace("\\", "/",  $res));
+        echo json_encode($res);
+    
     }
 
     public function viewEditProduct(){
         extract($_POST);
         $sqlProduct = $$this->select("SELECT * FROM producto WHERE codigo_producto = $codigo_producto");
-        include_once "../../views/producto/view.EditProduct.php";
+        include_once "../../views/producto/view.EditarProducto.php";
     }
 
     public function modalSearchProduct(){

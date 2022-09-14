@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `producto` (
   PRIMARY KEY (`codigo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12345646 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla coffee_garden.producto: ~24 rows (aproximadamente)
+-- Volcando datos para la tabla coffee_garden.producto: ~30 rows (aproximadamente)
 INSERT INTO `producto` (`codigo`, `producto`, `categoria`, `precio`, `cantidad`, `estado`, `descripcion`) VALUES
 	(1, 'Nescafe', '1', 149000, 1000, 'A', ''),
 	(2, 'cafe aguila roja granulad', '1', 12000, 2000, 'A', ''),

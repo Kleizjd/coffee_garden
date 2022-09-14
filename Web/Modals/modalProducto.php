@@ -108,7 +108,6 @@ $(document).ready(function () {
 	  $(function listProduct() {
         $(document).on("submit", "#frm_SearchProduct", function (event) {
 			 event.preventDefault();
-			
         if ($("#codes").val()||$("#products").val()||$("#status").val()) {
 			$("#containerModalSearchProduct").show();
 				var status = $('select[name="status"] option:selected').text();
@@ -175,10 +174,36 @@ $(document).ready(function () {
 		});
 	});
 	$(function viewWatchProduct() {
-		$(document).on("click", "#verProductoVista", function () {
-			let data = $("#tableModalSearchProduct").DataTable().row($(this).parents("tr")).data();
-			llamarVista("producto", "producto", "visualizarProducto", {codigo: data.codigo}, true);
-		});
+		// $(document).on("click", "#verProductoVista", function () {
+		// 	let data = $("#tableModalSearchProduct").DataTable().row($(this).parents("tr")).data();
+		// 	llamarVista("producto", "producto", "visualizarProducto", {codigo: data.codigo}, true);
+
+		// });
+        $(document).on("click", "#verProductoVista", function () {
+            	let data = $("#tableModalSearchProduct").DataTable().row($(this).parents("tr")).data();
+        $.ajax({
+				url: "../../app/lib/ajax.php",
+				method: "post",
+				data: {
+					modulo: "producto",
+					controlador: "producto",
+					funcion: "visualizarProducto",
+                    codigo: data.codigo,
+				}
+        }).done((res) => {
+			 $('#modalProducto').modal('toggle');
+
+            // $("#cargarVista").html(res);
+            // var n = str.replace("/\\", res);
+             var done = res.replace(/[*+\-^${}()|[\]\\]/g,'');
+            // alert(done);
+            document.getElementById('cargarVista').innerHTML = "";
+            document.getElementById('cargarVista').innerHTML = done;
+            // document.getElementById('cargarVista').load = done;
+            // alert(res);
+            // $("#modalSearchProduct").modal({ backdrop: "static", keyboard: false });      
+        });
+    });
 	});
 
 	$(function viewEditProduct() {
