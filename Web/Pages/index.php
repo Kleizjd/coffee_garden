@@ -19,9 +19,12 @@ include_once "../../App/lib/Helpers.php";
       <div class="container-fluid">
         <div class="row">
           <?php include_once "../Partials/left_sidebar.php"; ?>
-          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4"><br>
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-              <?php include_once "../../App/ajax.php"; ?>
+              <div class="container-fluid" id="cargarVista">
+
+                <?php include_once "../../App/ajax.php"; ?>
+              </div>
             </div>
           </main>
         </div>
