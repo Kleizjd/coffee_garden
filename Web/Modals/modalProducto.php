@@ -82,6 +82,7 @@
                                 <th>Codigo</th>
                                 <th>Producto</th>
                                 <th>Cantidad</th>
+                                <th>Precio</th>
                                 <th>Descripcion</th>
                                 <th>Ver</th>
                                 <th>Editar</th>
@@ -101,7 +102,7 @@
 
 
 <!--  -->
-<!-- <script>
+<script>
 $(document).ready(function () {
 	  /***************************LIST PRODUCT**************************/
 	  $(function listProduct() {
@@ -126,7 +127,7 @@ $(document).ready(function () {
 						sheetName: "CajaCompensacion"
 					}],
 					language: {
-						"url": "../../assets/vendor/sb-admin-2/lib/datatables/language/datatablesSpanish.json"
+						"url": "../../vendor/datatable/language/datatablesSpanish.json"
 					},
 					destroy: true,
 					pageLength: 10,
@@ -145,19 +146,20 @@ $(document).ready(function () {
 						method: $(this).prop("method"),
 						// dataType: "json",
 						data: {
-							modulo: "Product",
-							controlador: "Product",
-							funcion: "listProduct",
-                            codes: $("#codes").val(),
-                            products: $("#products").val(),
-                            status: $("#status").val()
+							modulo: "producto",
+							controlador: "producto",
+							funcion: "listProducto",
+                            codigo: $("#codes").val(),
+                            producto: $("#products").val(),
+                            estado: $("#status").val()
 						},
 					},
 					columns: [
-						{data: "codigo_producto"},
-						{data: "product"},
-						{data: "amount"},
-						{data: "description"},
+						{data: "codigo"},
+						{data: "producto"},
+						{data: "cantidad"},
+						{data: "precio"},
+						{data: "descripcion"},
 						{data: "btnVer"},
 						{data: "btnEditar"}
 					],
@@ -173,20 +175,19 @@ $(document).ready(function () {
 		});
 	});
 	$(function viewWatchProduct() {
-		$(document).on("click", "#viewWatchProduct", function () {
+		$(document).on("click", "#verProductoVista", function () {
 			let data = $("#tableModalSearchProduct").DataTable().row($(this).parents("tr")).data();
-			llamarVista("Product", "Product", "viewWatchProduct", {codigo_producto: data.codigo_producto}, true);
+			llamarVista("producto", "producto", "visualizarProducto", {codigo: data.codigo}, true);
 		});
 	});
 
 	$(function viewEditProduct() {
-		$(document).on("click", "#viewEditProduct", function () {
+		$(document).on("click", "#viewEditarProducto", function () {
 			let data = $("#tableModalSearchProduct").DataTable().row($(this).parents("tr")).data();
-			llamarVista("Product", "Product", "viewEditProduct", {codigo_producto: data.codigo_producto}, true);
+			llamarVista("producto", "producto", "viewEditarProducto", {codigo: data.codigo}, true);
 		});
 	});
 	
 });
 	
 </script>
- -->

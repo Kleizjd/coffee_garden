@@ -110,7 +110,7 @@
 						sheetName: "Cliente"
 					}],
 					language: {
-						"url": "../../assets/vendor/sb-admin-2/lib/datatables/language/datatablesSpanish.json"
+						"url": "../../vendor/datatable/language/datatablesSpanish.json"
 					},
 					destroy: true,
 					pageLength: 10,

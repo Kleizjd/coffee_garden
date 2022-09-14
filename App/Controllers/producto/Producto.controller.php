@@ -18,17 +18,14 @@ class Producto extends Core{
     }
 
     public function visualizarProducto(){
-        // $this->getCore();
         extract($_POST);
-        $sqlProduct = $this->$this->select("SELECT * FROM producto WHERE codigo_producto = $codigo_producto");
-        // echo "SELECT * FROM producto WHERE codigo_producto = $codigo_producto";
-        include_once "../../views/producto/view.WatchProduct.php";
+        $sqlProduct = $this->select_all("SELECT * FROM producto WHERE codigo = $codigo");
+        include_once "../../views/producto/verProducto.php";
     }
 
     public function viewEditProduct(){
-        // $this->getCore(); 
         extract($_POST);
-        $sqlProduct = $this->$this->select("SELECT * FROM producto WHERE codigo_producto = $codigo_producto");
+        $sqlProduct = $$this->select("SELECT * FROM producto WHERE codigo_producto = $codigo_producto");
         include_once "../../views/producto/view.EditProduct.php";
     }
 
@@ -36,32 +33,33 @@ class Producto extends Core{
         include_once "../../views/producto/view.modalSearchProduct.php";
     }
 
-    public function listProduct(){
-        // $this->getCore(); 
+    public function listProducto(){
         extract($_POST);
+        // var_dump($_POST);
         $datos = array(); 
         $condicion = "";
 
-        if($codes != ""){ $condicion .="AND codigo_producto LIKE '$codes%'";}
+        if($codigo != ""){ $condicion .="AND codigo LIKE '$codigo%'";}
 
-        if($products != ""){ $condicion .="AND producto LIKE '$products%'"; }
+        if($producto != ""){ $condicion .="AND producto LIKE '$products%'"; }
 
         if($estado != ""){ if($estado == 'T'){ $estado = null;}}
 
-        $sql = "SELECT codigo_producto, Product, estado_producto, cantidad, descripcion  FROM producto WHERE estado_producto LIKE '%$estado%' $condicion";
+        $sql = "SELECT codigo, producto, estado, cantidad, precio, descripcion  FROM producto WHERE estado LIKE '%$estado%' $condicion";
 
-        $listProduct =  $this->select($sql);
+        $listProduct =  $this->select_all($sql);
 
         foreach ($listProduct as $list) {
             array_push($datos,
             array(
-                "codigo_producto" => $list["codigo_producto"],
-                "producto" => $list["Product"],
-                "estado" => $list["estado_producto"],
+                "codigo" => $list["codigo"],
+                "producto" => $list["producto"],
+                "estado" => $list["estado"],
                 "cantidad" => $list["cantidad"],
-                "description" => $list["descripcion"],
-                "btnVer" => '<button type="button" class="text-white btn btn-info" id="viewWatchProduct"><i class="fa fa-eye"></i></button>',
-                "btnEditar" => '<button type="button" class="text-white btn btn-warning" id="viewEditProduct"><i class="fa fa-edit"></i></button>'
+                "precio" => $list["precio"],
+                "descripcion" => $list["descripcion"],
+                "btnVer" => '<button type="button" class="text-white btn btn-info" id="verProductoVista"><i class="fa fa-eye"></i></button>',
+                "btnEditar" => '<button type="button" class="text-white btn btn-warning" id="viewEditarProduct"><i class="fa fa-edit"></i></button>'
 
             ));
         }
