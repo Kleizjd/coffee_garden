@@ -100,7 +100,7 @@ $(document).ready( function(){
 			var formData = new FormData(event.target);
 			formData.append("modulo", "producto");
 			formData.append("controlador", "producto");
-			formData.append("funcion", "EditProducto");
+			formData.append("funcion", "EditarProducto");
 			$.ajax({
 				url: "../../app/lib/ajax.php",
 				method: "post",
