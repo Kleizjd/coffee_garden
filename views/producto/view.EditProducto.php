@@ -98,9 +98,9 @@ $(document).ready( function(){
 			event.preventDefault();
 			
 			var formData = new FormData(event.target);
-			formData.append("modulo", "Product");
-			formData.append("controlador", "Product");
-			formData.append("funcion", "EditProduct");
+			formData.append("modulo", "producto");
+			formData.append("controlador", "producto");
+			formData.append("funcion", "EditProducto");
 			$.ajax({
 				url: "../../app/lib/ajax.php",
 				method: "post",
