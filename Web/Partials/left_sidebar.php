@@ -14,7 +14,7 @@
                         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="./"><i class="fas fa-home"></i>Home - Dashboard</a>
                         <a class="list-group-item list-group-item-action list-group-item-light p-3" id="verProducto">Productos</a>
                         <a class="list-group-item list-group-item-action list-group-item-light p-3" id="verCliente">Clientes</a>
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3" id="proveedor">Proveedores</a>
+                        <!-- <a class="list-group-item list-group-item-action list-group-item-light p-3" id="proveedor">Proveedores</a> -->
                     </div>
             </div>
     </div>

@@ -174,37 +174,9 @@ $(document).ready(function () {
 		});
 	});
 	$(function viewWatchProduct() {
-		// $(document).on("click", "#verProductoVista", function () {
-		// 	let data = $("#tableModalSearchProduct").DataTable().row($(this).parents("tr")).data();
-		// 	llamarVista("producto", "producto", "visualizarProducto", {codigo: data.codigo}, true);
-
-		// });
-        $(document).on("click", "#verProductoVista", function () {
-            	let data = $("#tableModalSearchProduct").DataTable().row($(this).parents("tr")).data();
-        $.ajax({
-				url: "../../app/lib/ajax.php",
-				method: "post",
-				data: {
-					modulo: "producto",
-					controlador: "producto",
-					funcion: "visualizarProducto",
-                    codigo: data.codigo,
-				}
-        }).done((res) => {
-			 $('#modalProducto').modal('toggle');
-
-            // $("#cargarVista").html(res);
-            // var n = str.replace("/\\", res);
-             var done = res.replace(/[*+\-^${}()|[\]\\]/g,'');
-            // alert(done);
-            document.getElementById('cargarVista').innerHTML = "";
-            document.getElementById('cargarVista').innerHTML = done;
-            // document.getElementById('cargarVista').load = done;
-            // alert(res);
-            // $("#modalSearchProduct").modal({ backdrop: "static", keyboard: false });      
-        });
-    });
-	});
+		$(document).on("click", "#verProductoVista", function () {
+			let data = $("#tableModalSearchProduct").DataTable().row($(this).parents("tr")).data();
+			llamarVista("producto", "producto", "visualizarProducto", {codigo: data.codigo}, true);});});
 
 	$(function viewEditProduct() {
 		$(document).on("click", "#viewEditarProducto", function () {
@@ -214,5 +186,8 @@ $(document).ready(function () {
 	});
 	
 });
-	
+ // REMPLAZA CARACTERES
+    //          var done = res.replace(/[*+\-^${}()|[\]\\]/g,'');
+    //         document.getElementById('cargarVista').innerHTML = "";
+    //         $('#cargarVista').html(done); //_jQuery
 </script>

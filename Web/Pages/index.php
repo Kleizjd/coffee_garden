@@ -23,7 +23,6 @@ include_once "../../App/lib/Helpers.php";
             <!-- <br> -->
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3 border-bottom">
               <div class="container-fluid" id="cargarVista">
-
                 <?php include_once "../../App/ajax.php"; ?>
               </div>
             </div>

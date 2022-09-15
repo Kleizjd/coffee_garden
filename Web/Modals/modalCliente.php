@@ -135,29 +135,21 @@
 							"nit": $("#nit").val()
 						},
 					},
-					columns: [{
-							data: "nit_Customer"
+					columns: [{	data: "nit_Customer"
 						},
-						{
-							data: "name_customer"
+						{	data: "name_customer"
 						},
-						{
-							data: "lastName_customer"
+						{	data: "lastName_customer"
 						},
-						{
-							data: "address"
+						{	data: "address"
 						},
-						{
-							data: "email"
+						{	data: "email"
 						},
-						{
-							data: "creation_date"
+						{	data: "creation_date"
 						},
-						{
-							data: "btnVer"
+						{	data: "btnVer"
 						},
-						{
-							data: "btnEditar"
+						{	data: "btnEditar"
 						}
 					],
 				});

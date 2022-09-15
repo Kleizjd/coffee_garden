@@ -9,8 +9,10 @@ $.getScript("../../routes/rutes.js");
 // LLAMAR LA VISTA QUE SE CARGARA CON LOS DATOS
 function llamarVista(modulo, controlador, funcion, parametros, blank){
 	// alert(" "+modulo+" / "+controlador+" / "+funcion);
+	// <form id="Datos${funcion}" action="./" method="post" ${blank ? `target="_blank"` : null}>//cambio para que no habra otra pestaña
+
 	$("#cargarVista").append(`
-		<form id="Datos${funcion}" action="./" method="post" ${blank ? `target="_blank"` : null}>
+		<form id="Datos${funcion}" action="./" method="post" >
 			<input type="hidden" name="modulo" value=${modulo}>
 			<input type="hidden" name="controlador" value=${controlador}>
 			<input type="hidden" name="funcion" value=${funcion}>

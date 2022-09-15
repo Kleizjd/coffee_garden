@@ -20,20 +20,14 @@ class Producto extends Core{
     public function visualizarProducto(){
         extract($_POST);
         $sqlProduct = $this->select_all("SELECT * FROM producto WHERE codigo = $codigo");
-        // include_once "../../views/producto/view.VerProducto.php";
-        
-        // $res=  "../../views/producto/view.VerProducto.php";
-        $res=  "<?php include_once '../../views/producto/view.VerProducto.php' ?>";
-        // echo  str_replace("/\\", "/",  $res);
-        // $response =  str_replace($res, "", str_replace("\\", "/",  $res));
-        echo json_encode($res);
-    
+        include_once "../../views/producto/view.VerProducto.php";
+           
     }
 
-    public function viewEditProduct(){
+    public function viewEditarProducto(){
         extract($_POST);
-        $sqlProduct = $$this->select("SELECT * FROM producto WHERE codigo_producto = $codigo_producto");
-        include_once "../../views/producto/view.EditarProducto.php";
+        $sqlProduct = $this->select_all("SELECT * FROM producto WHERE codigo = $codigo");
+        include_once "../../views/producto/view.EditProducto.php";
     }
 
     public function modalSearchProduct(){
@@ -66,7 +60,7 @@ class Producto extends Core{
                 "precio" => $list["precio"],
                 "descripcion" => $list["descripcion"],
                 "btnVer" => '<button type="button" class="text-white btn btn-info" id="verProductoVista"><i class="fa fa-eye"></i></button>',
-                "btnEditar" => '<button type="button" class="text-white btn btn-warning" id="viewEditarProduct"><i class="fa fa-edit"></i></button>'
+                "btnEditar" => '<button type="button" class="text-white btn btn-warning" id="viewEditarProducto"><i class="fa fa-edit"></i></button>'
 
             ));
         }
@@ -110,7 +104,9 @@ class Producto extends Core{
         // $this->getCore(); 
         extract($_POST);
         $respuesta = array();
-        $borrarProducto = $this->delete("DELETE FROM producto WHERE codigo_producto='$codigo_producto'");
+
+        $sql = "DELETE FROM producto WHERE codigo='$codigo'";
+        $borrarProducto = $this->delete($sql);
         if ($borrarProducto) { $respuesta["tipoRespuesta"] = true;  }
         
         echo json_encode($respuesta); 
