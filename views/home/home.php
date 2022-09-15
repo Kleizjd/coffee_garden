@@ -55,7 +55,7 @@
 </body>
 
 </html>
-<script src="vendor/moment/moment-with-locales.min.js"></script>
+<!-- <script src="vendor/moment/moment-with-locales.min.js"></script> -->
 <!-- <script type="text/javascript" src="vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script> -->
 <script src="vendor/sweetalert/js/sweetalert2.min.js"></script>
 <!-- \\SCRIPTS -->

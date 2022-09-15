@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="shortcut icon" href="./public/img/Coffe Garden.png" type="image/x-icon">
-	<link rel="stylesheet" href="./public/css/login-register.css">
+	<link rel="stylesheet" href="./public/css/login_register.css">
 	<link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./public/css/login.css">
 	<link rel="stylesheet" href="./vendor/sweetalert/css/sweetalert2.min.css">
@@ -15,7 +15,7 @@
 	<title>Inicio de Sesión</title>
 </head>
 
-<body class="login-register container-fluid p-3">
+<body class="login_register container-fluid p-3">
 	<div class="mt-2 container ">
 		<div class="justify-content-center row">
 			<div class="col-md-5 col-md-offset-3">

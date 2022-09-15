@@ -1,4 +1,5 @@
 <!-- !FOOTER -->
+<script src="<?= media(); ?>/js/<?= $data['page_functions_js']; ?>"></script>
 
 <script src="<?= base_url(); ?>/vendor/jquery/jquery-3.3.1.min.js"></script>
 <script src="<?= media(); ?>/js/login.js"></script>
@@ -9,8 +10,20 @@
 <script src="<?= base_url(); ?>/vendor/sweetalert/js/sweetalert2.min.js"></script>
 <script src="<?= base_url(); ?>/vendor/alertify/js/alertify.min.js?v=<?= rand(); ?>"></script>
 <script src="<?= base_url(); ?>/vendor/crypto-js/js/crypto-js.min.js"></script>
+<<<<<<< HEAD
 
 <script src="<?= media(); ?>/js/global.js"></script>
+=======
+
+<<<<<<< HEAD
+<script src="<?= media(); ?>/js/global.js"></script>
+=======
+<!-- Crypto Js -> JavaScript library of crypto standards.. -->
+<script src="<?= base_url(); ?>/vendor/crypto-js/js/crypto-js.min.js"></script>
+
+<script src="../../public/js/global.js"></script>
+>>>>>>> 3c2a3fb (100% perfil)
+>>>>>>> 7836dc7 (1000)
 <!-- <script>
     $(document).ready(function() {
         //________________________IMAGEN USUARIO DE PERFIL_______________________________

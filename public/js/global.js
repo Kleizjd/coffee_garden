@@ -250,9 +250,9 @@ $(document).on("change", ".subirArchivo", function (e) {
 					
 
 				var formData = new FormData();
-				formData.append("module", "Utilities");
-				formData.append("controller", "Utilities");
-				formData.append("nameFunction", "uploadFile");
+				formData.append("modulo", "utilidades");
+				formData.append("controlador", "utilidades");
+				formData.append("funcion", "uploadFile");
 				formData.append("Archivo", archivo);
 				formData.append("Tabla", tabla);
 				formData.append("Campo", campo);
@@ -272,7 +272,7 @@ $(document).on("change", ".subirArchivo", function (e) {
 
 						$(this).parent().parent().find(".nombreArchivo").text("Cargando..");
 						$(this).parent().parent().find("label").find("img").prop({
-							src: "../../assets/images/gif/loader.gif",
+							src: "../../public/img/gif/loader.gif",
 							alt: "Cargando...",
 							title: "Cargando..."
 						});

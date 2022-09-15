@@ -1,7 +1,7 @@
 <?php
 include_once "../../Config/Core.php";
 
-class Utilities extends Core {
+class Utilidades extends Core {
 
     public function uploadFile(){
         // $objUtilidades = new UtilidadesModel();
@@ -23,21 +23,26 @@ class Utilities extends Core {
 
             $sqlLlavePrimaria = "SELECT column_name, column_key, extra FROM information_schema.columns WHERE table_schema=DATABASE() AND table_name='$Tabla'";
             // echo $sqlLlavePrimaria;
-            $LlavePrimaria = $this->consult($sqlLlavePrimaria);
-            // $LlavePrimaria = $LlavePrimaria[0][0];========// por ahora te comento
-            $LlavePrimaria = $LlavePrimaria[1][0];
+            $LlavePrimaria = $this->select($sqlLlavePrimaria);
+            
+            $LlavePrimaria = $LlavePrimaria["column_name"];
+            // echo "si es".$LlavePrimaria;
             
            if (isset($_FILES["Archivo"]["name"])) {
-                $Archivo = lreplace(".", "-" . $Distintivo . ".", $_FILES["Archivo"]["name"]);
+                $Archivo = $this->lreplace(".", "-" . $Distintivo . ".", $_FILES["Archivo"]["name"]);
                 $RutaCompleta = $Ruta . $Archivo;
                 
                 
                 $sqlUpdate = "UPDATE $Tabla SET $Campo = '$Archivo' WHERE $LlavePrimaria = '$ValorCondicion'";
+                $sqlUpdate = $this->select($sqlUpdate);
 
-                $sqlUpdate = $this->execute($sqlUpdate);
+                // $sqlUpdate = "UPDATE $Tabla SET $Campo = ? WHERE $LlavePrimaria = '$ValorCondicion'";
+                // $arrData = array($sqlUpdate);
 
+                // $sqlUpdate = $this->update($sqlUpdate, $arrData);
+              
                 // if (mysqli_affected_rows($sqlUpdate->conexion) > 0) {
-                if ($sqlUpdate) {
+                // if ($sqlUpdate) {
                     $move_uploaded_file = move_uploaded_file($_FILES["Archivo"]["tmp_name"], utf8_decode($RutaCompleta));
                     
                     if ($move_uploaded_file) {
@@ -46,13 +51,23 @@ class Utilities extends Core {
                         $answer["ruta"] = $RutaCompleta;
                         // echo "miremos".$answer["archivo"];
                         // echo "miremos".$answer["ruta"];
-                    }
+                    // }    
                 }
             }
 
             echo json_encode($answer);
         }
     }
+
+    function lreplace($search, $replace, $subject) {
+        $pos = strrpos($subject, $search);
+        if ($pos !== false) {
+            $subject = substr_replace($subject, $replace, $pos, strlen($search));
+        }
+        return $subject;
+    }
+
+
 
 
     public function GenerateRecordAudit($proceso, $descripcion) {
