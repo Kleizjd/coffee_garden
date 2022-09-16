@@ -13,12 +13,16 @@
 					<div class="row">
 						<div class="col-lg-12">
 							<form id="login_form" method="post" autocomplete="off">
-								<div class="form-group">
-									<input type="email" name="user" id="user" class="form-control" placeholder="Correo" required>
-								</div>
-								<div class="form-group">
-									<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-								</div>
+							<div class="form-group ">
+                                <input type="text" class="form-control" placeholder="Login" name="user" id="user" autofocus required>
+                            </div>
+                            <div class="input-group form-group">
+                                <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
+
+                                <button type="button" class="btn btn-outline-primary showPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
 								<div class="form-group">
 									<div class="row">
 										<div class="col-12">
@@ -74,26 +78,6 @@
 		</div>
 	</div>
 </div>
-<!-- </div> -->
 <script src="vendor/jquery/jquery-3.3.1.min.js"></script>
-
-<script>
-	$(document).ready(function() {
-		// document.body.classList.toggle("myStyle");
-		document.body.classList.add("login_register");
-		// document.body.classList.add("container-fluid");
-		// document.body.classList.add("p-3");
-
-	});
-
-	$('#to_register').on("click", function() {
-		$('#login_form').hide();
-		$("#create_account").show();
-	});
-	$('.panel_join').on("click", function() {
-		$('#create_account').hide();
-		$("#login_form").show();
-	});
-</script>
 <script src="vendor/sweetalert/js/sweetalert2.min.js"></script>
 <script src="public/js/login.js"></script>
