@@ -24,13 +24,14 @@
                             <div class="col-sm col-lg">
                                 <div class="card-header">
                                     <form id="frm_UploadImage" method="POST">
-                                        <?php foreach ($Perfil as $perfil) {} ?>
+                                        <?php foreach ($Perfil as $perfil) {
+                                        } ?>
                                         <div class="row">
                                             <div class="text-center col-12">
-                                                <div class="font-weight-bold" style="font-size: 18px;" id="complete_name"><?= $perfil['nombre']." ".$perfil['apellido'];?> <span></span></div>
-                                                <input type="hidden" name="userId" id="userId" value="<?= $_SESSION['id_usuario']; ?>">
+                                                <div class="font-weight-bold" style="font-size: 18px;" id="complete_name"><?= $perfil['nombre']." ".$perfil['apellido']; ?><span></span></div>
+                                                <input type="hidden" name="userId" id="userId" value="<?= $perfil['id_usuario']; ?>">
                                             </div>
-                                        </div><!-- IMAGE perfil -->
+                                        </div><!-- IMAGE ADMIN -->
                                         <div class="row">
                                             <div class="col-sm">
                                                 <label for="imagen_usuario" class="d-flex justify-content-center">
@@ -38,7 +39,8 @@
                                                         <?php if (!empty($perfil["imagen_usuario"])) : ?>
 
                                                             <i class="shadow-hover-efect"></i>
-                                                            <img src="<?= $ruta . $perfil["imagen_usuario"]; ?>" alt="<?= preg_replace("/\.[^.]+$/", "", $_SESSION["imagen_usuario"]); ?>" height="190" width="190">
+                                                            <!-- <img class="img__img" src="../../public/img/svg/upload-user.svg" /> -->
+                                                            <img class="" src="<?= $ruta . $perfil["imagen_usuario"]; ?>" alt="<?= preg_replace("/\.[^.]+$/", "", $perfil["imagen_usuario"]); ?>" height="190" width="190">
                                                             <i class="far fa-edit img__description">Cambiar</i>
                                                         <?php else : ?>
                                                             <img class="img__img" src="../../public/img/svg/upload-user.svg" />
@@ -49,11 +51,9 @@
                                                 </label>
                                             </div>
                                             <div class="text-center col-12">
-                                                <div class="nombreArchivo"><?= $perfil["imagen_usuario"]; ?></div>
+                                                <div class="nombreArchivo"><?= $perfil['nombre']." ".$perfil['apellido']; ?></div>
                                                 <div class="ContenedorPrevisualizarArchivo"></div>
                                                 <input type="file" class="subirArchivo" name="imagen_usuario" id="imagen_usuario" accept="image/png, image/jpeg" style="display: none;" data-file-upload="<?= encriptar("usuarios|" . $perfil["id_usuario"] . "|$ruta"); ?>">
-                
-                                                
                                             </div>
                                         </div>
                                     </form>
@@ -62,7 +62,7 @@
                             <div class="col-sm col-lg">
                                 <div class="row pt-3">
                                     <div class="col-sm col-lg"><label for="email_user">Correo Electronico</label></div>
-                                    <div class="col-sm col-lg" id="email_user"><span><?= $_SESSION['correo_login'] ?></span></div>
+                                    <div class="col-sm col-lg" id="email_user"><span><?= $perfil['email'] ?></span></div>
                                     <div class="col-sm col-lg">
                                         <button class="btn btn-primary" data-toggle="modal" data-target="#emailModal">cambiar</button>
                                     </div>
@@ -72,7 +72,7 @@
                                         <span>Nombre</span>
                                     </div>
                                     <div class="col-sm col-lg">
-                                        <div id="complete_name_field"><?= $perfil['nombre']." ".$perfil['apellido'];?></div>
+                                        <div id="complete_name_field"><?= $perfil['nombre']." ".$perfil['apellido']; ?></div>
                                     </div>
                                     <div class="col-sm col-lg">
                                         <button class="btn btn-primary" id="editName">cambiar</button>
@@ -85,13 +85,13 @@
                                             <label class="pt-2" for="names">Nombre</label>
                                         </div>
                                         <div class="col-sm-4 col-lg-4">
-<input type="text" class="form-control" name="name_user" id="name_user" value="<?php echo $perfil['nombre'];  ?>">
+                                            <input type="text" class="form-control" name="name_user" id="name_user" value="<?php echo $perfil['nombre']; ?>">
                                         </div>
                                         <div class="col-sm-2 col-lg-2">
                                             <label class="pt-2" for="lastName">Apellidos</label>
                                         </div>
                                         <div class="col-sm-4 col-lg-4">
-                                            <input type="text" class="form-control" name="lastName" id="lastName" value="<?php  echo $perfil['apellido']; ?>">
+                                            <input type="text" class="form-control" name="lastName" id="lastName" value="<?php echo $perfil['apellido']; ?>">
                                         </div>
 
                                     </div>
@@ -220,7 +220,7 @@
                 if (res.tipoRespuesta == "success") {
 
                     alertify.notify("Correo modificado correctamente", "success", 2, function() {});
-                    
+
                     document.getElementById("email_user").innerHTML = $("#actualiza_correo").val()
                     $('#emailModal').modal().hide();
 
@@ -251,17 +251,13 @@
                 contentType: false
             }).done((res) => {
                 if (res.tipoRespuesta == "success") {
-                    swal({
-                        title: res.message, type: res.tipoRespuesta
-                    })
+                    swal({ title: res.message, type: res.tipoRespuesta})
                 } else if (res.tipoRespuesta == "warning") {
-                    swal({
-                        title: res.message, type: res.tipoRespuesta
-                    })
+                    swal({ title: res.message, type: res.tipoRespuesta})
                 } else if (res.tipoRespuesta == "error") {
-                    swal({
-                        title: res.message, type: res.tipoRespuesta
-                    })
+                    swal({ title: res.message, type: res.tipoRespuesta})
+                } else if (res.tipoRespuesta == "wrong") {
+                    swal({ title: res.message, type: res.tipoRespuesta})
                 }
             });
         });
@@ -298,7 +294,8 @@
                     $('#complete_name').text(res.nombre + " " + res.apellido);
 
                     swal({
-                        title: res.message, type: res.tipoRespuesta
+                        title: res.message,
+                        type: res.tipoRespuesta
                     }).then(function(isConfirm) {
                         $("#complete_name_field").html(res.nombre + " " + res.apellido);
                     })

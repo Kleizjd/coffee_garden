@@ -2,7 +2,25 @@
 
 <div class="card">
     <div class="card-header">
-        <h4>Editar Producto</h4>
+        <div class="row page-titles">
+            <div class="col-md-5 align-self-center">
+                <h4 class="text-themecolor">Editar Producto</h4>
+                
+            </div>
+            
+            <div class="col-md-7 text-right">
+                <div class="d-flex justify-content-end">
+                    
+                    <ol class="breadcrumb">
+                        
+                        <li class="breadcrumb-item"><a href="./">Home</a></li>
+                        <li class="breadcrumb-item" id="verProducto">Producto</li>
+                        <li class="breadcrumb-item active">Ver Producto</li>
+                    </ol>
+            
+                </div>
+            </div>
+            </div>
     </div>
     <div class="card-body">
         <form action="" id="form_EditProduct" method="POST" autocomplete="off" >
@@ -100,7 +118,7 @@ $(document).ready( function(){
 			var formData = new FormData(event.target);
 			formData.append("modulo", "producto");
 			formData.append("controlador", "producto");
-			formData.append("funcion", "EditarProducto");
+			formData.append("funcion", "editarProducto");
 			$.ajax({
 				url: "../../app/lib/ajax.php",
 				method: "post",

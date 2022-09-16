@@ -16,7 +16,7 @@ class Cliente extends Core {
         $sqlCliente = $this->select("SELECT * FROM customer WHERE Nit_Customer = $nit_customer");
         $sqlFormadePago =  $this->select("SELECT * FROM waytopay WHERE Code_Way_Pay = '$waytopay'");
 
-        include_once "../../views/Cliente/verCliente.php";
+        include_once "../../views/Cliente/view.WatchCustomer.php";
     }
 
     public function editarCliente(){
@@ -26,11 +26,11 @@ class Cliente extends Core {
         
         // $waytoPay = $this->select("SELECT * FROM waytopay ORDER BY Description");
 
-        include_once "../../views/Cliente/editarCliente.php";
+        include_once "../../views/Cliente/view.EditCustomer.php";
     }
 
     public function modalBuscarCliente(){
-        include_once "../../views/Cliente/modalVerCliente.php";
+        include_once "../../views/Cliente/view.modalSearchCustomer.php";
     }
     public function crearCliente() {
         extract($_POST);

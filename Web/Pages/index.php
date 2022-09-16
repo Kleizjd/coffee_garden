@@ -38,7 +38,8 @@ include_once "../../App/lib/Helpers.php";
       <!-- FOOTER -->
       <footer><?php include_once "./../Partials/footer.php"; ?></footer>
       <!-- !FOOTER -->
-      <!-- <script src="<?= media(); ?>/js/functions_producto.js"></script> -->
+      <!-- <script src="<?= media(); ?>/js/js_views/<?= $data['page_functions_js']; ?>"></script> -->
+      <script src="<?= media(); ?>/js/functions_producto.js"></script>
       <!-- SCRIPTS -->
       <div id="scripts"><?php include_once "./../Partials/scripts.php";  ?></div>
       <!-- !SCRIPTS -->

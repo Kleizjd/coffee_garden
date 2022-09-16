@@ -18,13 +18,15 @@
 <script>
     (function closeSession() {
         $(document).on("click", "#exit", function(event) {
+            event.preventDefault();
+
             $.ajax({
                 url: "../../app/lib/ajax.php",
                 method: "POST",
                 data: {
-                    modulo: "login",
-                    controlador: "login",
-                    funcion: "cerrarSesion",
+                    module: "login",
+                    controller: "login",
+                    nameFunction: "cerrarSesion",
                 },
             }).done(() => {
                 $('#logoutModal').modal().hide();

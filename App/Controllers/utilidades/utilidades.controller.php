@@ -4,12 +4,10 @@ include_once "../../Config/Core.php";
 class Utilidades extends Core {
 
     public function uploadFile(){
-        // $objUtilidades = new UtilidadesModel();
         extract($_POST);
         // var_dump($_POST);
 
         extract($_FILES);
-        // echo "vea pues ".$_FILES;
         $answer["typeAnswer"] = false;
 
         // EL CAMPO VALORES SE DIVIDE EN DOS: EL DISTINTIVO QUE VA A IR JUNTO AL ARCHIVO AL SUBIRSE
@@ -70,18 +68,18 @@ class Utilidades extends Core {
 
 
 
-    public function GenerateRecordAudit($proceso, $descripcion) {
+    // public function GenerateRecordAudit($proceso, $descripcion) {
         
-		$fecha=date("Y-m-d");
-        $stime=date("h").":".date("i");
-        $direccion = ObtenerIP();
-        $hostname = gethostname();
+	// 	$fecha=date("Y-m-d");
+    //     $stime=date("h").":".date("i");
+    //     $direccion = ObtenerIP();
+    //     $hostname = gethostname();
         
-        $cons="INSERT INTO auditoria (Numero_Registro, Fecha, Hora_Actualiza, Equipo, Direccion_Ip, Usuario, Proceso, Descripcion, Nit_Empresa) VALUES
-            (null,'$fecha',CURRENT_TIMESTAMP, '$hostname', '$direccion','".$_SESSION["usua_nombreCompleto"]."','$proceso','$descripcion','".$_SESSION["Nit_Empresa"]."') ";
+    //     $cons="INSERT INTO auditoria (Numero_Registro, Fecha, Hora_Actualiza, Equipo, Direccion_Ip, Usuario, Proceso, Descripcion, Nit_Empresa) VALUES
+    //         (null,'$fecha',CURRENT_TIMESTAMP, '$hostname', '$direccion','".$_SESSION["usua_nombreCompleto"]."','$proceso','$descripcion','".$_SESSION["Nit_Empresa"]."') ";
 
-        $this->consult($cons);
-    }
+    //     $this->consult($cons);
+    // }
 
     public function validateKey(){
         extract($_POST);
@@ -96,13 +94,6 @@ class Utilidades extends Core {
         }
 
         echo json_encode($answer);
-    }
-    function encriptPassword($password, $cost){
-        //Encriptar-----------------------------------------------------------------------
-        $options = [ 'cost' => $cost ];
-        $passEncrypt = password_hash($password, PASSWORD_BCRYPT, $options);
-        //-------------------------------------------------------------------------------
-        return $passEncrypt;
     }
 
 }

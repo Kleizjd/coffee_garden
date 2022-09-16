@@ -1,7 +1,6 @@
 
 <?php
-// include_once "../../App/Controllers/Utilities/Utilities.controller.php";
-include_once "../../Config/Core.php";
+    include_once "../../Config/Core.php";
 
 class Login extends Core
 {
@@ -15,7 +14,7 @@ class Login extends Core
 
         $answer = array();
 
-        $sql = "SELECT DISTINCT id_usuario, CONCAT(nombre, ' ', apellido) AS Nombre_Completo, nombre, apellido, password, rolid, email,imagen_usuario FROM usuarios WHERE id_usuario='$user' AND estado_usuario = " . $estado . "";
+        $sql = "SELECT DISTINCT id_usuario, CONCAT(nombre, ' ', apellido) AS nombre_completo, nombre, apellido, password, rolid, email,imagen_usuario FROM usuarios WHERE email='$user' AND estado_usuario = " . $estado . "";
         $validar_sesion = $this->select($sql);
 
 
@@ -26,7 +25,7 @@ class Login extends Core
 
             if (password_verify($password, $passwordDB)) {
                 @session_start();
-                $_SESSION['nombre_completo'] = str_replace("*", "", $validar_sesion["Nombre_Completo"]);
+                $_SESSION['nombre_completo'] = str_replace("*", "", $validar_sesion["nombre_completo"]);
                 $_SESSION['imagen_usuario'] = str_replace("*", "", $validar_sesion["imagen_usuario"]);
                 $_SESSION['nombres'] = $validar_sesion['nombre'];
                 $_SESSION['apellidos'] = $validar_sesion['apellido'];

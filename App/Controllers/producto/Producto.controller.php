@@ -42,7 +42,7 @@ class Producto extends Core{
 
         if($codigo != ""){ $condicion .="AND codigo LIKE '$codigo%'";}
 
-        if($producto != ""){ $condicion .="AND producto LIKE '$products%'"; }
+        if($producto != ""){ $condicion .="AND producto LIKE '$producto%'"; }
 
         if($estado != ""){ if($estado == 'T'){ $estado = null;}}
 
@@ -69,7 +69,7 @@ class Producto extends Core{
     }
 
     public function crearProducto() {
-        // $core = $this->getCore(); 
+       
         
         extract($_POST);
         // var_dump($_POST);
@@ -88,15 +88,19 @@ class Producto extends Core{
        if ($sql) {  $respuesta["tipoRespuesta"] = true; } 
         echo json_encode($respuesta);  
     }
-    public function editProduct() {
-        // $this->getCore(); 
+    public function editarProducto() {
         extract($_POST);
+        // var_dump($_POST);
         $respuesta = array();
 
     //    $actualizarProducto = $this->update("UPDATE producto SET Product ='$producto', Price = '$valor', cantidad = '$cantidad', descripcion = '$description' WHERE codigo_producto='$codigo_producto'");	
+        $sql = "UPDATE producto SET producto ='$product', precio = '$price', cantidad = '$amount', descripcion = '$description' WHERE codigo='$code_product'";
+       $actualizarProducto = $this->select($sql);	
     
         // if ($actualizarProducto) {  $respuesta["tipoRespuesta"] = true; }
         // echo json_encode($respuesta);  
+          $respuesta["tipoRespuesta"] = true; 
+        echo json_encode($respuesta);  
     }
     
 

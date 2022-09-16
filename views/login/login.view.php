@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="shortcut icon" href="./public/img/Coffe Garden.png" type="image/x-icon">
-	<link rel="stylesheet" href="./public/css/login_register.css">
+	<link rel="stylesheet" href="./public/css/login-register.css">
 	<link rel="stylesheet" href="./vendor/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="./public/css/login.css">
 	<link rel="stylesheet" href="./vendor/sweetalert/css/sweetalert2.min.css">
@@ -15,7 +15,7 @@
 	<title>Inicio de Sesión</title>
 </head>
 
-<body class="login_register container-fluid p-3">
+<body class="login-register container-fluid p-3">
 	<div class="mt-2 container ">
 		<div class="justify-content-center row">
 			<div class="col-md-5 col-md-offset-3">
@@ -32,7 +32,7 @@
 							<div class="col-lg-12">
 								<form id="login_form" method="post" autocomplete="off">
 									<div class="form-group">
-										<input type="text" name="user" id="user" class="form-control" placeholder="Cedula" required>
+										<input type="email" name="user" id="user" class="form-control" placeholder="Correo" required>
 									</div>
 									<div class="form-group">
 										<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
@@ -55,7 +55,7 @@
 								<form id="create_account" method="POST" autocomplete="off" class="overflow-auto" style="display: none">
 									<div id="register_users" class="animate form registration_form">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Usuario" id="user_id" required />
+										<input type="email" class="form-control" placeholder="Correo" id="user_id" required />
 									</div>
 									<div class="form-group">
 										<input type="text" class="form-control" placeholder="Nombre" id="nombre" required />

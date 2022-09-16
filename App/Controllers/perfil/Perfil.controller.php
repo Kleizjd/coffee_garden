@@ -1,5 +1,7 @@
 <?php
 include_once "../../Config/core.php";
+// include_once "Utilities/Utilities.controller.php";
+
 
 class Perfil extends Core
 {
@@ -7,8 +9,9 @@ class Perfil extends Core
     {
         extract($_POST);
         $ruta = "../../views/perfil/Files/";
-        $sqlAdmin = "SELECT * FROM usuarios WHERE id_usuario = '$userId' ";
-        $Perfil = $this->select_all($sqlAdmin);
+        $sqlPerfil = "SELECT * FROM usuarios WHERE id_usuario = '$userId' ";
+        $Perfil = $this->select_all($sqlPerfil);
+
         include_once "../../views/Perfil/Perfil.view.php";
     }
     public function loadImageUser()
@@ -16,10 +19,11 @@ class Perfil extends Core
         extract($_POST);
         $answer = array();
         $ruta = "../../../views/Admin/Files/";
-        $sqlUser = "SELECT imagen_usuario FROM usuarios WHERE id_usuario = '$userId' ";
-        $User = $this->select($sqlUser);
-        $row = $User->fetch_assoc();
-        $answer["address"] = $row['imagen_usuario'];
+        $sqlUser = "SELECT CONCAT(nombre, ' ', apellido) AS nombre_completo, imagen_usuario FROM usuarios WHERE id_usuario = '$userId' ";
+        $user = $this->select($sqlUser);
+
+        $answer["address"] = $user['imagen_usuario'];
+        $answer["nombre_completo"] = $user['nombre_completo'];
 
         echo json_encode($answer);
     }
@@ -28,11 +32,7 @@ class Perfil extends Core
         extract($_POST);
         $answer = array();
 
-        $sql = "UPDATE usuarios SET email = ? WHERE id_usuario = '$userId'";
-
-        $arrData = array($actualiza_correo);
-        $request = $this->update($sql, $arrData);
-        $sql = "UPDATE usuarios SET email = ? WHERE id_usuario = '$userId'";
+        $sql = "UPDATE usuarios SET email = ? WHERE id_usuario = $userId";
 
         $arrData = array($actualiza_correo);
         $request = $this->update($sql, $arrData);
@@ -47,51 +47,55 @@ class Perfil extends Core
     public function editPassword()
     {
         extract($_POST);
-        //  var_dump($_POST);
+        $answer = array();
 
-        // $tipoRespuesta = "error";
         // $message = "la contrasena actual no es correcta";
 
         $sqlVerify = "SELECT password FROM usuarios WHERE id_usuario = '$userId'";
         $sql = $this->select($sqlVerify);
 
         if ($sql != 0) {
-            
+
             $passwordDB = $sql['password'];
-            if (password_verify($actual_password, $passwordDB)) {
-                // echo "hola";
 
-                if ($new_password == $confirm_password) {
+            if ($actual_password != $new_password) {
+                if (password_verify($actual_password, $passwordDB)) {
+                    if ($new_password == $confirm_password) {
 
-                    //Encriptar-----------------------------------------------------------------------
-                    $passEncrypt = password_hash($new_password, PASSWORD_DEFAULT); //password encripted
-                    //-------------------------------------------------------------------------------/contraseña encriptada
+                        //Encriptar-----------------------------------------------------------------------
+                        $passEncrypt = password_hash($new_password, PASSWORD_DEFAULT); //password encripted
+                        //---------------------------------------------------------------/contraseña encriptada
 
-                    $sqlUpdate = "UPDATE usuarios SET password = '$passEncrypt' WHERE id_usuario = '$userId'";
-                    $sql = $this->select($sqlUpdate);
+                        $sqlUpdate = "UPDATE usuarios SET password = ? WHERE id_usuario = '$userId'";
+                        $arrData = array($passEncrypt);
+                        $request = $this->update($sqlUpdate, $arrData);
 
-                    // $sqlUpdate = "UPDATE usuarios SET password = ? WHERE id_usuario = '$userId'";
-                    // $arrData = array($passEncrypt);
-                    // $request = $this->update($sqlUpdate, $arrData);
-            
-                    // if ($request != 0) {
+                        // if ($request != 0) {
 
-                        $tipoRespuesta = "success";
-                        $message = "Cambio de contraseña exitoso";
-                    // }
-                } else {
-                    $tipoRespuesta = "warning";
-                    $message = " las contraseñas no coiciden";
+                            $answer["tipoRespuesta"] = "success";
+                            $answer["message"] = "Cambio de contraseña exitoso";
+                        // }
+                    } else {
+
+                        $answer["tipoRespuesta"] = "warning";
+                        $answer["message"] = " las contraseñas no coiciden";
+                    }
+                }  else {
+                    $answer["tipoRespuesta"] = "wrong";
+                    $answer["message"] = "la contraseña Actual es incorrecta";
                 }
+            } else {
+                $answer["tipoRespuesta"] = "error";
+                $answer["message"] = "la contraseña no puede ser la Actual";
             }
         }
-        echo json_encode(array("tipoRespuesta" => $tipoRespuesta, "message" => $message));
+        echo json_encode($answer);
+        // echo json_encode(array("tipoRespuesta" => $tipoRespuesta, "message" => $message));
     }
     public function editName()
     {
         extract($_POST);
         // var_dump($_POST);
-        
         $sql = "UPDATE usuarios SET nombre = '$name_user', apellido = '$lastName' WHERE id_usuario = '$userId' ";
         $sqlUser = $this->select($sql);
 

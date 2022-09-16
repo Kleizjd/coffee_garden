@@ -12,10 +12,10 @@ $(document).ready(function () {
     //=============================[   SALE / VENTA ]=========================//	
     $(function generarVenta() { 
         $(document).on("click", "#generarVenta", function () { var menu = "venta"; llamarVista(menu, menu,menu); })})
+    });
     $(document).on("click", "#ajustes", function() { 
         let userId = new Object();  userId["userId"] = $("#userId").val(); //VARIABLES
         //  $("#img_profile_herence").attr("src", $("#img_profile").attr("src")); 
          llamarVista("perfil", "perfil", "perfil", userId);
     });
-});
     

@@ -17,7 +17,7 @@
 			</div>
 			<!--  -->
 			<div class="card-body">
-				<form method="POST" id="frm_BuscarCliente" action="" autocomplete="off">
+				<form method="POST" id="frm_SearchCustomer" action="" autocomplete="off">
 					<div class="container-fluid">
 						<div class="row">
 							<label class="font-weight-bold">Digite los primeros caracteres</label>
@@ -66,8 +66,8 @@
 
 
 <div class="container">
-	<div class="newSearch" id="containerModalBuscarCliente" style="display: none;">
-		<table id="tableModalBuscarCliente" class="table-bordered table-hover" width="100%">
+	<div class="newSearch" id="containerModalSearchCustomer" style="display: none;">
+		<table id="tableModalSearchCustomer" class="table-bordered table-hover" width="100%">
 
 			<thead class="table text-white bg-primary thead-primary">
 				<tr>
@@ -91,15 +91,15 @@
 	$(document).ready(function() {
 		/***************************LIST PRODUCT**************************/
 		$(function listProduct() {
-			$(document).on("submit", "#frm_BuscarCliente", function(event) {
+			$(document).on("submit", "#frm_SearchCustomer", function(event) {
 				event.preventDefault();
 
-				$("#containerModalBuscarCliente").show();
+				$("#containerModalSearchCustomer").show();
 				var status = $('select[name="status"] option:selected').text();
 				$("#statusProduct").text(status);
 
 
-				var tableModalBuscarCliente = $("#tableModalBuscarCliente").DataTable({
+				var tableModalSearchCustomer = $("#tableModalSearchCustomer").DataTable({
 					dom: "Bfrtip",
 					buttons: [{
 						extend: "excelHtml5",
@@ -121,7 +121,7 @@
 						"targets": "_all"
 					}],
 					drawCallback: () => {
-						tableModalBuscarCliente.columns.adjust();
+						tableModalSearchCustomer.columns.adjust();
 					},
 					ajax: {
 						url: "../../App/lib/ajax.php",
@@ -157,7 +157,7 @@
 		});
 		$(function viewWatchCustomer() {
 			$(document).on("click", "#viewWatchCustomer", function() {
-				let data = $("#tableModalBuscarCliente").DataTable().row($(this).parents("tr")).data();
+				let data = $("#tableModalSearchCustomer").DataTable().row($(this).parents("tr")).data();
 				// alert(data.nit_Customer);
 				llamarVista("Customer", "Customer", "viewWatchCustomer", {
 					nit_customer: data.nit_Customer,
@@ -168,7 +168,7 @@
 
 		$(function editarCliente() {
 			$(document).on("click", "#editarCliente", function() {
-				let data = $("#tableModalBuscarCliente").DataTable().row($(this).parents("tr")).data();
+				let data = $("#tableModalSearchCustomer").DataTable().row($(this).parents("tr")).data();
 				llamarVista("Customer", "Customer", "editarCliente", {
 					nit_customer: data.nit_Customer,
 					waytopay: data.waytopay

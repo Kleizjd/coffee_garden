@@ -14,7 +14,7 @@
 						<div class="col-lg-12">
 							<form id="login_form" method="post" autocomplete="off">
 								<div class="form-group">
-									<input type="text" name="user" id="user" class="form-control" placeholder="Cedula" required>
+									<input type="email" name="user" id="user" class="form-control" placeholder="Correo" required>
 								</div>
 								<div class="form-group">
 									<input type="password" name="password" id="password" class="form-control" placeholder="Password" required>

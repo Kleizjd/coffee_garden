@@ -8,11 +8,11 @@
                 <h4 class="text-themecolor">Visualizando Producto</h4>
                 
             </div>
-            <div class="col-md-4 text-right">
+            <div class="col-md-3 text-right">
                 <button  type="button" class="btn btn-primary" data-toggle="modal"  title="Buscar" data-target="#modalProducto"><i class="fa fa-search"></i>Nueva busqueda</button>
             </div>
             
-            <div class="col-md-3 text-right">
+            <div class="col-md-4 text-right">
                 <div class="d-flex justify-content-end">
                     
                     <ol class="breadcrumb">
