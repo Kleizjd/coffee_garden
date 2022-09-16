@@ -12,7 +12,9 @@
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#myProfile" role="tab">Mi perfil</a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#manageUsers" role="tab">Usuarios</a>
+            </li>
         </ul>
     </div>
     <div class="card-body">
@@ -28,7 +30,7 @@
                                         } ?>
                                         <div class="row">
                                             <div class="text-center col-12">
-                                                <div class="font-weight-bold" style="font-size: 18px;" id="complete_name"><?= $perfil['nombre']." ".$perfil['apellido']; ?><span></span></div>
+                                                <div class="font-weight-bold" style="font-size: 18px;" id="complete_name"><?= $perfil['nombre'] . " " . $perfil['apellido']; ?><span></span></div>
                                                 <input type="hidden" name="userId" id="userId" value="<?= $perfil['id_usuario']; ?>">
                                             </div>
                                         </div><!-- IMAGE ADMIN -->
@@ -51,7 +53,7 @@
                                                 </label>
                                             </div>
                                             <div class="text-center col-12">
-                                                <div class="nombreArchivo"><?= $perfil['nombre']." ".$perfil['apellido']; ?></div>
+                                                <div class="nombreArchivo"><?= $perfil['nombre'] . " " . $perfil['apellido']; ?></div>
                                                 <div class="ContenedorPrevisualizarArchivo"></div>
                                                 <input type="file" class="subirArchivo" name="imagen_usuario" id="imagen_usuario" accept="image/png, image/jpeg" style="display: none;" data-file-upload="<?= encriptar("usuarios|" . $perfil["id_usuario"] . "|$ruta"); ?>">
                                             </div>
@@ -72,7 +74,7 @@
                                         <span>Nombre</span>
                                     </div>
                                     <div class="col-sm col-lg">
-                                        <div id="complete_name_field"><?= $perfil['nombre']." ".$perfil['apellido']; ?></div>
+                                        <div id="complete_name_field"><?= $perfil['nombre'] . " " . $perfil['apellido']; ?></div>
                                     </div>
                                     <div class="col-sm col-lg">
                                         <button class="btn btn-primary" id="editName">cambiar</button>
@@ -131,8 +133,8 @@
                 <div class="tab-pane" id="manageUsers">
                     <div class="container-fluid">
                         <div class="row">
-                            <label for="nameUser">Name User</label>
-                            <input type="text" name="nameUser" id="nameUser" class="form-control">
+                            <?php include_once "usuarios.php";?>
+                            
                         </div>
                     </div>
                 </div>
@@ -251,13 +253,25 @@
                 contentType: false
             }).done((res) => {
                 if (res.tipoRespuesta == "success") {
-                    swal({ title: res.message, type: res.tipoRespuesta})
+                    swal({
+                        title: res.message,
+                        type: res.tipoRespuesta
+                    })
                 } else if (res.tipoRespuesta == "warning") {
-                    swal({ title: res.message, type: res.tipoRespuesta})
+                    swal({
+                        title: res.message,
+                        type: res.tipoRespuesta
+                    })
                 } else if (res.tipoRespuesta == "error") {
-                    swal({ title: res.message, type: res.tipoRespuesta})
+                    swal({
+                        title: res.message,
+                        type: res.tipoRespuesta
+                    })
                 } else if (res.tipoRespuesta == "wrong") {
-                    swal({ title: res.message, type: res.tipoRespuesta})
+                    swal({
+                        title: res.message,
+                        type: res.tipoRespuesta
+                    })
                 }
             });
         });
