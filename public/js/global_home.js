@@ -1,7 +1,7 @@
 // INCLUIR SCRIPTS DE LAS VISTAS
 // $.getScript("../public/js/OpenViews.js");
 // INCLUIR SCRIPTS DE LAS VISTAS
-$.getScript("../../routes/route.js");
+$.getScript("routes/route.js");
 
 
 // <<<<<<<<<<<<<<<<<<<<- GENERAL FUNCTIONS AND HELPERS ->>>>>>>>>>>>>>>>>>>>
@@ -13,7 +13,7 @@ function llamarVista(modulo, controlador, funcion, parametros, blank){
 
 	$("#cargarVista").append(`
 		<form id="Datos${funcion}" action="./" method="post" >
-			<input type="hidden" name="ruta" value="../../">
+			<input type="hidden" name="ruta" value="">
 			<input type="hidden" name="modulo" value=${modulo}>
 			<input type="hidden" name="controlador" value=${controlador}>
 			<input type="hidden" name="funcion" value=${funcion}>
@@ -123,11 +123,11 @@ $("form").keypress(function (e) {
 });
 
 // SCRIPT SELECT 2
-$(".select2").select2({
-	language: "es",
-	width: "100%",
-	theme: "bootstrap"
-});
+// $(".select2").select2({
+// 	language: "es",
+// 	width: "100%",
+// 	theme: "bootstrap"
+// });
 
 // <---------- SCRIPT CLEAVE JS ---------->
 

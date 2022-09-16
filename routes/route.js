@@ -18,4 +18,10 @@ $(document).ready(function () {
         //  $("#img_profile_herence").attr("src", $("#img_profile").attr("src")); 
          llamarVista("perfil", "perfil", "perfil", userId);
     });
-    
+     //=============================[   HOME / INICIO ]=========================//	
+     $(function pageHome() { 
+        $(document).on("click", "#coffee", function () { var menu = "home"; llamarVista(menu, menu, "coffee"); })
+        $(document).on("click", "#contactanos", function () { var menu = "home"; llamarVista(menu, menu, "contactanos"); })
+        $(document).on("click", "#contributors", function () { var menu = "home"; llamarVista(menu, menu, "contributors"); })
+        $(document).on("click", "#join", function () { var menu = "home"; llamarVista(menu, menu, "join"); })
+    })

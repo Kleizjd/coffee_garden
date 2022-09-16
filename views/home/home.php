@@ -1,3 +1,7 @@
+<?php
+include_once "Config/Config.php";
+include_once "App/lib/Helpers.php"; ?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -27,43 +31,20 @@
   <div>
     <div class="header">
       <!-- Navbar -->
-      <?php include_once "partials/navbar.php" ?>
+      <?php include_once "partials/navbar.php"; ?>
       <!-- //Navbar -->
     </div>
 
     <!-- BODY -->
-    <?php
-    //Se usa esta condición para navegar entre las pestañas de la vista inicial
-    // $page  = isset($_GET['p']) ? strtolower($_GET['p']) : 'main';
-    // if ($page  == 'main') {
-    //     require_once 'views/home/' . $page . '.php';
-    // } else {
-    //     require_once 'views/' . $page . '.php';
-    // }
-    ?>
+  
     <!-- SIDE_BAR -->
-    <div class="container-fluid">
-      <div class="row">
-        <?php include_once "../Partials/left_sidebar.php"; ?>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-          <!-- <br> -->
-          <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5 pb-2 mb-3 border-bottom">
-            <div class="container-fluid" id="cargarVista">
-              <?php include_once "../App/ajax.php"; ?>
+  
+            <div id="cargarVista">
+              <?php include_once "App/ajax.php"; ?>
             </div>
-          </div>
-        </main>
-      </div>
-    </div>
+       
     <!-- !SIDE_BAR -->
-    <!-- SIDE_BAR -->
-    <!-- <div class="col-12 d-md-flex">
-        <div id="page-wrapper" class="p-5"><br>
-          <div class="container-fluid" id="cargarVista" style="width: 74rem;">
-            <?php //include_once "App/ajax.php"; 
-            ?>
-          </div>
-        </div> -->
+   
   </div>
   <!-- !SIDE_BAR -->
   <!-- SCRIPTS -->

@@ -5,12 +5,13 @@ extract($_POST);
 
 if (!empty($_POST)) {
 
-    if (isset($modulo) && isset($controlador) && isset($funcion)) {
-        if (is_dir("../../App/Controllers/" . $controlador)) {
+    if (isset($ruta) && isset($modulo) && isset($controlador) && isset($funcion)) {
+        // echo "<script> alert('servira :'+'". $ruta . $modulo . "/" . $controlador . ".controller.php'); </script>";
+        if (is_dir($ruta."App/Controllers/". $controlador)) {
             // echo "<script> alert('servira :'+'../App/Controllers/" . $modulo . "/" . $controlador . ".controller.php'); </script>";
 
-            if (file_exists("../../App/Controllers/" . $modulo . "/" . $controlador . ".controller.php")) {
-                include_once "../../App/Controllers/" . $modulo . "/" . $controlador . ".controller.php";
+            if (file_exists($ruta."App/Controllers/" . $modulo . "/" . $controlador . ".controller.php")) {
+                include_once $ruta."App/Controllers/" . $modulo . "/" . $controlador . ".controller.php";
                 $nombreClase = $controlador;
                 $objControlador = new $nombreClase("../");
     
@@ -24,6 +25,8 @@ if (!empty($_POST)) {
             }
         } else {
             // echo "<script> alert('servira :'+'../App/Controllers/" . $modulo . "/" . $controlador . ".controller.php'); </script>";
+            // echo $modulo;
+            // echo $ruta;
             die("El módulo especificado no existe");
         }
     } else {

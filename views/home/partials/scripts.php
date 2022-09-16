@@ -1,5 +1,6 @@
     <!-- //////////////////////[SCRYPTS]/////////////////////////////  -->
     <!-- <script src="app/lib/global.js"></script> -->
+
     <!-- Supportive-JavaScript -->
     <script src="vendor/jquery/jquery-3.3.1.min.js"></script>
     <script src="vendor/sweetalert/js/sweetalert2.min.js"></script>
@@ -12,6 +13,8 @@
     <!-- Owl Carousel -->
     <script src="public/my_js_css/owl.carousel.js"></script>
     <!-- //Owl Carousel -->
+<script src="<?= media(); ?>/js/global_home.js"></script>
+
     <!-- Slide-To-Top JavaScript (No-Need-To-Change) -->
     <script type="text/javascript">
         $(document).ready(function() {

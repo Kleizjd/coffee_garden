@@ -5,7 +5,6 @@ include_once "../../Config/core.php";
 class Venta extends Core {
 
     public function viewCreateSale(){
-        @session_start();
 		$data['page_functions_js'] = "functions_producto.js";
         include_once "../../views/Sale/view.generarVenta.php";
     }

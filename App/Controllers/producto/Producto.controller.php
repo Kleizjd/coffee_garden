@@ -3,14 +3,8 @@ include_once "../../Config/core.php";
 
 
 class Producto extends Core{
-    // public $core;
-    // public function getCore(){
-    //     include_once "../../Config/Core.php";
-    //     $this->core = new Core();
-    //     return $this->core;
-    // }
+    
     public function producto(){
-        // @session_start();
 		$data['page_functions_js'] = "functions_producto.js";
 
         include_once "../../views/producto/Producto.php";
