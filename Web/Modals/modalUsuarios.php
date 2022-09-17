@@ -75,7 +75,7 @@
             </div>
             <div class="container">
                 <div class="newSearch" id="containerModalSearchProduct" style="display: none;">
-                    <table id="tableModalSearchProduct" class="table-bordered table-hover" width="100%">
+                    <table id="tableModalSearchUser" class="table-bordered table-hover" width="100%">
 
                         <thead class="table text-white bg-primary thead-primary">
                             <tr>
@@ -114,7 +114,7 @@ $(document).ready(function () {
 				$("#statusProduct").text(status);
 
 
-			var tableModalSearchProduct = $("#tableModalSearchProduct").DataTable({
+			var tableModalSearchUser = $("#tableModalSearchUser").DataTable({
 					
 					dom: "Bfrtip",
 					buttons: [{
@@ -137,7 +137,7 @@ $(document).ready(function () {
 						"targets": "_all"
                     }],
                     drawCallback: () => {
-						tableModalSearchProduct.columns.adjust();
+						tableModalSearchUser.columns.adjust();
 					},
 					ajax: {
 						// method: "post",
@@ -148,8 +148,8 @@ $(document).ready(function () {
 							modulo: "usuario",
 							controlador: "usuario",
 							funcion: "listUsuario",
-                            codigo: $("#id_usuario").val(),
-                            producto: $("#correo").val(),
+                            id: $("#id_usuario").val(),
+                            correo: $("#correo").val(),
                             estado: $("#status").val()
 						},
 					},
@@ -175,13 +175,13 @@ $(document).ready(function () {
 	});
 	$(function viewWatchProduct() {
 		$(document).on("click", "#verUsuarioVista", function () {
-			let data = $("#tableModalSearchUsuario").DataTable().row($(this).parents("tr")).data();
-			llamarVista("producto", "producto", "visualizarUsuario", {codigo: data.codigo}, true);});});
+			let data = $("#tableModalSearchUser").DataTable().row($(this).parents("tr")).data();
+			llamarVista("usuario", "usuario", "visualizarUsuario", {id_usuario: data.id_usuario}, true);});});
 
 	$(function viewEditProduct() {
 		$(document).on("click", "#viewEditarUsuario", function () {
-			let data = $("#tableModalSearchUsuario").DataTable().row($(this).parents("tr")).data();
-			llamarVista("producto", "producto", "viewEditarUsuario", {codigo: data.codigo}, true);
+			let data = $("#tableModalSearchUser").DataTable().row($(this).parents("tr")).data();
+			llamarVista("usuario", "usuario", "viewEditarUsuario", {codigo: data.codigo}, true);
 		});
 	});
 	

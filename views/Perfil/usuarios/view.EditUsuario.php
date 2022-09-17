@@ -1,4 +1,4 @@
-<?php getModal('modalProducto'); ?>
+<?php getModal('modalUsuarios'); ?>
 
 <div class="card">
     <div class="card-header">
@@ -13,9 +13,9 @@
                     
                     <ol class="breadcrumb">
                         
-                        <li class="breadcrumb-item"><a href="./">Home</a></li>
-                        <li class="breadcrumb-item" id="verProducto">Producto</li>
-                        <li class="breadcrumb-item active">Editar Producto</li>
+                        <li class="breadcrumb-item"><a id="ajustes">Perfil</a></li>
+                        <li class="breadcrumb-item" id="verProducto">usuarios</li>
+                        <li class="breadcrumb-item active">Editar Usuario</li>
                     </ol>
             
                 </div>
@@ -24,7 +24,7 @@
     </div>
     <div class="card-body">
         <form action="" id="form_EditProduct" method="POST" autocomplete="off" >
-            <?php foreach($sqlProduct as $product){}?>
+            <?php foreach($sqlUsuario as $usuario){}?>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm">
@@ -42,47 +42,41 @@
                                 
                             </div>
                             <div class="col-sm-3 offset-1">
-								<h4><span class="badge badge-success" id = "statProduct" ><?=$product["estado"];?></span></h4>
+								<h4><span class="badge badge-success" id = "statProduct" ><?=$usuario["estado_usuario"];?></span></h4>
                             </div>
                             
                         </div>
                        
                         <div class="row pb-3">
                              <div class="col-sm-1">
-                                <label for="code">Codigo</label>
+                                <label for="code">ID</label>
                             </div>
                             <div class="col-sm-2">
-                                <input type="text" class="form-control" id="code_product" name = "code_product" value="<?=$product["codigo"];?>" readonly >
+                                <input type="text" class="form-control" id="code_usuario" name = "code_usuario" value="<?=$usuario["id_usuario"];?>" readonly >
                             </div>
                             <div class="col-sm-1">
-                                <label for="product">Producto</label>
+                                <label for="usuario">correo</label>
                             </div>
                             <div class="col-sm-2">
-                                <input type="text" class="form-control" id="product" name = "product" value="<?=$product["producto"];?>" >
+                                <input type="text" class="form-control" id="usuario" name = "usuario" value="<?= $usuario["email"];?>" >
                             </div>
-                            <div class="col-sm-1">
-                                <label for="price">Valor Unitario</label>
+                                                           <div class="col-sm">
+                                    <label for="rol">Rol</label>
+                                </div>
+                                <div class="col-sm">
+                                    <input type="text" class="form-control" id="rol" value="<?php
+                                    echo (($usuario["rolid"] == '1') ?  "vendedor" : 'cliente'); ?>" readonly>
+                                </div>
                             </div>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" name="price" value="<?=$product["precio"];?>">
+                            <div class="row">
+
+                                <div class="col-sm-3">
+                                    <label for="nombre_completo">Nombre Completo</label>
+                                </div>
+                                <div class="col-sm">
+                                    <input type="text" class="form-control" id="nombre_completo" readonly value="<?= $usuario["nombre_completo"]; ?>"> 
+                                </div>
                             </div>
-                            <div class="col-sm-1">
-                                <label for="amount">Cantidad</label>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="number" class="form-control" id="amount" name = "amount" value="<?=$product["cantidad"];?>" >
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            
-                            <div class="col-sm-3">
-                                <label for="description">Descripcion</label>
-                            </div>
-                            <div class="col-sm">
-                                <textarea rows="4" cols="4" class="form-control" id="description" name="description" ><?=$product["descripcion"];?></textarea>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -95,7 +89,7 @@
 		<div class="modal-content">
 
 			<div class="text-center modal-header">
-				<h3 class="w-100 modal-title">Búsqueda de productos</h3>
+				<h3 class="w-100 modal-title">Búsqueda de usuarios</h3>
 				<button type="button" class="close" data-dismiss="modal" title="Cerrar">
 					<i class="fa fa-window-close fa-2x text-danger"></i>
 				</button>
@@ -116,8 +110,8 @@ $(document).ready( function(){
 			event.preventDefault();
 			
 			var formData = new FormData(event.target);
-			formData.append("modulo", "producto");
-			formData.append("controlador", "producto");
+			formData.append("modulo", "usuario");
+			formData.append("controlador", "usuario");
 			formData.append("funcion", "editarProducto");
 			$.ajax({
 				url: "../../app/lib/ajax.php",
@@ -153,10 +147,10 @@ $(document).ready( function(){
                 }).then((result) => {
                     if (result.value) {
                         var formData = new FormData($("#form_EditProduct")[0]);
-                        formData.append("modulo", "producto");
-                        formData.append("controlador", "producto");
+                        formData.append("modulo", "usuario");
+                        formData.append("controlador", "usuario");
                         formData.append("funcion", "borrarProducto");
-                        formData.append("codigo", $("#code_product").val());
+                        formData.append("codigo", $("#code_usuario").val());
                         $.ajax({
                             url: "../../App/lib/ajax.php",
                             method: "POST",
@@ -169,7 +163,7 @@ $(document).ready( function(){
                             if (res.tipoRespuesta == true) {
                                 // alertify.notify(res.mensaje, res.tipoRespuesta, 4);
                                 swal({ title: 'Producto Eliminada exitosamente', type: 'success', });
-                                var menu = "producto";
+                                var menu = "usuario";
                                 llamarVista(menu, menu, menu);;
                             } 
                         });
