@@ -1,8 +1,4 @@
-<?php // require_once("../Helpers/Helpers.php");
-include_once "../../Config/Config.php";
-include_once "../../App/lib/Helpers.php";
-
-?>
+<?php include_once "../../Config/Config.php"; include_once "../../App/lib/Helpers.php"; ?>
 
 <?php if (isset($_SESSION["id_usuario"])) :  ?>
 
@@ -36,10 +32,8 @@ include_once "../../App/lib/Helpers.php";
       <!-- !Logout Modal-->
 
       <!-- FOOTER -->
-      <footer><?php include_once "./../Partials/footer.php"; ?></footer>
+      <?php include_once "./../Partials/footer.php"; ?>
       <!-- !FOOTER -->
-      <!-- <script src="<?= media(); ?>/js/js_views/<?= $data['page_functions_js']; ?>"></script> -->
-      <script src="<?= media(); ?>/js/functions_producto.js"></script>
       <!-- SCRIPTS -->
       <div id="scripts"><?php include_once "./../Partials/scripts.php";  ?></div>
       <!-- !SCRIPTS -->
@@ -47,6 +41,5 @@ include_once "../../App/lib/Helpers.php";
 
   </html>
   <!-- REDIRECT TO LOGIN -- SE REDIRIGE AL LOGIN SI NO HA INICIADO SESIÓN -->
-<?php else : header("Location: ../"); ?>
-<?php endif; ?>
+<?php else : header("Location: ../"); ?><?php endif; ?>
 <input type="hidden" name="userId" id="userId" value="<?= $_SESSION['id_usuario']; ?>">

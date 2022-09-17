@@ -12,9 +12,12 @@
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#myProfile" role="tab">Mi perfil</a>
             </li>
+            <?php if($_SESSION["rolid"] == 1): ?>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#manageUsers" role="tab">Usuarios</a>
             </li>
+            <?php endif; ?>
+
         </ul>
     </div>
     <div class="card-body">

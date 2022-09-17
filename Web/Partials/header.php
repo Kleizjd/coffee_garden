@@ -16,7 +16,7 @@
       </div>
     </li>
     <li class="nav-item dropdown no-arrow ">
-   
+
       <div class="d-flex no-block align-items-center p-15 bg-primary text-white m-b-10" data-toggle="dropdown">
         <div class=""><img src="../../public/img/user_circle.png" alt="user" class="img-circle" id="img_profile" width="60"></div>
       </div>
@@ -57,8 +57,11 @@
           userId: $("#userId").val()
         },
       }).done((res) => {
-        $("#img_profile").attr("src", "../../views/perfil/Files/" + res.address);
+        if(res.address != ""){
+                  $("#img_profile").attr("src", "../../views/perfil/Files/" + res.address);
         $("#img_profile_herence").attr("src", "../../views/perfil/Files/" + res.address);
+        }
+
         $("#complete_name_window").html(res.nombre_completo);
 
       });

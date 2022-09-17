@@ -1,8 +1,6 @@
 <!-- !FOOTER -->
-
 <script src="<?= base_url(); ?>/vendor/jquery/jquery-3.3.1.min.js"></script>
 <script src="<?= media(); ?>/js/login.js"></script>
-
 <script src="<?= base_url(); ?>/vendor/datatable/js/datatables.min.js"></script>
 <script src="<?= base_url(); ?>/vendor/select2/js/select2.min.js"></script>
 <script src="<?= base_url(); ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -12,33 +10,3 @@
 <!-- Crypto Js -> JavaScript library of crypto standards.. -->
 <script src="<?= base_url(); ?>/vendor/crypto-js/js/crypto-js.min.js"></script>
 <script src="<?= media(); ?>/js/global.js"></script>
-<!-- <script>
-    $(document).ready(function() {
-        //________________________IMAGEN USUARIO DE PERFIL_______________________________
-        $(function loadImageUser() {
-            // alert($("#userId").val());
-            var formData = new FormData(event.target);
-
-            formData.append("modulo", "login");
-            formData.append("controlador", "login");
-            formData.append("funcion", "loadImageUser");
-            formData.append('user_id', $("#userId").val());
-            $.ajax({
-                url: '../../App/lib/ajax.php',
-                method: "post",
-                dataType: "JSON",
-                data: formData,
-            }).done((res) => {
-                alert("hry")
-                // $("#img_profile").attr("src", "../../views/Admin/Files/" + res.address);
-            });
-        });
-        // $(function imageHerence() {
-        //     $("#img_profile").click(function() {
-        //         $("#img_profile_herence").attr("src", $("#img_profile").attr("src"));
-        //     });
-
-        // });
-        //_____________________________________________________________________________
-    });
-</script> -->
