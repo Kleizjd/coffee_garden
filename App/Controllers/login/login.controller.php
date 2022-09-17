@@ -45,7 +45,7 @@ class Login extends Core
     { //EN USO
         extract($_POST);
         // var_dump($_POST);
-        $id = $_POST['user_id'];
+        $email = $_POST['email'];
         $nombre = $_POST['nombre'];
         $apellido = $_POST['apellido'];
         $password = $_POST['password_user'];
@@ -53,7 +53,7 @@ class Login extends Core
         $estado = "'A'";
 
         if ($password === $password_verify) {
-            $sql = "SELECT id_usuario FROM usuarios WHERE id_usuario='$id'";
+            $sql = "SELECT id_usuario FROM usuarios WHERE email='$email'";
             $sqlSelect = $this->select($sql);
             if ($sqlSelect == 0) {
 
@@ -61,9 +61,9 @@ class Login extends Core
                 $passEncrypt = password_hash($password, PASSWORD_DEFAULT); //password encripted
                 //-------------------------------------------------------------------------------
 
-                $sql = "INSERT INTO usuarios(id_usuario, nombre, apellido, password, estado_usuario, rolid) VALUES (?,?,?,?,?,?)";
+                $sql = "INSERT INTO usuarios(nombre, apellido, email, password, estado_usuario, rolid) VALUES (?,?,?,?,?,?)";
 
-                $arrData = array($id, $nombre, $apellido, $passEncrypt, 'A', '2');
+                $arrData = array( $nombre, $apellido, $email, $passEncrypt, 'A', '2');
                 $sql = $this->insert($sql, $arrData);
 
                 if ($sql != null) {

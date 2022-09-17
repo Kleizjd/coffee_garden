@@ -51,7 +51,7 @@ $(document).ready(function() {document.body.classList.add("login_register");
             formData.append("modulo", "login");
             formData.append("controlador", "login");
             formData.append("funcion", "registarUsuario");
-            formData.append('user_id', $("#user_id").val());
+            formData.append('email', $("#email").val());
             formData.append('password_user', $("#password_user").val());
             formData.append('password_verify', $("#password_verify").val());
             formData.append('nombre', $("#nombre").val());

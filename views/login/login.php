@@ -41,7 +41,7 @@
 							<form id="create_account" method="POST" autocomplete="off" class="overflow-auto" style="display: none">
 								<div id="register_users" class="animate form registration_form">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Usuario" id="user_id" required />
+										<input type="email" class="form-control" placeholder="Correo" id="email" required />
 									</div>
 									<div class="form-group">
 										<input type="text" class="form-control" placeholder="Nombre" id="nombre" required />
