@@ -21,12 +21,12 @@
             event.preventDefault();
 
             $.ajax({
-                url: "../../app/lib/ajax.php",
+                url: "../../App/lib/ajax.php",
                 method: "POST",
                 data: {
-                    module: "login",
-                    controller: "login",
-                    nameFunction: "cerrarSesion",
+                    modulo: "login",
+                    controlador: "login",
+                    funcion: "cerrarSesion",
                 },
             }).done(() => {
                 $('#logoutModal').modal().hide();
