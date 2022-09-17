@@ -38,4 +38,10 @@ if (!empty($_POST)) {
             die("La función no esta definida");
         }
     }
+} else {
+    if(file_exists("views/home/main.php")){
+        include_once("views/home/main.php");
+    } else{
+        include_once "../../views/bienvenida.php";
+    }
 }
