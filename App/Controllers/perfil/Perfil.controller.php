@@ -30,36 +30,50 @@ class Perfil extends Core
     public function editEmail()
     {
         extract($_POST);
+        // var_dump($_POST);
         $answer = array();
 
-        $sql = "UPDATE usuarios SET email = ? WHERE id_usuario = $userId";
+        $sqlVerify = "SELECT id_usuario, email FROM usuarios WHERE email='$actualiza_correo'";
+        $sql = $this->select($sqlVerify);
+        // var_dump($sql);
+        
+        if($sql == false){
+            $sql = "UPDATE usuarios SET email = ? WHERE id_usuario = $userId";
 
-        $arrData = array($actualiza_correo);
-        $request = $this->update($sql, $arrData);
-
-        if ($request != 0) {
-            unset($_SESSION['correo_login']);
-            $_SESSION['correo_login'] = $actualiza_correo;
-            $answer['tipoRespuesta'] = "success";
+            $arrData = array($actualiza_correo);
+            $request = $this->update($sql, $arrData);
+    
+            if ($request != 0) {
+                unset($_SESSION['correo_login']);
+                $_SESSION['correo_login'] = $actualiza_correo;
+                $answer['tipoRespuesta'] = "success";
+            }
+        } else {
+            $answer['tipoRespuesta'] = "error";
         }
+       
         echo json_encode($answer);
     }
     public function editPassword()
     {
         extract($_POST);
+        // var_dump($_POST);
         $answer = array();
 
         // $message = "la contrasena actual no es correcta";
 
-        $sqlVerify = "SELECT password FROM usuarios WHERE id_usuario = '$userId'";
+        $sqlVerify = "SELECT DISTINCT id_usuario, CONCAT(nombre, ' ', apellido) AS nombre_completo, nombre, apellido, password, rolid, email,imagen_usuario FROM usuarios WHERE email='$email' ";
         $sql = $this->select($sqlVerify);
-
+//  echo $sqlVerify;
         if ($sql != 0) {
 
             $passwordDB = $sql['password'];
-
             if ($actual_password != $new_password) {
+                // echo $actual_password. " - ". $passwordDB;
+
                 if (password_verify($actual_password, $passwordDB)) {
+                        //  echo $actual_password. " ". $passwordDB;
+
                     if ($new_password == $confirm_password) {
 
                         //Encriptar-----------------------------------------------------------------------
@@ -71,7 +85,7 @@ class Perfil extends Core
                         $request = $this->update($sqlUpdate, $arrData);
 
                         // if ($request != 0) {
-
+                            
                             $answer["tipoRespuesta"] = "success";
                             $answer["message"] = "Cambio de contraseña exitoso";
                         // }
@@ -81,7 +95,7 @@ class Perfil extends Core
                         $answer["message"] = " las contraseñas no coiciden";
                     }
                 }  else {
-                    $answer["tipoRespuesta"] = "wrong";
+                    $answer["tipoRespuesta"] = "warning";
                     $answer["message"] = "la contraseña Actual es incorrecta";
                 }
             } else {

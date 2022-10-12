@@ -5,7 +5,7 @@
         <!-- <h4>Ver Producto</h4> -->
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
-                <h4 class="text-themecolor">Visualizando Producto</h4>
+                <h4 class="text-themecolor">Visualizando Noticia</h4>
                 
             </div>
             <div class="col-md-3 text-right">
@@ -18,7 +18,7 @@
                     <ol class="breadcrumb">
                         
                         <li class="breadcrumb-item"><a href="./">Home</a></li>
-                        <li class="breadcrumb-item" id="verProducto">Producto</li>
+                        <li class="breadcrumb-item" id="verProducto">Noticia</li>
                         <li class="breadcrumb-item active">Ver Producto</li>
                     </ol>
             
@@ -27,8 +27,8 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="" id="frm_Product" method="POST" autocomplete="off">
-                <?php foreach ($sqlProduct as $product) {} ?>
+            <form action="" id="frm_noticia" method="POST" autocomplete="off">
+                <?php foreach ($sqlProducto as $noticia) {} ?>
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-sm">
@@ -40,28 +40,28 @@
                                 </div>
                                 
                                 <div class="col-sm-3 offset-1">
-                                    <h4><span class="badge badge-success" id="statProduct"><?= $product["estado"]; ?></span></h4>
+                                    <h4><span class="badge badge-success" id="statnoticia"><?= $noticia["estado"]; ?></span></h4>
                                 </div>
                             </div>
 
                             <div class="row pb-3">
                                 <div class="col-sm-2">
-                                    <label for="code">Codigo del producto</label>
+                                    <label for="code">Codigo del noticia</label>
                                 </div>
                                 <div class="col-sm">
-                                    <input type="text" class="form-control" value="<?= $product["codigo"]; ?>" readonly>
+                                    <input type="text" class="form-control" value="<?= $noticia["codigo"]; ?>" readonly>
                                 </div>
                                 <div class="col-sm">
-                                    <label for="product">Producto</label>
+                                    <label for="noticia">Noticia</label>
                                 </div>
                                 <div class="col-sm-4">
-                                    <input type="text" class="form-control" id="product" value="<?= $product["producto"]; ?>" readonly>
+                                    <input type="text" class="form-control" id="noticia" value="<?= $noticia["producto"]; ?>" readonly>
                                 </div>
                                 <div class="col-sm">
-                                    <label for="amount">Cantidad</label>
+                                    <label for="estado">Categoria</label>
                                 </div>
                                 <div class="col-sm">
-                                    <input type="text" class="form-control" id="amount" value="<?= $product["cantidad"]; ?>" readonly>
+                                    <input type="text" class="form-control" id="estado" value="<?= $noticia["categoria"]; ?>" readonly>
                                 </div>
                             </div>
                             <div class="row">
@@ -70,7 +70,7 @@
                                     <label for="description">Descripcion</label>
                                 </div>
                                 <div class="col-sm">
-                                    <textarea rows="4" cols="4" class="form-control" id="description" readonly><?= $product["descripcion"]; ?></textarea>
+                                    <textarea rows="4" cols="4" class="form-control" id="description" readonly><?= $noticia["descripcion"]; ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -80,12 +80,12 @@
         </div>
     </div>
     <!-- Modal BUSCAR -->
-    <div class="modal fade" id="modalSearchProduct">
+    <div class="modal fade" id="modalSearchnoticia">
         <div class="modal-dialog modal-lg" role="document" style="max-width: 80%;">
             <div class="modal-content">
 
                 <div class="text-center modal-header">
-                    <h3 class="w-100 modal-title">Búsqueda de productos</h3>
+                    <h3 class="w-100 modal-title">Búsqueda de Productos</h3>
                     <button type="button" class="close" data-dismiss="modal" title="Cerrar">
                         <i class="fa fa-window-close fa-2x text-danger"></i>
                     </button>

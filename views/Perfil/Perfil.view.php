@@ -1,6 +1,6 @@
 <?php @session_start(); ?>
 <div class="card shadow-lg mt-2">
-    <div class="badge-primary card-header">
+    <div class="badge-dark card-header">
         <div class="row">
             <h4>
                 <b>Configuracion</b>
@@ -12,10 +12,10 @@
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#myProfile" role="tab">Mi perfil</a>
             </li>
-            <?php if($_SESSION["rolid"] == 1): ?>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#manageUsers" role="tab">Usuarios</a>
-            </li>
+            <?php if ($_SESSION["rolid"] == 1) : ?>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#manageUsers" role="tab">Usuarios</a>
+                </li>
             <?php endif; ?>
 
         </ul>
@@ -36,7 +36,8 @@
                                                 <div class="font-weight-bold" style="font-size: 18px;" id="complete_name"><?= $perfil['nombre'] . " " . $perfil['apellido']; ?><span></span></div>
                                                 <input type="hidden" name="userId" id="userId" value="<?= $perfil['id_usuario']; ?>">
                                             </div>
-                                        </div><!-- IMAGE ADMIN -->
+                                        </div>
+                                        <!-- IMAGE ADMIN -->
                                         <div class="row">
                                             <div class="col-sm">
                                                 <label for="imagen_usuario" class="d-flex justify-content-center">
@@ -114,14 +115,25 @@
                                     <div class="row pt-3">
                                         <div class="col-sm col-lg"><label for="actual_password">Actual Contrase&ntilde;a</label></div>
                                         <div class="col-sm col-lg"><input type="password" name="actual_password" id="actual_password" class="form-control" required></div>
+                                        <button type="button" class="btn btn-outline-primary showPassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
                                     </div>
                                     <div class="row pt-3">
                                         <div class="col-sm col-lg"><label for="new_password"></label>Nueva Contrase&ntilde;a</div>
                                         <div class="col-sm col-lg"><input type="password" name="new_password" id="new_password" class="form-control" required></div>
+                                        <button type="button" class="btn btn-outline-primary showPassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
                                     </div>
                                     <div class="row pt-3">
+
                                         <div class="col-sm col-lg"><label for="confirm_password"></label>Confirmar Contrase&ntilde;a</div>
                                         <div class="col-sm col-lg"><input type="password" name="confirm_password" id="confirm_password" class="form-control" required></div>
+
+                                        <button type="button" class="btn btn-outline-primary showPassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
                                     </div>
                                     <div class="row pt-3">
                                         <div class="col-sm col-lg d-flex justify-content-center">
@@ -135,10 +147,7 @@
                 </div>
                 <div class="tab-pane" id="manageUsers">
                     <div class="container-fluid">
-                        <div class="row">
-                            <?php include_once "usuarios.php";?>
-                            
-                        </div>
+                            <?php include_once "usuarios.php"; ?>
                     </div>
                 </div>
             </div>
@@ -201,7 +210,7 @@
 
 <script>
     $(document).ready(function() {
-
+        
         $("#form_Edit_Email").on("submit", function() {
 
             event.preventDefault();
@@ -212,6 +221,13 @@
             formData.append('funcion', 'editEmail');
             formData.append('userId', $("#userId").val());
 
+            var expReg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+
+            var correoValido = expReg.test($("#actualiza_correo").val());
+
+            if (correoValido != true) {
+                swal({ title: "El correo electronico NO es válido", type: "error" });
+            }else{
             $.ajax({
                 url: '../../App/lib/ajax.php',
                 method: $(this).attr('method'),
@@ -225,15 +241,17 @@
                 if (res.tipoRespuesta == "success") {
 
                     alertify.notify("Correo modificado correctamente", "success", 2, function() {});
-
                     document.getElementById("email_user").innerHTML = $("#actualiza_correo").val()
                     $('#emailModal').modal().hide();
 
                     $('body').removeClass('modal-open');
                     $('.modal-backdrop').remove();
 
+                } else {
+                    alertify.notify("Correo actualmente registrado", res.tipoRespuesta, 2, function() {});
                 }
             });
+             }
         });
 
         $("#form_Edit_Password").on("submit", function() {
@@ -244,49 +262,53 @@
             formData.append('modulo', 'perfil');
             formData.append('controlador', 'perfil');
             formData.append('funcion', 'editPassword');
+            formData.append('email', $("#email_user span").html());
             formData.append('userId', $("#userId").val());
 
-            $.ajax({
-                url: '../../app/lib/ajax.php',
-                method: $(this).attr('method'),
-                dataType: 'JSON',
-                data: formData,
-                cache: false,
-                processData: false,
-                contentType: false
-            }).done((res) => {
-                if (res.tipoRespuesta == "success") {
-                    swal({
-                        title: res.message,
-                        type: res.tipoRespuesta
-                    })
-                } else if (res.tipoRespuesta == "warning") {
-                    swal({
-                        title: res.message,
-                        type: res.tipoRespuesta
-                    })
-                } else if (res.tipoRespuesta == "error") {
-                    swal({
-                        title: res.message,
-                        type: res.tipoRespuesta
-                    })
-                } else if (res.tipoRespuesta == "wrong") {
-                    swal({
-                        title: res.message,
-                        type: res.tipoRespuesta
-                    })
+            $new_password = $("#new_password").val();
+
+                if (new_password.length > 7 && new_password.length < 20 || $("#confirm_password").val().length > 7 && $("#confirm_password").val().length < 20) {
+                if ($("#new_password").val().match(/\d/)) { //numeros
+                    if ($("#new_password").val().match(/[A-Z]/)) { //Aa
+                        if ($("#new_password").val().match(/[a-z]/)) {
+
+                            $.ajax({
+                                url: '../../app/lib/ajax.php',
+                                method: $(this).attr('method'),
+                                dataType: 'JSON',
+                                data: formData,
+                                cache: false,
+                                processData: false,
+                                contentType: false
+                            }).done((res) => {
+                                if (res.tipoRespuesta == "success") {
+                                    // $("#form_Edit_Password").reset();//no funciono
+                                    document.getElementById("form_Edit_Password").reset();
+                                    swal({title: res.message,type: res.tipoRespuesta})
+                                } else if (res.tipoRespuesta == "warning") {
+                                    swal({title: res.message,type: res.tipoRespuesta})
+                                } else if (res.tipoRespuesta == "error") {
+                                    swal({title: res.message,type: res.tipoRespuesta})
+                                } else if (res.tipoRespuesta == "warning") {//question,info
+                                    swal({title: res.message,type: res.tipoRespuesta})
+                                }
+                            });
+                        } else {
+                            swal({title: "la contraseña debe de almenos tener 1 una letra en Minuscula",type: "error"});
+                        }
+                    } else {
+                        swal({ title: "la contraseña debe de almenos tener 1 una en Mayuscula", type: "error"});
+                    }
+                } else {
+                    swal({title: "la contraseña debe de almenos tener 1 numero ",type: "error"});
                 }
-            });
-        });
-        $("#editName").click(function() {
-            $("#form_editName").hide();
-            $("#form_editName").show(500);
-        });
-        $("#cancelEditName").click(function() {
-            if ($("#form_editName").is(':visible')) {
-                $("#form_editName").hide();
+            } else {
+                swal({ title: "la contraseña debe de tener mas de  8 caracteres y menos 20 ", type: "error"});
             }
+
         });
+
+       
         $("#form_editName").on("submit", function() {
             event.preventDefault();
             var formData = new FormData(event.target);
@@ -296,7 +318,14 @@
             formData.append('controlador', 'perfil');
             formData.append('funcion', 'editName');
             formData.append('userId', $("#userId").val());
-
+            var validaTexto = /^[a-zA-ZÑñÁáÉéÍíÓóÚúÜü\s]+$/;//crea un objeto con una expresion regular
+            var nombreValido = validaTexto.test($("#name_user").val());
+            var apellidoValido = validaTexto.test($("#lastName").val());
+             if (nombreValido != true) {
+                swal({ title: "El nombre NO es válido", type: "error" });
+            }else if (apellidoValido != true) {
+                swal({ title: "El apellido NO es válido", type: "error" });
+            }else{
             $.ajax({
                 url: '../../app/lib/ajax.php',
                 method: $(this).attr('method'),
@@ -310,15 +339,23 @@
 
                     $('#complete_name').text(res.nombre + " " + res.apellido);
 
-                    swal({
-                        title: res.message,
-                        type: res.tipoRespuesta
-                    }).then(function(isConfirm) {
+                    swal({title: res.message,type: res.tipoRespuesta}).then(function(isConfirm) {
+                        
                         $("#complete_name_field").html(res.nombre + " " + res.apellido);
                     })
                 }
 
             });
+        }
+        });
+        $("#editName").click(function() {
+            $("#form_editName").hide();
+            $("#form_editName").show(500);
+        });
+        $("#cancelEditName").click(function() {
+            if ($("#form_editName").is(':visible')) {
+                $("#form_editName").hide();
+            }
         });
     });
 </script>

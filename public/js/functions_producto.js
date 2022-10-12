@@ -2,13 +2,13 @@
 $(document).ready(function () {
     /***************************/ //CREATE PRODUCT// /**************************/
     $(function RegistrarProducto() {
-		$(document).on("submit", "#frm_Product", function (event) {
+		$(document).on("submit", "#frm_Noticia", function (event) {
 			event.preventDefault();
 			// alert("sd")
 			var formData = new FormData(event.target);
             
-			formData.append("modulo", "producto");
-			formData.append("controlador", "producto");
+			formData.append("modulo", "noticia");
+			formData.append("controlador", "noticia");
 			formData.append("funcion", "crearProducto");
 			$.ajax({
 				url: "../../App/lib/ajax.php",
@@ -19,7 +19,10 @@ $(document).ready(function () {
 				processData: false,
 				contentType: false
 			}).done((res) => {
-                if (res.tipoRespuesta == true) {  swal({ title: 'Producto Ingresado exitosamente', type: 'success' });} 
+                if (res.status == true) { 
+					document.getElementById("frm_Noticia").reset();
+					
+					swal({ title: res.msg , type: 'success' });}else{ swal({ title: res.msg , type: 'error' });}
 			});
 		});
 	});

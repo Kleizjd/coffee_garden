@@ -1,7 +1,13 @@
+<?php //header("Status: 301 Moved Permanently"); header("Location: 301 Moved Permanently");
+ ?>
+
 <?php
+session_start();
 include_once "Config/Config.php";
 include_once "App/lib/Helpers.php"; ?>
 
+
+<?php //else : ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,7 +20,11 @@ include_once "App/lib/Helpers.php"; ?>
   <link rel="stylesheet" href="./vendor/fontawesome/css/all.min.css" type="text/css">
   <link rel="stylesheet" href="./vendor/sweetalert/css/sweetalert2.min.css">
   <link rel="stylesheet" href="./public/css/login_register.css">
-  <link rel="shortcut icon" href="public/img/favicon/logo.png" type="image/x-icon">
+  <!-- <link rel="shortcut icon" href="public/img/favicon/logo.png" type="image/x-icon"> -->
+  <link rel="shortcut icon" href="<?= base_url() ?>/public/favicon.ico" type="image/x-icon">
+
+  <link rel="stylesheet" href="./public/css/style.css">
+
   <title>Coffee Garden</title>
 </head>
 
@@ -32,3 +42,4 @@ include_once "App/lib/Helpers.php"; ?>
 <script src="./vendor/moment/moment-with-locales.min.js"></script>
 <script src="./vendor/sweetalert/js/sweetalert2.min.js"></script>
 <!-- \\SCRIPTS -->
+<?php //endif; ?>

@@ -1,145 +1,134 @@
 <?php getModal('modalProducto'); ?>
 
+<!-- Modal -->
 <div class="card">
-    <div class="card-header">
+    <div class="card-header headerRegister">
         <div class="row page-titles">
             <div class="col-md-5 align-self-center">
                 <h4 class="text-themecolor">Editar Producto</h4>
-                
+
             </div>
-            
+
             <div class="col-md-7 text-right">
                 <div class="d-flex justify-content-end">
-                    
+
                     <ol class="breadcrumb">
-                        
+
                         <li class="breadcrumb-item"><a href="./">Home</a></li>
-                        <li class="breadcrumb-item" id="verProducto">Producto</li>
-                        <li class="breadcrumb-item active">Editar Producto</li>
+                        <li class="breadcrumb-item" id="verProducto">Noticia</li>
+                        <li class="breadcrumb-item active">Editar Noticia</li>
                     </ol>
-            
+
                 </div>
             </div>
-            </div>
+        </div>
     </div>
     <div class="card-body">
-        <form action="" id="form_EditProduct" method="POST" autocomplete="off" >
-            <?php foreach($sqlProduct as $product){}?>
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm">
-                        <div class="row pb-3">
-                            <div class="col-sm-1">
-                                <button type="submit" class="btn btn-primary" title="Modificar Producto"><i class="fa fa-save"></i> </button>
-                                
-                            </div>
-                            <div class="col-sm-1">
-                            <button  type="button" class="btn btn-primary" data-toggle="modal"  title="Buscar" data-target="#modalProducto"><i class="fa fa-search"></i></button>
-                                
-                            </div>
-                            <div class="col-sm-1">
-                                <button type="button" class="btn btn-danger" id="deleteProduct" title="Eliminar Producto"><i class="fas fa-trash-alt"></i> </button>
-                                
-                            </div>
-                            <div class="col-sm-3 offset-1">
-								<h4><span class="badge badge-success" id = "statProduct" ><?=$product["estado"];?></span></h4>
-                            </div>
-                            
-                        </div>
-                       
-                        <div class="row pb-3">
-                             <div class="col-sm-1">
-                                <label for="code">Codigo</label>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="code_product" name = "code_product" value="<?=$product["codigo"];?>" readonly >
-                            </div>
-                            <div class="col-sm-1">
-                                <label for="product">Producto</label>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="product" name = "product" value="<?=$product["producto"];?>" >
-                            </div>
-                            <div class="col-sm-1">
-                                <label for="price">Valor Unitario</label>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" name="price" value="<?=$product["precio"];?>">
-                            </div>
-                            <div class="col-sm-1">
-                                <label for="amount">Cantidad</label>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="number" class="form-control" id="amount" name = "amount" value="<?=$product["cantidad"];?>" >
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            
-                            <div class="col-sm-3">
-                                <label for="description">Descripcion</label>
-                            </div>
-                            <div class="col-sm">
-                                <textarea rows="4" cols="4" class="form-control" id="description" name="description" ><?=$product["descripcion"];?></textarea>
-                            </div>
-                        </div>
+        <form action="" id="form_Editnoticia" method="POST" autocomplete="off">
+            <?php foreach ($sqlProducto as $noticia) {
+            } ?>
+            <input type="hidden" id="idNoticia" name="idNoticia" value="">
+            <input type="hidden" id="foto_actual" name="foto_actual" value="">
+            <input type="hidden" id="foto_remove" name="foto_remove" value="0">
+            <p class="text-primary">Los campos con asterisco (<span class="required">*</span>) son obligatorios.</p>
+            <div class="row pb-3">
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" title="Buscar" data-target="#modalProducto"><i class="fa fa-search"></i></button>
+                </div>
+                <div class="col-4">Codigo: <input type="text" class="form-control" id="code_noticia" name="code_noticia" value="<?= $noticia["codigo"]; ?>" readonly></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="control-label" for="titulo">Noticia<span class="required">*</span></label>
+                        <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Titulo" value="<?= $noticia["producto"]; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Descripción <span class="required">*</span></label>
+                        <textarea rows="4" cols="4" class="form-control" id="description" name="description" placeholder="Descripción de la Noticia"><?= $noticia["descripcion"]; ?></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoria">Categoria<span class="required">*</span></label>
+                        <select class="form-control selectpicker" id="categoria" name="categoria" required="">
+                            <option value="">Seleccione...</option>
+                            <?php foreach ($Productos_categoria as $categoria) : ?>
+                                <?php if ($categoria["id"] == $noticia["categoria"]) : ?>
+
+                                    <option value="<?= $categoria["id"]; ?>" selected><?= $categoria["nombre"]; ?></option>
+                                <?php else : ?>
+                                    <option value="<?= $categoria["id"]; ?>"><?= $categoria["nombre"]; ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                 </div>
+                <div class="col-md-6">
+                    <div class="photo">
+                        <label for="foto">Foto (570x380)</label>
+                        <div class="prevPhoto">
+                            <span class="delPhoto notBlock">X</span>
+                            <label for="foto"></label>
+                            <div>
+                                <?php if ($noticia["portada"] != "") : ?>
+                                    <img id="img" src="<?= media(); ?>/img/uploads/<?= $noticia["portada"]; ?>">
+
+                                <?php else : ?>
+                                    <img id="img" src="<?= media(); ?>/img/uploads/portada_noticia.png">
+
+                                <?php endif; ?>
+
+                            </div>
+                        </div>
+                        <div class="upimg">
+                            <input type="file" name="foto" id="foto">
+                        </div>
+                        <div id="form_alert"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tile-footer">
+                <button id="btnActionForm" class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i><span id="btnText" title="Modificar Noticia">Guardar</span></button>&nbsp;&nbsp;&nbsp;
+                <!-- <button class="btn btn-danger" type="button" data-dismiss="card"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cerrar</button> -->
+                <button type="button" class="btn btn-danger" id="deletenoticia" title="Eliminar Noticia"><i class="fas fa-trash-alt"></i> </button>
+
             </div>
         </form>
     </div>
 </div>
-<!-- Modal BUSCAR -->
-<div class="modal fade" id="modalSearchProduct">
-	<div class="modal-dialog modal-lg" role="document" style="max-width: 80%;">
-		<div class="modal-content">
 
-			<div class="text-center modal-header">
-				<h3 class="w-100 modal-title">Búsqueda de productos</h3>
-				<button type="button" class="close" data-dismiss="modal" title="Cerrar">
-					<i class="fa fa-window-close fa-2x text-danger"></i>
-				</button>
-			</div>
 
-			<div class="modal-body">
-
-			</div>
-
-		</div>
-	</div>
-</div>
-<!--  -->
 <script>
-$(document).ready( function(){
-    $(function EditProduct() {
-		$(document).on("submit", "#form_EditProduct", function (event) {
-			event.preventDefault();
-			
-			var formData = new FormData(event.target);
-			formData.append("modulo", "producto");
-			formData.append("controlador", "producto");
-			formData.append("funcion", "editarProducto");
-			$.ajax({
-				url: "../../app/lib/ajax.php",
-				method: "post",
-				dataType: "json",
-				data: formData,
-				cache: false, 
-				processData: false,
-				contentType: false
-			}).done((res) => {
-                // alertify.notify(res.mensaje, res.tipoRespuesta, 4);
-                swal({ title: 'Producto modificado exitosamente', type: 'success', });
-			});
-		});
-    });
-    $(function deleteProduct() {
-        $(document).on("click", "#deleteProduct", function () {
-            let status = $("#statProduct").text();
-            // alert(status);
-            
-            // if(status = "Existente"){
-                
+    $(document).ready(function() {
+        $(function Editnoticia() {
+            $(document).on("submit", "#form_Editnoticia", function(event) {
+                event.preventDefault();
+
+                var formData = new FormData(event.target);
+                formData.append("modulo", "producto");
+                formData.append("controlador", "producto");
+                formData.append("funcion", "EditarProducto");
+                $.ajax({
+                    url: "../../app/lib/ajax.php",
+                    method: "post",
+                    dataType: "json",
+                    data: formData,
+                    cache: false,
+                    processData: false,
+                    contentType: false
+                }).done((res) => {
+                    // alertify.notify(res.mensaje, res.tipoRespuesta, 4);
+                    swal({title: 'Noticia modificado exitosamente', type: 'success', });
+                });
+            });
+        });
+        $(function deletenoticia() {
+            $(document).on("click", "#deletenoticia", function() {
+                let status = $("#statnoticia").text();
+                // alert(status);
+
+                // if(status = "Existente"){
+
                 swal({
                     type: "warning",
                     title: "Esta seguro que desea eliminar el registro?",
@@ -152,34 +141,33 @@ $(document).ready( function(){
                     allowEscapeKey: false,
                 }).then((result) => {
                     if (result.value) {
-                        var formData = new FormData($("#form_EditProduct")[0]);
-                        formData.append("modulo", "producto");
-                        formData.append("controlador", "producto");
+                        var formData = new FormData($("#form_Editnoticia")[0]);
+                        formData.append("modulo", "noticia");
+                        formData.append("controlador", "noticia");
                         formData.append("funcion", "borrarProducto");
-                        formData.append("codigo", $("#code_product").val());
+                        formData.append("Id", $("#code_noticia").val());
                         $.ajax({
                             url: "../../App/lib/ajax.php",
                             method: "POST",
                             dataType: "json",
                             data: formData,
-                            cache: false, 
+                            cache: false,
                             processData: false,
                             contentType: false
                         }).done((res) => {
                             if (res.tipoRespuesta == true) {
                                 // alertify.notify(res.mensaje, res.tipoRespuesta, 4);
-                                swal({ title: 'Producto Eliminada exitosamente', type: 'success', });
-                                var menu = "producto";
+                                swal({title: 'Noticia Eliminada exitosamente', type: 'success',});
+                                var menu = "noticia";
                                 llamarVista(menu, menu, menu);;
-                            } 
+                            }
                         });
                     }
                 });
-                 
-            // }
-        });
-    });
-    
-});
 
+                // }
+            });
+        });
+
+    });
 </script>

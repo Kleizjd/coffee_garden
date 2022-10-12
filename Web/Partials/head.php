@@ -15,7 +15,7 @@
     <link href="<?= base_url() ?>/vendor/fontawesome/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="<?= base_url() ?>/vendor/alertify/css/alertify.min.css?v=<?= rand(); ?>" rel="stylesheet">
     <script src="<?= base_url() ?>/vendor/jquery/jquery-3.3.1.min.js"></script>
-    <link href="<?= media() ?>/css/dashboard.css" rel="stylesheet">
-
-    <title id="titlePage">COFFEE GARDEN</title>
+    <link href="<?= media() ?>/css/dashboard.css" rel="stylesheet"><!-- NO BORRAR -->
+    
+    <title id="titlePage">Coffee Garden</title>
 </head>

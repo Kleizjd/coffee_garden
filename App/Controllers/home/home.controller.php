@@ -5,7 +5,8 @@ include_once "Config/core.php";
 class home extends Core{
     
     public function coffee(){
-
+        $sql = "SELECT * FROM producto ORDER BY  codigo DESC LIMIT 5";
+        $listProducto =  $this->select_all($sql);
         include_once "views/home/main.php";
         
     }
@@ -24,4 +25,10 @@ class home extends Core{
         include_once "views/login/login.php";
         
     }
+    public function resetByEmail(){
+        
+        include_once "views/login/reset.php";
+        
+    }
+ 
 }

@@ -82,7 +82,7 @@ function obtenerMesesEntreDosFechas(fecha_desde, fecha_hasta) {
     return resultado;
 }
 
-// ENCRIPTAR Y DECRIPTAR DATOS
+// ENCRIPTAR Y DECRIPTAR DATOSs
 function encriptar(dato){
 	let encrypted = CryptoJS.AES.encrypt(JSON.stringify(dato), "", {format: CryptoJSAesJson}).toString();
 	return encrypted;
@@ -123,11 +123,11 @@ $("form").keypress(function (e) {
 });
 
 // SCRIPT SELECT 2
-$(".select2").select2({
-	language: "es",
-	width: "100%",
-	theme: "bootstrap"
-});
+// $(".select2").select2({
+// 	language: "es",
+// 	width: "100%",
+// 	theme: "bootstrap"
+// });
 
 // <---------- SCRIPT CLEAVE JS ---------->
 
@@ -187,6 +187,19 @@ $(".marcarSoloUnRadio").each(function () {
    $(this).find("input[type=radio]").change(function (){
 	   $(_this).find("input[type=radio]:checked").not(this).prop("checked", false);
    });
+});
+//boton ver o ocultar
+$(document).on("click", ".showPassword", function () {
+	let inputpassword = $(this).parent().find("input");
+	if ($(inputpassword).val() != "") {
+		if ($(inputpassword).prop("type") == "password") {
+			$(inputpassword).prop("type", "text");
+			$(this).html('<i class="fas fa-eye-slash"></i>');
+		} else if ($(inputpassword).prop("type") == "text") {
+			$(inputpassword).prop("type", "password");
+			$(this).html('<i class="fas fa-eye"></i>');
+		}
+	}
 });
 ///=============================[VALIDAR LLAVE PRIMARIA]=============================///
 // $(function validateKey(){
@@ -277,16 +290,18 @@ $(document).on("change", ".subirArchivo", function (e) {
 							alt: "Cargando...",
 							title: "Cargando..."
 						});
-						$("#img_profile_header").parent().parent().find("a").find("img").prop({
+						// $("#img_profile").attr("src", "../../views/perfil/Files/" + res.address);
+
+						$("#img_profile_header").parent().parent().find("#image_user").find("img").prop({
 							src: res.ruta,
 							alt: archivoSinExtension,
 							title: archivoSinExtension
 						});
-						// $("#img_profile_herence_carga").parent().parent().find("a").find("img").prop({
-						// 	src: res.ruta,
-						// 	alt: archivoSinExtension,
-						// 	title: archivoSinExtension
-						// });
+						$("#img_profile_herence_carga").parent().parent().find("#image_user_list").find("img").prop({
+							src: res.ruta,
+							alt: archivoSinExtension,
+							title: archivoSinExtension
+						});
 						setTimeout(() => {
 							$(this).parent().parent().find(".nombreArchivo").text(res.archivo);
 							if ($(this).parent().parent().find(".borrarArchivo").length == 1) {
@@ -318,3 +333,54 @@ $(document).on("change", ".subirArchivo", function (e) {
 		};
 	}
 });
+//subir foto de Producto
+
+if(document.querySelector("#foto")){
+	let foto = document.querySelector("#foto");
+	foto.onchange = function(e) {
+		let uploadFoto = document.querySelector("#foto").value;
+		let fileimg = document.querySelector("#foto").files;
+		let nav = window.URL || window.webkitURL;
+		let contactAlert = document.querySelector('#form_alert');
+		if(uploadFoto !=''){
+			let type = fileimg[0].type;
+			let name = fileimg[0].name;
+			if(type != 'image/jpeg' && type != 'image/jpg' && type != 'image/png'){
+				contactAlert.innerHTML = '<p class="errorArchivo">El archivo no es válido.</p>';
+				if(document.querySelector('#img')){
+					document.querySelector('#img').remove();
+				}
+				document.querySelector('.delPhoto').classList.add("notBlock");
+				foto.value="";
+				return false;
+			}else{  
+					contactAlert.innerHTML='';
+					if(document.querySelector('#img')){
+						document.querySelector('#img').remove();
+					}
+					document.querySelector('.delPhoto').classList.remove("notBlock");
+					let objeto_url = nav.createObjectURL(this.files[0]);
+					document.querySelector('.prevPhoto div').innerHTML = "<img id='img' src="+objeto_url+">";
+				}
+		}else{
+			alert("No selecciono foto");
+			if(document.querySelector('#img')){
+				document.querySelector('#img').remove();
+			}
+		}
+	}
+}
+if(document.querySelector(".delPhoto")){
+	let delPhoto = document.querySelector(".delPhoto");
+	delPhoto.onclick = function(e) {
+		document.querySelector("#foto_remove").value= 1;
+		removePhoto();
+	}
+}
+function removePhoto(){
+    document.querySelector('#foto').value ="";
+    document.querySelector('.delPhoto').classList.add("notBlock");
+    if(document.querySelector('#img')){
+        document.querySelector('#img').remove();
+    }
+}

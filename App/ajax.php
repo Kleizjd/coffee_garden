@@ -1,3 +1,4 @@
+<script type="text/javascript" src="../../public/js/global.js"></script>
 <?php
 
 extract($_POST);
@@ -25,8 +26,7 @@ if (!empty($_POST)) {
             }
         } else {
             // echo "<script> alert('servira :'+'../App/Controllers/" . $modulo . "/" . $controlador . ".controller.php'); </script>";
-            // echo $modulo;
-            // echo $ruta;
+       
             die("El módulo especificado no existe");
         }
     } else {
@@ -40,8 +40,19 @@ if (!empty($_POST)) {
     }
 } else {
     if(file_exists("views/home/main.php")){
-        include_once("views/home/main.php");
+        include_once "Config/core.php";
+
+        $producto= new Core();
+        $sql = "SELECT * FROM producto ORDER BY codigo DESC LIMIT 5";
+        $listProducto =  $producto->select_all($sql);
+        include_once "views/home/main.php";
+        
     } else{
-        include_once "../../views/bienvenida.php";
+        // include_once "../../views/Productos.php";
+       echo "<script>
+       var menu = 'producto';
+       llamarVista(menu, menu, 'loadProductos');
+
+        </script>";
     }
 }

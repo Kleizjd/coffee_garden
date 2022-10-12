@@ -1,70 +1,66 @@
 <?php getModal('modalProducto'); ?>
 
+<!-- Modal -->
 <div class="card">
-    <div class="card-header">
-        <h4>Producto</h4>
-    </div>
-    <div class="card-body">
-        <form action="" id="frm_Product" method="POST" autocomplete="off" >
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm">
-                        <div class="row pb-3">
-                            <div class="col-sm-1">
-                                <button type="submit" class="btn btn-primary" title="Crear Producto" ><i class="fa fa-save"></i> </button>
-                                
-                            </div>
-                            <div class="col-sm-1">
-                                 <button  type="button" class="btn btn-primary" data-toggle="modal"  title="Buscar" data-target="#modalProducto"><i class="fa fa-search"></i></button>
-
-                                <!--  -->
-                            </div>
-                            <div class="col-sm-1">
-                                <button type="reset" class="btn btn-primary" id="reset" title="Limpiar"><i class="fa fa-file"></i> </button> 
-                            </div>
-                        </div>
-                       
-                        <div class="row pb-3">
-                             <div class="col-sm-1">
-                                <label for="validateKey">Codigo</label>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" id="validateKey" name="codigo" required '>
-                                <!-- <input type="text" class="form-control" id="validateKey" name="code" required 
-                                data='<?=json_encode(array("typeNit" => "producto", "table" => "product", "field" => "Code_Product"));?>'> -->
-                            </div>
-                            <div class="col-sm-1">
-                                <label for="producto">Producto</label>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" name="producto" required>
-                            </div>
-                            <div class="col-sm-1">
-                                <label for="valor">Valor Unitario</label>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" name="valor" required>
-                            </div>
-                            <div class="col-sm-1">
-                                <label for="cantidad">Cantidad</label>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="number" class="form-control" name="cantidad" required >
-                            </div>
-                        </div>
-                        <div class="row">
-                            
-                            <div class="col-sm-3">
-                                <label for="descripcion">Descripcion</label>
-                            </div>
-                            <div class="col-sm">
-                                <textarea rows="4" cols="4" class="form-control" name="descripcion" id="descripcion"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="card-header headerRegister">
+    <h5 class="card-title" id="titleModal">Nuevo Producto</h5>
+  </div>
+  <div class="card-body">
+    <form id="frm_Noticia" name="frm_Noticia" class="form-horizontal">
+      <input type="hidden" id="idProducto" name="idProducto" value="">
+      <input type="hidden" id="foto_actual" name="foto_actual" value="">
+      <input type="hidden" id="foto_remove" name="foto_remove" value="0">
+      <p class="text-primary">Los campos con asterisco (<span class="required">*</span>) son obligatorios.</p>
+      <div class="row pb-3">
+        <div class="col-sm-1">
+          <button type="button" class="btn btn-primary" data-toggle="modal" title="Buscar" data-target="#modalProducto"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label" for="producto">Producto<span class="required">*</span></label>
+            <input class="form-control" id="txtProducto" name="txtProducto" type="text" placeholder="Producto" required="">
+          </div>
+          <div class="form-group">
+            <label class="control-label">Descripción <span class="required">*</span></label>
+            <textarea class="form-control" id="txtDescripcion" name="txtDescripcion" rows="2" placeholder="Descripción de la Producto" required=""></textarea>
+          </div>
+          <div class="form-group">
+            <label for="categoria">Categoria<span class="required">*</span></label>
+            <select class="form-control selectpicker" id="categoria" name="categoria" required="">
+              <option value="">Seleccione...</option>
+              <?php foreach ($sqlProducto as $noticia) : ?>
+                <option value="<?= $noticia["id"]; ?>"><?= $noticia["nombre"]; ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="photo">
+            <label for="foto">Foto (570x380)</label>
+            <div class="prevPhoto">
+              <span class="delPhoto notBlock">X</span>
+              <label for="foto"></label>
+              <div>
+                <img id="img" src="<?= media(); ?>/img/uploads/portada_noticia.png">
+              </div>
             </div>
-        </form>
-    </div>
+            <div class="upimg">
+              <input type="file" name="foto" id="foto">
+            </div>
+            <div id="form_alert"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile-footer">
+        <button id="btnActionForm" class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i><span id="btnText" title="Crear Noticia">Guardar</span></button>&nbsp;&nbsp;&nbsp;
+      </div>
+    </form>
+  </div>
 </div>
 
+
+
+<script src="<?= media(); ?>/js/<?= $data['page_functions_js']; ?>"></script>

@@ -1,6 +1,33 @@
-<!-- Carrusel de imgenes -->
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-	<ol class="carousel-indicators">
+<?php
+include_once "Config/Config.php";
+include_once "App/lib/Helpers.php"; ?>
+<?php include_once "Web/Modals/modalverProductoMain.php"; ?>
+
+<div class="container-fluid bg-dark pt-3 pb-3">
+	<div class="row" id="latest_new">
+		<?php foreach ($listProducto as $list) : ?>
+			<div class="col-sm-2 mx-auto">
+				<form name="formNoticia">
+
+					<div class="card" style="width: 10rem;">
+						<ul class="list-group list-group-flush">
+							<li class="list-group">
+								<img style="height: 5rem;" src="./public/img/uploads/<?= $list['portada']; ?>" class="card-img-top" alt="...">
+							</li>
+							<li class="list-group-item" style="height: 5rem;">
+								<h6 class="card-title"><?= $list['producto']; ?></h6>
+							</li>
+							<li class="list-group-item">
+								<a type="button" class="btn btn-primary " data-toggle="modal" id="verN" title="Ver" onclick="openProducto(<?= $list['codigo']; ?>)">Ver Producto</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+		<?php endforeach; ?>
+	</div>
+</div>
+<!-- <ol class="carousel-indicators">
 		<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 		<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 		<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
@@ -23,13 +50,14 @@
 	<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
 		<span class="carousel-control-next-icon" aria-hidden="true"></span>
 		<span class="sr-only">Next</span>
-	</a>
-</div>
+	</a> 
+</div>-->
+
 
 <!-- Iframe google maps-->
-<div class="map">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d7965.468764380914!2d-76.5569245!3d3.41478!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sco!4v1587511385606!5m2!1ses!2sco" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-</div>
+<!-- <div class="map">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.705547779504!2d-76.54817868605355!3d3.4217247523726786!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6a1a0473b67%3A0xcc0b0dff71b70350!2sCorporaci%C3%B3n%20Universitaria%20Aut%C3%B3noma%20de%20Nari%C3%B1o!5e0!3m2!1ses!2sco!4v1663697060761!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div> -->
 <!-- //Iframe google maps-->
 
 <!-- Footer pie de pagina -->
@@ -51,7 +79,7 @@
 				<h4>Direccion</h4>
 				<address>
 					<ul>
-						<li>Alfonzo Lopez III Etapa</li>
+						<li>TEQUENDAMA</li>
 						<li>Cali Valle</li>
 						<li>Colombia</li>
 						<li>Telefono : +5 (314) 707-2792</li>
@@ -91,9 +119,44 @@
 		</div>
 
 		<div class="copyright">
-			<p>Copyright &copy; <?= date("Y"); ?>  Empresa. All Rights Reserved | Design by Aunar Developers </a></p>
+			<p>Copyright &copy; <?= date("Y"); ?> Empresa. All Rights Reserved | Design by Aunar Developers </a></p>
 		</div>
 
 	</div>
 </div>
 <!-- //Footer pie de pagina -->
+<script>
+	function openProducto(element) {
+		var base_url = window.location.origin;
+		// "http://stackoverflow.com"
+
+		var host = window.location.host;
+		// stackoverflow.com
+
+		var pathArray = window.location.pathname;
+		// alert(base_url);
+		$.ajax({
+			url: 'app/lib/ajax.php',
+			method: "post",
+			dataType: "JSON",
+			data: {
+				modulo: "producto",
+				controlador: "producto",
+				funcion: "openProductoMain",
+				codigo_producto: element,
+
+			},
+		}).done((res) => {
+			$("#titulo_notice").text(res.producto);
+			$("#descripcion").text(res.descripcion);
+			$("#categoria_producto").text(res.categoria);
+			$("#id_producto").val(res.id);
+			$('#modalVerProducto').modal('show');
+			var imagen_url = pathArray + "public/img/uploads/" + res.portada;
+			// var imagen_url = `../../public/img/uploads/${res.portada}`;
+			$("#img_notice").attr("src", imagen_url);
+			$('#modalverProducto').modal('show');
+
+		})
+	}
+</script>
