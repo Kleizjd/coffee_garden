@@ -43,7 +43,7 @@ if (!empty($_POST)) {
         include_once "Config/core.php";
 
         $producto= new Core();
-        $sql = "SELECT * FROM producto ORDER BY codigo DESC LIMIT 5";
+        $sql = "SELECT * FROM producto";
         $listProducto =  $producto->select_all($sql);
         include_once "views/home/main.php";
         
