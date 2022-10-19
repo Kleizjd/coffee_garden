@@ -81,6 +81,16 @@
 				// var imagen_url = "../../public/img/uploads/"+res.portada;
 				var imagen_url = `../../public/img/uploads/${res.portada}`;
 				if(res.like === true){$( "#me_gusta" ).prop( "checked", true );} else {$( "#me_gusta" ).prop( "checked", false );}
+				// alert( "res", res.codigo_producto);
+				if(res.codigo_producto === "success"){	
+					$("#addCart").removeClass("btn-primary");
+					$("#addCart").addClass("btn-secondary");
+					$("#addCart").text("Eliminar");
+				} else if(res.codigo_producto === "error"){
+					$("#addCart").addClass("btn-primary");
+					$("#addCart").removeClass("btn-secondary");
+					$("#addCart").text("Agregar al carrito");
+				}
 				$("#img_notice").attr("src",imagen_url);
 				$("#img_notice").attr("src",imagen_url);
 				$('#modalVerProducto').modal('show');

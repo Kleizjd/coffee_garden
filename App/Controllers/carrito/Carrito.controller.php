@@ -16,7 +16,7 @@ class Carrito extends Core{
         // var_dump($_POST);
 
             $email = $_SESSION['correo_login'];
-           $sql = "SELECT * FROM carrito WHERE email='$email'"; 
+            $sql = "SELECT * FROM carrito WHERE email='$email' AND codigo_producto='$id'"; 
         //    $sql = "SELECT * FROM carrito WHERE  id_producto = '$id'"; 
            $sqlProducto =  $this->select($sql);
    

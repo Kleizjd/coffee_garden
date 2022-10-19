@@ -159,6 +159,12 @@
 					swal({ title: "Agregado exitosamente", type:"success"})
 					$("#addCart").removeClass("btn-primary");
 					$("#addCart").addClass("btn-secondary");
+					$("#addCart").text("Eliminar");
+
+				} else if(res["tipoRespuesta"] == false) {
+					$("#addCart").removeClass("btn-secondary");
+					$("#addCart").addClass("btn-primary");
+					$("#addCart").text("Agregar al carrito");
 				}
 			});
 		} else {
