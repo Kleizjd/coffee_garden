@@ -41,7 +41,7 @@ class Producto extends Core
             }
         }
 
-        $sql = "SELECT n.codigo, producto, categoria, nombre, descripcion  FROM producto n, categorias c WHERE c.id LIKE '%$categoria_producto%'";
+        $sql = "SELECT p.codigo, producto, categoria, nombre, estado, descripcion  FROM producto p, categorias c WHERE p.categoria = c.id AND  c.id LIKE '%$categoria_producto%'";
 
         $listProducto =  $this->select_all($sql);
 
@@ -188,6 +188,7 @@ class Producto extends Core
     //  OPEN MODAL SESSION ACTIVA
     public function openProducto()
     {   extract($_POST);
+    // var_dump($_POST);
 
         $sql = "SELECT * FROM Producto n, categorias c WHERE n.codigo = '$id' AND c.id = n.categoria";       
         $sqlProducto =  $this->select($sql);//NOTICIA
@@ -197,6 +198,8 @@ class Producto extends Core
         $sqlCantidad =  $this->select($cantidad);//CANTIDAD GENERAL DE REACCIONES
         $comentario = "SELECT c.id, nombre, u.email, codigo_producto, comentario FROM comentario c, usuarios u WHERE c.email = u.email AND codigo_producto = '$id'  ORDER BY c.id DESC";
         $sqlComentario =  $this->select_all($comentario);//COMENTARIOS
+        $rating = "SELECT * FROM rating WHERE email = '$email' AND id_producto = '$id'";
+        $sqlRating =  $this->select($rating);//CALIFICACIO
         $comentarios = "";
         
          foreach ($sqlComentario as $comment) {
@@ -216,9 +219,12 @@ class Producto extends Core
             $respuesta["categoria"] =  $sqlProducto["nombre"];
             $respuesta["portada"] =  $sqlProducto["portada"];
             $respuesta["total"] =  $sqlCantidad["total"];
-            $respuesta["codigo_producto"] =  $id;
+            $respuesta["id"] =  $id;
             $respuesta["cantidad"] =  $id;
             $respuesta["comentarios"] =  $comentarios;
+            if($sqlRating){
+                $respuesta["calificacion"] =  $sqlRating["calificacion"];
+                } 
 
             if($sqlLike){
                 $respuesta["like"] =  true;
@@ -308,26 +314,29 @@ class Producto extends Core
         $sql = "SELECT *  FROM producto ORDER BY codigo DESC";
 
         $listProducto =  $this->select_all($sql);
-        include_once "../../views/producto.php";
+        include_once "../../views/listProducto.php";
     }
-    //  PRODUCTOS CREAR, EDITAR, ELIMINAR
-    public function addCarrito()
+    public function ratingProducto()
     {   extract($_POST);
-        $sql = "SELECT * FROM reaccion WHERE  email='$email' AND codigo_producto = '$id_producto'"; 
-        $sqlProducto =  $this->select($sql);
+    // dep($_POST);
+        $sql = "SELECT * FROM rating WHERE  email='$email' AND id_producto = '$id_producto'"; 
+        $sqlNoticia =  $this->select($sql);
+        // var_dump($sqlNoticia);
 
-        if(!$sqlProducto){ 
-            $sql = "INSERT INTO reaccion(email,codigo_producto) VALUES (?,?)"; 
-            $arrData = array($email, $id_producto);
+        if(!$sqlNoticia){ 
+            $sql = "INSERT INTO rating(email,id_producto, calificacion) VALUES (?,?,?)"; 
+            $arrData = array($email, $id_producto, $calificacion);
             $request = $this->insert($sql, $arrData);
             $respuesta["tipoRespuesta"] = true;
 
         } else { 
-            $sql = "DELETE FROM reaccion WHERE email='$email' AND codigo_producto = '$id_producto'";
-            $request = $this->delete($sql);
-            $respuesta["tipoRespuesta"] = false;
+    // dep($_POST);
 
+            $sqlRating = "UPDATE rating SET calificacion = '$calificacion' WHERE email ='$email' AND  id_producto = '$id_producto'";
+            $actualizarRating = $this->select($sqlRating);
+            $respuesta["tipoRespuesta"] = false;
         }     
         echo json_encode($respuesta);
     }
+ 
 }

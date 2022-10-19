@@ -33,7 +33,7 @@
                         <div class="tab-content">
                             <div class="tab-pane active" id="verUserForm">
 
-                                <form action="" id="frm_Noticia" method="POST" autocomplete="off">
+                                <form action="" id=" frm_producto" method="POST" autocomplete="off">
                                     <?php foreach ($sqlUsuario as $usuario) {
                                     } ?>
                                     <div class="container-fluid">

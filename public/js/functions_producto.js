@@ -2,7 +2,7 @@
 $(document).ready(function () {
     /***************************/ //CREATE PRODUCT// /**************************/
     $(function RegistrarProducto() {
-		$(document).on("submit", "#frm_Noticia", function (event) {
+		$(document).on("submit", "# frm_producto", function (event) {
 			event.preventDefault();
 			// alert("sd")
 			var formData = new FormData(event.target);
@@ -20,7 +20,7 @@ $(document).ready(function () {
 				contentType: false
 			}).done((res) => {
                 if (res.status == true) { 
-					document.getElementById("frm_Noticia").reset();
+					document.getElementById(" frm_producto").reset();
 					
 					swal({ title: res.msg , type: 'success' });}else{ swal({ title: res.msg , type: 'error' });}
 			});

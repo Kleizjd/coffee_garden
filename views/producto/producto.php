@@ -6,7 +6,7 @@
     <h5 class="card-title" id="titleModal">Nuevo Producto</h5>
   </div>
   <div class="card-body">
-    <form id="frm_Noticia" name="frm_Noticia" class="form-horizontal">
+    <form id=" frm_producto" name=" frm_producto" class="form-horizontal">
       <input type="hidden" id="idProducto" name="idProducto" value="">
       <input type="hidden" id="foto_actual" name="foto_actual" value="">
       <input type="hidden" id="foto_remove" name="foto_remove" value="0">
