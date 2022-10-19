@@ -1,18 +1,19 @@
 <?php
 include_once "../../Config/core.php";
-session_start();
 class Carrito extends Core{
     
     public function carrito(){
         extract($_POST);
-        $sql = "SELECT * FROM carrito WHERE email='".$_SESSION['email']."'";
+        $sql = "SELECT * FROM carrito WHERE email='".$_SESSION['correo_login']."'";
         $listProducto =  $this->select_all($sql);
         include_once "../../views/carrito/carrito.php";
         
     }
        //  CARRITO CREAR, ELIMINAR
        public function anadirAlCarrito()
-       {   extract($_POST);
+       {   
+            session_start();
+            extract($_POST);
         // var_dump($_POST);
 
             $email = $_SESSION['correo_login'];

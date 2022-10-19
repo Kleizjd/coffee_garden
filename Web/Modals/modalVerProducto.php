@@ -97,7 +97,7 @@
 										<div class="input-group">
 											<input type="number" class="form-control" id="cantidad" placeholder="Cantidad">
 											<div class="input-group-append">
-												<button type="button" class="btn btn-primary" id="addCart" onclick="agregarAlCarrito()">Agregar al carrito</button>
+												<button type="button" class="btn btn-primary" id="addCart" value="" onclick="agregarAlCarrito()">Agregar al carrito</button>
 											</div>
 										</div>
 									</div>
@@ -141,8 +141,22 @@
 <script>
 	function agregarAlCarrito() {
 		var id = document.getElementById("id_producto");
-		if($("#cantidad").val() != ""){
-				$.ajax({
+		var elimina = $("#addCart").val();
+
+		if(elimina == ""){
+			if($("#cantidad").val() != ""){
+				agrega();
+			}  else {
+			alertify.notify("Agregue la cantidad", "error", 2, function() {});
+			}
+		} else {
+			agrega();
+		}
+			
+	}
+
+	function agrega(){
+		$.ajax({
 				url: '../../app/lib/ajax.php',
 				method: "post",
 				dataType: "JSON",
@@ -160,17 +174,18 @@
 					$("#addCart").removeClass("btn-primary");
 					$("#addCart").addClass("btn-secondary");
 					$("#addCart").text("Eliminar");
+					document.getElementById("cantidad").style.display = "none";
+					$("#addCart").val("elimina");
 
 				} else if(res["tipoRespuesta"] == false) {
 					$("#addCart").removeClass("btn-secondary");
 					$("#addCart").addClass("btn-primary");
 					$("#addCart").text("Agregar al carrito");
+					$("#addCart").val("");
+					$("#cantidad").show();
+					document.getElementById("cantidad").style.display = "block";
 				}
 			});
-		} else {
-			alertify.notify("Agregue la cantidad", "error", 2, function() {});
-
-		}
 	}
 
 	function eliminarDeCarrito() {

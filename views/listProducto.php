@@ -86,10 +86,17 @@
 					$("#addCart").removeClass("btn-primary");
 					$("#addCart").addClass("btn-secondary");
 					$("#addCart").text("Eliminar");
+					$("#addCart").val("elimina");
+					document.getElementById("cantidad").style.display = "none";
+
 				} else if(res.codigo_producto === "error"){
 					$("#addCart").addClass("btn-primary");
 					$("#addCart").removeClass("btn-secondary");
 					$("#addCart").text("Agregar al carrito");
+					$("#addCart").val("");
+					document.getElementById("cantidad").style.display = "block";
+
+
 				}
 				$("#img_notice").attr("src",imagen_url);
 				$("#img_notice").attr("src",imagen_url);
