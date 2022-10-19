@@ -95,8 +95,6 @@
 					$("#addCart").text("Agregar al carrito");
 					$("#addCart").val("");
 					document.getElementById("cantidad").style.display = "block";
-
-
 				}
 				$("#img_notice").attr("src",imagen_url);
 				$("#img_notice").attr("src",imagen_url);

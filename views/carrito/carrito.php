@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html lang="en">
 
 <head>
@@ -9,7 +9,7 @@
   <meta name="generator" content="Hugo 0.101.0">
   <title>Checkout example · Bootstrap v4.6</title>
 
-  <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/checkout/">
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.6/examples/checkout/"> -->
 
 
 
@@ -64,6 +64,7 @@
       <div class="col-md-8 order-md-2">
         <h4 class="mb-3">Dirección de Envio</h4>
         <form class="needs-validation" novalidate>
+          <?php foreach ($listUsuario as $usuario)?>
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="firstName">Nombre</label>

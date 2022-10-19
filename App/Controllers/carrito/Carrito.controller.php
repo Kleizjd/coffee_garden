@@ -6,6 +6,9 @@ class Carrito extends Core{
         extract($_POST);
         $sql = "SELECT * FROM carrito WHERE email='".$_SESSION['correo_login']."'";
         $listProducto =  $this->select_all($sql);
+        $sqlUser = "SELECT * FROM usuarios WHERE email='".$_SESSION['correo_login']."'";
+        $listUsuario =  $this->select_all($sqlUser);
+
         include_once "../../views/carrito/carrito.php";
         
     }
