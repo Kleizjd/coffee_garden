@@ -4,9 +4,9 @@ class Carrito extends Core{
     
     public function carrito(){
         extract($_POST);
-        $cantidad = "SELECT COUNT(codigo_producto) AS cantidad, SUM(precio) AS total FROM producto,carrito WHERE codigo = codigo_producto AND email='".$_SESSION['correo_login']."'";
+        $cantidad = "SELECT COUNT(codigo_producto) AS cantidad, COUNT(codigo_producto)*precio AS total FROM producto,carrito WHERE codigo = codigo_producto AND email='".$_SESSION['correo_login']."'";
         $listCantidad =  $this->select($cantidad);
-        $sql = "SELECT * FROM carrito c,producto p, categorias ct WHERE email='".$_SESSION['correo_login']."' AND c.codigo_producto = p.codigo AND p.categoria = ct.id";
+        $sql = "SELECT c.cantidad, ct.nombre, producto, p.precio FROM carrito c,producto p, categorias ct WHERE email='".$_SESSION['correo_login']."' AND c.codigo_producto = p.codigo AND p.categoria = ct.id";
         $listProducto =  $this->select_all($sql);
         $sqlUser = "SELECT * FROM usuarios WHERE email='".$_SESSION['correo_login']."'";
         $listUsuario =  $this->select_all($sqlUser);

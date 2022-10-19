@@ -223,7 +223,7 @@
               <h6 class="my-0" id="nombre_producto"><?= $list['producto']?></h6>
               <small class="text-muted" id="tipo_producto"><?= $list['nombre']?></small>
             </div>
-            <span class="text-muted">$<?= $list['precio']?></span>
+            <span class="text-muted">$<?= $list['precio']?>  N°: <?= $list['cantidad']?> </span>
           </li>
        <?php endforeach; ?>
     
