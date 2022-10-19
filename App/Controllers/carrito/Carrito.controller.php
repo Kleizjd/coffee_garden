@@ -13,17 +13,21 @@ class Carrito extends Core{
        //  CARRITO CREAR, ELIMINAR
        public function anadirAlCarrito()
        {   extract($_POST);
-           echo "SELECT * FROM carrito WHERE  id_producto = '$id_producto'"; 
+        // var_dump($_POST);
+
+            $email = $_SESSION['correo_login'];
+           $sql = "SELECT * FROM carrito WHERE email='$email'"; 
+        //    $sql = "SELECT * FROM carrito WHERE  id_producto = '$id'"; 
            $sqlProducto =  $this->select($sql);
    
            if(!$sqlProducto){ 
-               $sql = "INSERT INTO carrito(email,codigo_producto) VALUES (?,?)"; 
-               $arrData = array($email, $id_producto);
+               $sql = "INSERT INTO carrito(cantidad,email,codigo_producto) VALUES (?,?,?)"; 
+               $arrData = array($cantidad,$email, $id);
                $request = $this->insert($sql, $arrData);
                $respuesta["tipoRespuesta"] = true;
    
            } else { 
-               $sql = "DELETE FROM carrito WHERE email='$email' AND codigo_producto = '$id_producto'";
+               $sql = "DELETE FROM carrito WHERE email='$email' AND codigo_producto = '$id'";
                $request = $this->delete($sql);
                $respuesta["tipoRespuesta"] = false;
    

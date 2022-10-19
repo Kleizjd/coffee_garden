@@ -73,7 +73,7 @@
 									</label>
 									<b id="n_likes"> 0</b> Me gusta
 								</p>
-								
+
 								<div class="row">
 									<div class="col">
 										<div class="rating" id="rating_number">
@@ -93,10 +93,13 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col d-flex justify-content-between">
-										<button class="btn btn-primary" id="btnGroupAddon" onclick="anadirAlCarrito()" type="submit">
-											Agregar al carrito
-										</button>
+									<div class="col">
+										<div class="input-group">
+											<input type="number" class="form-control" id="cantidad" placeholder="Cantidad">
+											<div class="input-group-append">
+												<button type="button" class="btn btn-primary" id="addCart" onclick="agregarAlCarrito()">Agregar al carrito</button>
+											</div>
+										</div>
 									</div>
 								</div>
 
@@ -136,23 +139,35 @@
 	</div>
 </div>
 <script>
-	
+	function agregarAlCarrito() {
+		var id = document.getElementById("id_producto");
+		if($("#cantidad").val() != ""){
+				$.ajax({
+				url: '../../app/lib/ajax.php',
+				method: "post",
+				dataType: "JSON",
+				data: {
+					modulo: "carrito",
+					controlador: "carrito",
+					funcion: "anadirAlCarrito",
+					id: $("#id_producto").val(),
+					cantidad: $("#cantidad").val(),
 
-	function agregarAlCarrito(){
-		var  id = document.getElementById("id_producto");
-		$.ajax({
-			url: '../../app/lib/ajax.php',
-			method: "post",
-			dataType: "JSON",
-			data: {
-				modulo: "producto",
-				controlador: "producto",
-				funcion: "anadirAlCarrito",
-				id: element,
+				},
+			}).done((res) => {
+				if(res['tipoRespuesta'] == true){
+					swal({ title: "Agregado exitosamente", type:"success"})
+					$("#addCart").removeClass("btn-primary");
+					$("#addCart").addClass("btn-secondary");
+				}
+			});
+		} else {
+			alertify.notify("Agregue la cantidad", "error", 2, function() {});
 
-			},
-		}).done((res) => {});}
-	function eliminarDeCarrito(){
+		}
+	}
+
+	function eliminarDeCarrito() {
 		$.ajax({
 			url: '../../app/lib/ajax.php',
 			method: "post",
@@ -166,6 +181,7 @@
 			},
 		}).done((res) => {});
 	}
+
 	function deleteComentario(element) {
 		var element = element.id;
 		$.ajax({
@@ -188,18 +204,22 @@
 			}
 		});
 	}
+
 	function califcacion(element) {
-		$.ajax({url: '../../app/lib/ajax.php',
-				method: "post",
-				dataType: "JSON",
-				data: {
-					modulo: "producto",
-					controlador: "producto",
-					funcion: "ratingProducto",
-					email: $("#email").val(),
-					id_producto: $("#id_producto").val(),
-					calificacion: element},});
-				}
+		$.ajax({
+			url: '../../app/lib/ajax.php',
+			method: "post",
+			dataType: "JSON",
+			data: {
+				modulo: "producto",
+				controlador: "producto",
+				funcion: "ratingProducto",
+				email: $("#email").val(),
+				id_producto: $("#id_producto").val(),
+				calificacion: element
+			},
+		});
+	}
 
 	$(document).ready(function() {
 		$(".modal").on("hidden.bs.modal", function() {
@@ -208,6 +228,8 @@
 			document.getElementById("3").checked = false;
 			document.getElementById("2").checked = false;
 			document.getElementById("1").checked = false;
+			$("#addCart").addClass("btn-primary");
+			$("#cantidad").val("");
 		});
 	});
 	$(document).on("change", "#me_gusta", function(e) {
