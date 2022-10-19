@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#" alt="JD DEVELOP" height="50" width="200">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="./" alt="JD DEVELOP" height="50" width="200">
     <h3>Coffee Garden</h3>
     </a>
   <ul class="navbar-nav px-4 ml-auto">

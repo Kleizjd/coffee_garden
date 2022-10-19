@@ -64,18 +64,18 @@
       <div class="col-md-8 order-md-2">
         <h4 class="mb-3">Dirección de Envio</h4>
         <form class="needs-validation" novalidate>
-          <?php foreach ($listUsuario as $usuario)?>
+          <?php foreach ($listUsuario as $usuario):?>
           <div class="row">
             <div class="col-md-6 mb-3">
               <label for="firstName">Nombre</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="<?= $usuario["nombre"]; ?>" required>
               <div class="invalid-feedback">
                 Se requiere un nombre válido.
               </div>
             </div>
             <div class="col-md-6 mb-3">
               <label for="lastName">Apellido</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="<?= $usuario["apellido"]; ?>" required>
               <div class="invalid-feedback">
                 Se requiere un Apellido válido.
               </div>
@@ -99,11 +99,13 @@
             <label for="email">Email
               <!-- <span class="text-muted">(Opcional)</span> -->
             </label>
-            <input type="email" class="form-control" id="email" placeholder="nombre@ejemplo.com">
+            <input type="email" class="form-control" id="email" value="<?= $usuario["email"]; ?>"placeholder="nombre@ejemplo.com">
             <div class="invalid-feedback">
               Ingrese una dirección de correo electrónico válida para actualizaciones de envío.
             </div>
           </div>
+          <?php endforeach; ?>
+
 
           <div class="mb-3">
             <label for="address">Direccion</label>
@@ -204,20 +206,6 @@
            
           </div>
           <div class="row">
-            <!-- <div class="col-md-3 mb-3">
-              <label for="cc-expiration">Expiracion</label>
-              <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-              <div class="invalid-feedback">
-                Fecha de vencimiento requerida
-              </div>
-            </div> -->
-            <!-- <div class="col-md-3 mb-3">
-              <label for="cc-cvv">CVV</label>
-              <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-              <div class="invalid-feedback">
-                C&oacute;digo de seguridad requerido
-              </div>
-            </div> -->
           </div>
           <hr class="mb-4">
           <button class="btn btn-primary btn-lg btn-block" type="submit">Continuar a la comprobación</button>
@@ -226,49 +214,22 @@
       <div class="col-md-4 order-md-2 mb-4">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span class="text-muted">Tu Carrito</span>
-          <span class="badge badge-secondary badge-pill">3</span>
+          <span class="badge badge-secondary badge-pill"><?= $listCantidad['cantidad']?></span>
         </h4>
         <ul class="list-group mb-3">
        <?php foreach ($listProducto as $list) : ?>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div>
-              <h6 class="my-0" id="nombre_producto">Nombre producto</h6>
-              <small class="text-muted" id="tipo_producto">Breve descripción</small>
+              <h6 class="my-0" id="nombre_producto"><?= $list['producto']?></h6>
+              <small class="text-muted" id="tipo_producto"><?= $list['nombre']?></small>
             </div>
-            <span class="text-muted">$12</span>
+            <span class="text-muted">$<?= $list['precio']?></span>
           </li>
        <?php endforeach; ?>
-          <!-- <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Nombre producto </h6>
-              <small class="text-muted">Breve descripción</small>
-            </div>
-            <span class="text-muted">$12</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Segundo producto</h6>
-              <small class="text-muted">Breve descripción</small>
-            </div>
-            <span class="text-muted">$8</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Tercer artículo</h6>
-              <small class="text-muted">Breve descripción</small>
-            </div>
-            <span class="text-muted">$5</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between bg-light">
-            <div class="text-success">
-              <h6 class="my-0">Código promocional</h6>
-              <small>CÓDIGO DE EJEMPLO</small>
-            </div>
-            <span class="text-success">-$5</span>
-          </li> -->
+    
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (CO)</span>
-            <strong>$20</strong>
+            <strong>$<?= $listCantidad['total']?></strong>
           </li>
         </ul>
 
