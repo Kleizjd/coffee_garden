@@ -6,7 +6,7 @@
     <h5 class="card-title" id="titleModal">Nuevo Producto</h5>
   </div>
   <div class="card-body">
-    <form id=" frm_producto" name=" frm_producto" class="form-horizontal">
+    <form id="frm_producto" name="frm_producto" class="form-horizontal">
       <input type="hidden" id="idProducto" name="idProducto" value="">
       <input type="hidden" id="foto_actual" name="foto_actual" value="">
       <input type="hidden" id="foto_remove" name="foto_remove" value="0">
@@ -25,6 +25,10 @@
           <div class="form-group">
             <label class="control-label">Descripción <span class="required">*</span></label>
             <textarea class="form-control" id="txtDescripcion" name="txtDescripcion" rows="2" placeholder="Descripción de la Producto" required=""></textarea>
+          </div>
+          <div class="form-group">
+            <label class="control-label" for="precio">Precio<span class="required">*</span></label>
+            <input class="form-control" id="txtPrecio" name="txtPrecio" type="number" placeholder="Precio" required="">
           </div>
           <div class="form-group">
             <label for="categoria">Categoria<span class="required">*</span></label>
@@ -64,3 +68,4 @@
 
 
 <script src="<?= media(); ?>/js/<?= $data['page_functions_js']; ?>"></script>
+<!-- <script src="<?= media(); ?>/js/functions_producto.js"></script> -->

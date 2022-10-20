@@ -113,11 +113,6 @@
             <div class="invalid-feedback">Por favor introduzca su direccion de envio.</div>
           </div>
 
-          <!-- <div class="mb-3">
-          <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-          <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-        </div> -->
-
           <div class="row">
             <!-- <div class="col-md-5 mb-3">
             <label for="country">Pa&iacute;s</label>
@@ -141,13 +136,6 @@
                 Proporcione un Departamento válido.
               </div>
             </div>
-            <!-- <div class="col-md-3 mb-3">
-            <label for="zip">C&oacute;digo Postal</label>
-            <input type="text" class="form-control" id="zip" placeholder="" required>
-            <div class="invalid-feedback">
-            C&oacute;digo Postal requirido.
-            </div>
-          </div> -->
           </div>
           <hr class="mb-4">
           <div class="custom-control custom-checkbox">
@@ -223,7 +211,7 @@
               <h6 class="my-0" id="nombre_producto"><?= $list['producto']?></h6>
               <small class="text-muted" id="tipo_producto"><?= $list['nombre']?></small>
             </div>
-            <span class="text-muted">$<?= $list['precio']?>  N°: <?= $list['cantidad']?> </span>
+            <span class="text-muted">$<?= $list['precio']?><div class="text-center"> Cantidad: <?= $list['cantidad']?></div> </span>
           </li>
        <?php endforeach; ?>
     
@@ -232,15 +220,6 @@
             <strong>$<?= $listCantidad['total']?></strong>
           </li>
         </ul>
-
-        <form class="card p-2">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Promo code">
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-secondary">Redimir</button>
-            </div>
-          </div>
-        </form>
       </div>
 
     </div>

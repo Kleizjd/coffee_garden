@@ -8,7 +8,7 @@ class Producto extends Core
     // VISTAS
     public function producto()
     {
-        // $data['page_functions_js'] = "functions_producto.js";
+        $data['page_functions_js'] = "functions_producto.js";
         $sqlProducto = $this->select_all("SELECT * FROM categorias");
         include_once "../../views/producto/producto.php";
     }
@@ -71,16 +71,17 @@ class Producto extends Core
         // extract($_POST);
         // dep($_POST);
         if ($_POST) {
-            if (empty($_POST['txtTitulo']) || empty($_POST['txtDescripcion'])) {
+            if (empty($_POST['txtProducto']) || empty($_POST['txtDescripcion'])) {
                 $arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
             } else {
 
-                $intidProducto= intval($_POST['idNoticia']);
-                $strTitulo =  strClean($_POST['txtTitulo']);
+                $intidProducto= intval($_POST['idProducto']);
+                $strProducto =  strClean($_POST['txtProducto']);
                 $strDescripcion = strClean($_POST['txtDescripcion']);
                 $categoria = strClean($_POST['categoria']);
+                $precio = $_POST['txtPrecio'];
 
-                $ruta = strtolower(clear_cadena($strTitulo));
+                $ruta = strtolower(clear_cadena($strProducto));
                 $ruta = str_replace(" ", "-", $ruta);
 
                 $foto            = $_FILES['foto'];
@@ -91,14 +92,14 @@ class Producto extends Core
                 $request_insert  = "";
                 if ($nombre_foto != '') { $imgPortada = 'img_' . md5(date('d-m-Y H:i:s')) . '.jpg'; }
 
-                if ($intidProducto== 0) {
+                if ($intidProducto == 0) {
 
-                    $sql = "SELECT * FROM Producto WHERE titulo = '{$strTitulo}' ";
+                    $sql = "SELECT * FROM Producto WHERE producto = '{$strProducto}' ";
                     $request = $this->select_all($sql);
 
                     if (empty($request)) {
-                        $query_insert  = "INSERT INTO Producto(titulo, categoria, descripcion, ruta, portada) VALUES(?,?,?,?,?)";
-                        $arrData = array($strTitulo, $categoria, $strDescripcion, $ruta, $imgPortada);
+                        $query_insert  = "INSERT INTO Producto(producto, categoria, descripcion, ruta, portada, precio) VALUES(?,?,?,?,?,?)";
+                        $arrData = array($strProducto, $categoria, $strDescripcion, $ruta, $imgPortada, $precio);
                         $request_insert = $this->insert($query_insert, $arrData);
                         $return = $request_insert;
                     } else {
@@ -113,12 +114,12 @@ class Producto extends Core
                             $imgPortada = $_POST['foto_actual'];
                         }
                     }
-                    $sql = "SELECT * FROM Producto WHERE titulo = '{$strTitulo}' AND id != $this->intIdnoticia";
+                    $sql = "SELECT * FROM Producto WHERE titulo = '{$strProducto}' AND id != $this->intIdnoticia";
                     $request = $this->select_all($sql);
                     
                     if (empty($request)) {
                         $sql = "UPDATE categoria SET nombre = ?, descripcion = ?, portada = ?, ruta = ?, status = ? WHERE idcategoria = $this->intidProducto";
-                        $arrData = array($strTitulo, $categoria, $strDescripcion, $ruta, $imgPortada);
+                        $arrData = array($strProducto, $categoria, $strDescripcion, $ruta, $imgPortada);
                         $request = $this->update($sql, $arrData);
                     } else {
                         $request = "exist";
@@ -128,12 +129,12 @@ class Producto extends Core
                 if ($request_insert > 0) {
                     if ($option == 1) {
 
-                        $arrResponse = array('status' => true, 'msg' => 'Noticia Ingresado exitosamente');
+                        $arrResponse = array('status' => true, 'msg' => 'Producto Ingresado exitosamente');
                         if ($nombre_foto != '') {
                             uploadImage($foto, $imgPortada);
                         }
                     } else {
-                        $arrResponse = array('status' => true, 'msg' => 'Noticia Actualizada correctamente.');
+                        $arrResponse = array('status' => true, 'msg' => 'Producto Actualizada correctamente.');
                         if ($nombre_foto != '') {
                             uploadImage($foto, $imgPortada);
                         }

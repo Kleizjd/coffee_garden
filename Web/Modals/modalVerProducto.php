@@ -88,9 +88,10 @@
 							</div>
 							<div class="col">
 								<div class="row" style="height: 80%">
-									<div class="col-7">
-										<p class="" id="descripcion">descripcion</p>
-									</div>
+								<div class="col">
+								<p class="" id="descripcion">descripcion</p>
+
+								</div>
 								</div>
 								<div class="row">
 									<div class="col">
@@ -102,9 +103,7 @@
 										</div>
 									</div>
 								</div>
-
 							</div>
-
 						</div>
 					</div>
 					<div class="col-5">
@@ -123,13 +122,10 @@
 							</div>
 						</div>
 
-						<div class="row">
-							<div class="col">
-								<div class="border rounded" id="comentar">
-									<!-- <p><b>${res.usuario} : </b>${res.comentarios}</b> -->
 
-								</div>
-							</div>
+						<div class="border rounded" id="comentar">
+							<!-- <p><b>${res.usuario} : </b>${res.comentarios}</b> -->
+
 
 						</div>
 					</div>
@@ -143,49 +139,52 @@
 		var id = document.getElementById("id_producto");
 		var elimina = $("#addCart").val();
 
-		if(elimina == ""){
-			if($("#cantidad").val() != ""){
+		if (elimina == "") {
+			if ($("#cantidad").val() != "") {
 				agrega();
-			}  else {
-			alertify.notify("Agregue la cantidad", "error", 2, function() {});
+			} else {
+				alertify.notify("Agregue la cantidad", "error", 2, function() {});
 			}
 		} else {
 			agrega();
 		}
-			
+
 	}
 
-	function agrega(){
+	function agrega() {
 		$.ajax({
-				url: '../../app/lib/ajax.php',
-				method: "post",
-				dataType: "JSON",
-				data: {
-					modulo: "carrito",
-					controlador: "carrito",
-					funcion: "anadirAlCarrito",
-					id: $("#id_producto").val(),
-					cantidad: $("#cantidad").val(),
+			url: '../../app/lib/ajax.php',
+			method: "post",
+			dataType: "JSON",
+			data: {
+				modulo: "carrito",
+				controlador: "carrito",
+				funcion: "anadirAlCarrito",
+				id: $("#id_producto").val(),
+				cantidad: $("#cantidad").val(),
 
-				},
-			}).done((res) => {
-				if(res['tipoRespuesta'] == true){
-					swal({ title: "Agregado exitosamente", type:"success"})
-					$("#addCart").removeClass("btn-primary");
-					$("#addCart").addClass("btn-secondary");
-					$("#addCart").text("Eliminar");
-					document.getElementById("cantidad").style.display = "none";
-					$("#addCart").val("elimina");
+			},
+		}).done((res) => {
+			if (res['tipoRespuesta'] == true) {
+				swal({
+					title: "Agregado exitosamente",
+					type: "success"
+				})
+				$("#addCart").removeClass("btn-primary");
+				$("#addCart").addClass("btn-secondary");
+				$("#addCart").text("Eliminar");
+				document.getElementById("cantidad").style.display = "none";
+				$("#addCart").val("elimina");
 
-				} else if(res["tipoRespuesta"] == false) {
-					$("#addCart").removeClass("btn-secondary");
-					$("#addCart").addClass("btn-primary");
-					$("#addCart").text("Agregar al carrito");
-					$("#addCart").val("");
-					$("#cantidad").show();
-					document.getElementById("cantidad").style.display = "block";
-				}
-			});
+			} else if (res["tipoRespuesta"] == false) {
+				$("#addCart").removeClass("btn-secondary");
+				$("#addCart").addClass("btn-primary");
+				$("#addCart").text("Agregar al carrito");
+				$("#addCart").val("");
+				$("#cantidad").show();
+				document.getElementById("cantidad").style.display = "block";
+			}
+		});
 	}
 
 	function eliminarDeCarrito() {
