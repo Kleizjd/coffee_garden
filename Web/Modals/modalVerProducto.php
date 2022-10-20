@@ -167,10 +167,8 @@
 			},
 		}).done((res) => {
 			if (res['tipoRespuesta'] == true) {
-				swal({
-					title: "Agregado exitosamente",
-					type: "success"
-				})
+				swal({title: "Agregado exitosamente",type: "success"});
+				
 				$("#addCart").removeClass("btn-primary");
 				$("#addCart").addClass("btn-secondary");
 				$("#addCart").text("Eliminar");

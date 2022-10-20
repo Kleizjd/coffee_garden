@@ -172,7 +172,7 @@
        <?php foreach ($listProducto as $list) : ?>
         <li class="list-group-item d-flex justify-content-between lh-condensed">
             <div id="product_pr">
-            <span class="delProducto">X</span>
+            <span class="delProducto" name="<?= $_SESSION['correo_login']?>" id="<?= $list['codigo']?>" onclick="elimina(this)" >X</span>
 
               <h6 class="my-0" id="nombre_producto"><?= $list['producto']?></h6>
               <small class="text-muted" id="tipo_producto"><?= $list['nombre']?></small>
@@ -184,7 +184,7 @@
     
           <li class="list-group-item d-flex justify-content-between">
             <span>Total (CO)</span>
-            <strong>$<?= $listCantidad['total']?></strong>
+            <strong id="total">$<?= (($listCantidad['total'])?  $listCantidad['total']:"0")?></strong>
           </li>
         </ul>
       </div>
@@ -204,15 +204,27 @@
 
 </html>
 <script>
-  $(document).ready(function() {
-    // document.querySelector('.delPhoto').classList.remove("notBlock");
+  function elimina(element) {
+    var id = element.id, correo = element.getAttribute("name");
 
-  $(document).on("click",".delProducto", function() {
-    // alert("se puede");
-      // document.getElementById(".delPhoto").
-      let note = document.getElementByClass('.delPhoto');
-        console.log(note.parentElement.nodeName;);
-  });
-
-  });
+    $.ajax({
+      url: '../../app/lib/ajax.php',
+			method: "post",
+			dataType: "JSON",
+			data: {
+				modulo: "carrito",
+				controlador: "carrito",
+				funcion: "eliminaDelCarrito",
+				id: id,
+				correo:correo,
+			},
+    }).done((res) => {
+      if(res.tipoRespuesta == true){
+				alertify.notify("Eliminado con exito", "success", 2, function() {});
+        $(element).parent().parent().remove();
+         var total = document.getElementById("total");
+         if(res.total == null){ total.innerHTML = `$0`;}else{ total.innerHTML = `${res.total}`;}
+      }
+    });
+  }
 </script>
