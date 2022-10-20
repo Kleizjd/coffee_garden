@@ -81,7 +81,7 @@
 				// var imagen_url = "../../public/img/uploads/"+res.portada;
 				var imagen_url = `../../public/img/uploads/${res.portada}`;
 				if(res.like === true){$( "#me_gusta" ).prop( "checked", true );} else {$( "#me_gusta" ).prop( "checked", false );}
-				// alert( "res", res.codigo_producto);
+				
 				if(res.codigo_producto === "success"){	
 					$("#addCart").removeClass("btn-primary");
 					$("#addCart").addClass("btn-secondary");
@@ -97,7 +97,7 @@
 					document.getElementById("cantidad").style.display = "block";
 				}
 				$("#img_notice").attr("src",imagen_url);
-				$("#img_notice").attr("src",imagen_url);
+				$("#price").text(`Precio: $${res.precio}`);
 				$('#modalVerProducto').modal('show');
 			
 				let usuario  = ((res.usuario === "undefined") ? res.usuario+":": "");

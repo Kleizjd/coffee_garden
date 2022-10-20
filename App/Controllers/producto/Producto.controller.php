@@ -66,10 +66,6 @@ class Producto extends Core
     //  PRODUCTOS CREAR, EDITAR, ELIMINAR
     public function crearProducto()
     {
-
-
-        // extract($_POST);
-        // dep($_POST);
         if ($_POST) {
             if (empty($_POST['txtProducto']) || empty($_POST['txtDescripcion'])) {
                 $arrResponse = array("status" => false, "msg" => 'Datos incorrectos.');
@@ -221,7 +217,8 @@ class Producto extends Core
             $respuesta["descripcion"] =  $sqlProducto["descripcion"];
             $respuesta["categoria"] =  $sqlProducto["nombre"];
             $respuesta["portada"] =  $sqlProducto["portada"];
-            $respuesta["total"] =  $sqlCantidad["total"];
+            $respuesta["precio"] =  $sqlProducto["precio"];
+            $respuesta["total"] =  $sqlCantidad["total"];//likes
             $respuesta["id"] =  $id;
             $respuesta["cantidad"] =  $id;
             $respuesta["comentarios"] =  $comentarios;

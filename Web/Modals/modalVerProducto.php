@@ -64,15 +64,16 @@
 								<img class="img__img" id="img_notice" src="../../public/img/svg/upload-user.svg" width="178" height="178" />
 
 								<h4 id="titulo_notice">Titulo</h4>
+								<p id="price">Price</p>
 								<p class="text-muted" id="categoria_producto">categoria_producto</p>
-								<p><input type="checkbox" name="option" id="me_gusta">
+								<input type="checkbox" name="option" id="me_gusta">
 									<label for="check1">
 										<span class="fa-stack">
 											<i class="fa fa-thumbs-up fa-stack-1x"></i>
 										</span>
 									</label>
 									<b id="n_likes"> 0</b> Me gusta
-								</p>
+								
 
 								<div class="row">
 									<div class="col">

@@ -216,6 +216,25 @@ body {
   top: -10px;
   z-index: 10;
 }
+.delProducto {
+  /*signo borrar foto*/
+  color: #FFF;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  background: red;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  z-index: 10;
+}
 
 #tbl_list_productos img {
   width: 50px;
