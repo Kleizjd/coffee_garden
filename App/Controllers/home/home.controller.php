@@ -7,7 +7,7 @@ class home extends Core{
     public function coffee(){
         $sql = "SELECT * FROM producto ORDER BY codigo";
         $listProducto =  $this->select_all($sql);
-        include_once "views/home/main.php";
+        include_once "views/home/listProducto.php";
         
     }
     public function contactanos(){

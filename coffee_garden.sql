@@ -22,12 +22,8 @@ CREATE TABLE IF NOT EXISTS `carrito` (
   `fecha` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla coffee_garden.carrito: ~16 rows (aproximadamente)
+-- Volcando datos para la tabla coffee_garden.carrito: ~15 rows (aproximadamente)
 INSERT INTO `carrito` (`cantidad`, `codigo_producto`, `email`, `fecha`) VALUES
-	(1, 13, 'jose.jdgo97@gmail.com', '2022-10-19 00:00:00'),
-	(1, 5, 'jose.jdgo97@gmail.com', '2022-10-19 00:00:00'),
-	(1, 7, 'jose.jdgo97@gmail.com', '2022-10-19 13:42:58'),
-	(1, 12, 'jose.jdgo97@gmail.com', '2022-10-19 13:51:32'),
 	(2, 11, 'dianaaristizabal@gmail.com', '2022-10-19 16:39:43'),
 	(1, 9, 'dianaaristizabal@gmail.com', '2022-10-19 17:32:16'),
 	(1, 1, 'dianaaristizabal@gmail.com', '2022-10-19 20:45:27'),
@@ -40,8 +36,10 @@ INSERT INTO `carrito` (`cantidad`, `codigo_producto`, `email`, `fecha`) VALUES
 	(1, 12, 'dianaaristizabal@gmail.com', '2022-10-19 20:47:17'),
 	(1, 13, 'dianaaristizabal@gmail.com', '2022-10-19 20:47:22'),
 	(1, 14, 'dianaaristizabal@gmail.com', '2022-10-19 20:47:29'),
-	(1, 12345649, 'jose.jdgo97@gmail.com', '2022-10-19 22:04:30'),
-	(1, 15, 'jose.jdgo97@gmail.com', '2022-10-19 23:09:40');
+	(5, 13, 'jose.jdgo97@gmail.com', '2022-10-20 17:18:34'),
+	(1, 12, 'jose.jdgo97@gmail.com', '2022-10-20 17:19:32'),
+	(12, 15, 'pedro@gmail.com', '2022-10-20 17:29:25'),
+	(2, 15, 'dianaaristizabal@gmail.com', '2022-10-20 17:32:54');
 
 -- Volcando estructura para tabla coffee_garden.categorias
 CREATE TABLE IF NOT EXISTS `categorias` (
@@ -63,9 +61,9 @@ CREATE TABLE IF NOT EXISTS `comentario` (
   `codigo_producto` int(11) DEFAULT NULL,
   `comentario` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla coffee_garden.comentario: ~18 rows (aproximadamente)
+-- Volcando datos para la tabla coffee_garden.comentario: ~26 rows (aproximadamente)
 INSERT INTO `comentario` (`id`, `email`, `codigo_producto`, `comentario`) VALUES
 	(1, 'dianaaristizabal@gmail.com', 7, 'come on'),
 	(2, 'dianaaristizabal@gmail.com', 8, 'de que'),
@@ -88,7 +86,12 @@ INSERT INTO `comentario` (`id`, `email`, `codigo_producto`, `comentario`) VALUES
 	(167, 'jose.jdgo97@gmail.com', 15, 'hey'),
 	(168, 'jose.jdgo97@gmail.com', 5, 'you'),
 	(169, 'jose.jdgo97@gmail.com', 12, 'come on'),
-	(170, 'dianaaristizabal@gmail.com', 9, 'hey man');
+	(170, 'dianaaristizabal@gmail.com', 9, 'hey man'),
+	(171, 'jose.jdgo97@gmail.com', 15, 'asdasd'),
+	(172, 'jose.jdgo97@gmail.com', 13, 'asdasd'),
+	(174, 'jose.jdgo97@gmail.com', 13, 'hey'),
+	(175, 'pedro@gmail.com', 15, 'asdasd'),
+	(176, 'dianaaristizabal@gmail.com', 15, 'asdd');
 
 -- Volcando estructura para tabla coffee_garden.pago
 CREATE TABLE IF NOT EXISTS `pago` (
@@ -111,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `perfiles` (
 INSERT INTO `perfiles` (`id`, `nombre`) VALUES
 	(1, 'administrador'),
 	(2, 'cliente'),
-	(3, 'proveedor');
+	(3, 'vendedor');
 
 -- Volcando estructura para tabla coffee_garden.producto
 CREATE TABLE IF NOT EXISTS `producto` (
@@ -125,9 +128,9 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `portada` varchar(150) DEFAULT NULL,
   `ruta` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=12345650 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12345651 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla coffee_garden.producto: ~14 rows (aproximadamente)
+-- Volcando datos para la tabla coffee_garden.producto: ~15 rows (aproximadamente)
 INSERT INTO `producto` (`codigo`, `producto`, `categoria`, `precio`, `cantidad`, `estado`, `descripcion`, `portada`, `ruta`) VALUES
 	(1, 'Nescafe', '1', 1000, 2000, 'A', 'modifica', 'Nescafe.jpg', NULL),
 	(2, 'cafe aguila roja granulada', '2', 10000, 2000, 'A', 'tin words, consectetur, from a Lorem Ips', 'cafe-granulado.jpg', NULL),
@@ -142,7 +145,8 @@ INSERT INTO `producto` (`codigo`, `producto`, `categoria`, `precio`, `cantidad`,
 	(12, 'carton crema para cafe vainill', '3', 30000, 1000, 'A', 'It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ips', 'carton_crema_vainill.jpg', NULL),
 	(13, 'crema para cafe aguila roja', '4', 8000, 1000, 'A', 'It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ips', 'crema_para_cafe_aguila_roja.jpg', NULL),
 	(14, 'crema  para cafe aroma', '1', 6000, 1000, 'A', 'It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ips', 'Crema_cafe_AROMA.jpg', NULL),
-	(15, 'plastico crema para cafe colcafe', '2', 15000, 1000, 'A', 'It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ips', 'plastico_crema_colcafe.jpg', NULL);
+	(15, 'plastico crema para cafe colcafe', '2', 15000, 1000, 'A', 'It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ips', 'plastico_crema_colcafe.jpg', NULL),
+	(12345650, 'cafe del valle', '2', 150000, 0, '', 'saludable y energetico', 'img_01ce2ea82d983d471a03b78a5516a77e.jpg', 'cafe-del-valle');
 
 -- Volcando estructura para tabla coffee_garden.rating
 CREATE TABLE IF NOT EXISTS `rating` (
@@ -155,7 +159,9 @@ CREATE TABLE IF NOT EXISTS `rating` (
 INSERT INTO `rating` (`email`, `id_producto`, `calificacion`) VALUES
 	('jose.jdgo97@gmail.com', 5, 4),
 	('jose.jdgo97@gmail.com', 12, 3),
-	('dianaaristizabal@gmail.com', 15, 3);
+	('dianaaristizabal@gmail.com', 15, 3),
+	('jose.jdgo97@gmail.com', 15, 3),
+	('jose.jdgo97@gmail.com', 13, 4);
 
 -- Volcando estructura para tabla coffee_garden.reaccion
 CREATE TABLE IF NOT EXISTS `reaccion` (
@@ -164,12 +170,13 @@ CREATE TABLE IF NOT EXISTS `reaccion` (
   `rating` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla coffee_garden.reaccion: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla coffee_garden.reaccion: ~4 rows (aproximadamente)
 INSERT INTO `reaccion` (`email`, `codigo_producto`, `rating`) VALUES
 	('jose.jdgo97@gmail.com', 5, NULL),
 	('jose.jdgo97@gmail.com', 12, NULL),
 	('jose.jdgo97@gmail.com', 15, NULL),
-	('jose.jdgo97@gmail.com', 11, NULL);
+	('jose.jdgo97@gmail.com', 11, NULL),
+	('jose.jdgo97@gmail.com', 13, NULL);
 
 -- Volcando estructura para tabla coffee_garden.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -184,29 +191,20 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `id_pregunta` int(11) DEFAULT NULL,
   `respuesta` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_usuario`) USING BTREE
-) ENGINE=MyISAM AUTO_INCREMENT=52 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=74 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla coffee_garden.usuarios: 18 rows
+-- Volcando datos para la tabla coffee_garden.usuarios: 9 rows
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `password`, `email`, `estado_usuario`, `rolid`, `imagen_usuario`, `id_pregunta`, `respuesta`) VALUES
-	(1, '   José Daniel', '   Grijalba', '$2y$10$bTCrFmUyt7d9NuAU5SQiRuVtRIcPOiqhluQJ.a2uZ.QANKndigrTy', 'jose.jdgo97@gmail.com', 'A', 1, '2-1.jpg', 1, NULL),
-	(2, 'Juan David', 'Grijalba', '$2y$10$bTCrFmUyt7d9NuAU5SQiRuVtRIcPOiqhluQJ.a2uZ.QANKndigrTy', 'juandgo1997@gmail.com', 'A', 2, '', NULL, NULL),
-	(4, '    Diana', '    Aristizabal', '$2y$10$TNQULbSAcW1Jojir7xbW/OKwAPUxAd3tE3Q.ePTsEzi.5qYFk2NxC', 'dianaaristizabal@gmail.com', 'A', 2, 'diana-diana-4.png', NULL, NULL),
-	(5, 'mario', 'hernandez', '$2y$10$Bjt2/1DXCYOQ9cWVvbJRnOuZ5bbFCjSUiZBFqDzgLJTMiJNMY8yAm', 'mario@gmail.com', 'A', 2, '2-16.jpg', NULL, NULL),
-	(7, 'Camilo', 'Delgado', '$2y$10$dmDf1V0Ib2b2bw1g7R3QtuGHnOEBQx14RkDS3bXHUy6tkJPDDGBr6', 'camilo@mail.com', 'A', 2, '6-89.jpg', NULL, NULL),
-	(17, 'luis', 'garces', '$2y$10$mGIpInBVNSK3jeuSW23b3.iJuPvpRt259TWLKZYTKQ/lYKozA9/Ty', 'luis@mail.com', 'A', 2, '1-1-17.jpg', NULL, NULL),
-	(18, 'andres', 'garzon', '$2y$10$CPHK9mQ55mmg1aKRN1z/zepvkPH./lamiTZdC7e3JLhUE40qU1.Jq', '13224@mail.com', 'A', 2, '', NULL, NULL),
-	(19, '123', '123', '$2y$10$dGu0A98/fOvRvZqnbkN7YuSYJYY.b6rjS1YMvq5qvwgVGzZBKoYci', 'asd@mail.com', 'A', 2, '', NULL, NULL),
-	(20, 'asda', '123', '$2y$10$/MgMoFotP0b6wxhGcnpcHOrGhIIRzZydFZgNaTiVwWvlEyPGqupjO', 'asaro@mail.com', 'A', 2, '', NULL, NULL),
-	(23, '2134', '324', '$2y$10$vpHVSH4J/3vODFoLSf/3TeaQ7XJ4AlqI0wZjB3xlYTTyWSVxuKI3.', 'carman@homtial.cpm', 'A', 2, '', NULL, NULL),
-	(32, 'arley', 'd', '$2y$10$/AWJxM/m6Z6cm1YaUAvtJ.IRimLpiDUm.eMjrriPXtdwvHxJUG1BG', 'arley@gmail.com', 'A', 2, '2-32.jpg', NULL, NULL),
-	(51, 'José Daniel', 'Grijalba Osorio', '$2y$10$JBfUl/ILlq/CDV/FH247hu77H65DnNDrvU8j8nBwderg7Jim358PC', 'mario@maisl.com', 'A', 2, '', 3, 'a'),
-	(50, 'mario', 'garzon', '$2y$10$9ZqgsT7th65rvlWejHEM1.nlbD5Gw.CuK44VFtKL6CPm1NQfIIa1S', 'mario@mail.com', 'A', 2, '', 3, 'morado'),
-	(49, 'José Daniel', 'Grijalba Osorio', '$2y$10$ppcVXDRxHRRpRMmlqkN9reCNL/1CnMtyV7W/IY0gPxQUjOfsOEVMe', 'camilo@14pereza.com', 'A', 2, '', 4, 'rojo'),
-	(43, '1', '1', '$2y$10$u1AyCq/KPvkBznR95hodPOcWO3eNotAyLQS.7Qhrb5jkOJw.k7q52', 'andres@hotmail.com', 'A', 2, '', NULL, NULL),
-	(44, 'pablo', 'neruda', '$2y$10$gDtToYDxzH3HlnIH3iVRzefBnKoFCO8Ag.C4Ffx4xLjNUeAslbc3i', 'pablo@gmai.com', 'A', 2, '', 3, NULL),
-	(45, 'andres', 'perez', '$2y$10$5UpZfl5EtSsYPqCkf.0s5OhyfgmUTFbiZpCZ/UbCoZFL2Kp4T20mC', 'perez@14perez.com', 'A', 2, '', 2, NULL),
-	(48, 'camilo', 'garzon', '$2y$10$SNlxVCZSdMGEcsO84eIz9eJX2jLpBHD5kxJIwrafazboNEdDHxOEC', 'camilo@14perez.com', 'A', 2, '', 1, 'lucas');
+	(1, 'José Daniel', 'Grijalba', '$2y$10$bTCrFmUyt7d9NuAU5SQiRuVtRIcPOiqhluQJ.a2uZ.QANKndigrTy', 'jose.jdgo97@gmail.com', 'A', 1, 'jose.jpg', 1, 'lucas'),
+	(2, 'Juan David', 'Grijalba', '$2y$10$bTCrFmUyt7d9NuAU5SQiRuVtRIcPOiqhluQJ.a2uZ.QANKndigrTy', 'juandgo1997@gmail.com', 'A', 3, 'juan.jpg', 1, 'simon'),
+	(4, 'Diana', 'Aristizabal', '$2y$10$bTCrFmUyt7d9NuAU5SQiRuVtRIcPOiqhluQJ.a2uZ.QANKndigrTy', 'dianaaristizabal@gmail.com', 'A', 3, 'diana.png', 1, 'cielo'),
+	(9, 'Arley', 'Castano', '$2y$10$/AWJxM/m6Z6cm1YaUAvtJ.IRimLpiDUm.eMjrriPXtdwvHxJUG1BG', 'arley@gmail.com', 'A', 3, 'Arley.jpg', 1, 'sabe'),
+	(71, 'Neji', 'hyuga', '$2y$10$eAat5ki8NiOPW2gTVfCYAuPztMmPPPgZYlc5vEtlsA0rIYYb1Gt.y', 'neji@gmail.com', 'A', 2, 'naruto_neji_hyuga-71.jpg', 1, 'anime'),
+	(72, 'Eren', 'Yeager', '$2y$10$eAat5ki8NiOPW2gTVfCYAuPztMmPPPgZYlc5vEtlsA0rIYYb1Gt.y', 'eren@gmail.com', 'A', 3, 'eren_yeager-72.jpg', NULL, NULL),
+	(58, 'Sasuke', 'uchija', '$2y$10$bTCrFmUyt7d9NuAU5SQiRuVtRIcPOiqhluQJ.a2uZ.QANKndigrTy', 'sasuke@gmail.com', 'A', 2, 'Sasuke-58.jpg', 1, 'lucas'),
+	(14, 'Naruto', 'uzumaki', '$2y$10$bTCrFmUyt7d9NuAU5SQiRuVtRIcPOiqhluQJ.a2uZ.QANKndigrTy', 'naruto@mail.com', 'A', 2, 'naruto-14.jpg', 1, 'lucas'),
+	(73, 'pedrito', 'perez', '$2y$10$ehaJj.2pN0ZUFs9cMi7MoeIzNth1sJgz9JRe/stKrl9n8sKZwJ2Ga', 'pedro@gmail.com', 'A', 2, '6-73.jpg', 1, 'pepe');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
