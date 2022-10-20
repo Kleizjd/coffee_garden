@@ -144,12 +144,8 @@
                         processData: false,
                         contentType: false
                     }).done((res) => {
-                        // alertify.notify(res.mensaje, res.tipoRespuesta, 4);
-                        swal({
-                            title: 'Usuario modificado exitosamente',
-                            type: 'success',
-                            timer: 111000
-                        });
+                        swal({title: 'Usuario modificado exitosamente',type: 'success',timer: 11100});
+                        $("#tableSearchUser").DataTable().ajax.reload();
                     });
                 });
             });
@@ -183,15 +179,7 @@
                                 contentType: false
                             }).done((res) => {
                                 if (res.tipoRespuesta == true) {
-                                    // alertify.notify(res.mensaje, res.tipoRespuesta, 4);
-                                    swal({
-                                        title: 'Usuario Eliminada exitosamente',
-                                        type: 'success',
-                                        timer: 111000,
-                                        buttons: false,
-
-                                    }).then(function(){
-                                window.location.href = "../../Web/Pages/index.php";
+                                    swal({title: 'Usuario Eliminada exitosamente',type: 'success',timer: 111000,buttons: false}).then(function(){ window.location.href = "../../Web/Pages/index.php";
                                         
                                     })
                                 }
@@ -200,6 +188,5 @@
                     });
                 });
             });
-
         });
     </script>
