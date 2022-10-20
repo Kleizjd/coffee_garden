@@ -4,7 +4,7 @@ class Carrito extends Core{
     
     public function carrito(){
         extract($_POST);
-        $cantidad = "SELECT SUM(c.cantidad) AS cantidad, SUM(c.cantidad  * precio ) AS total FROM producto,carrito c WHERE codigo = codigo_producto AND email='".$_SESSION['correo_login']."'";
+        $cantidad = "SELECT COUNT(producto) AS cantidad, SUM(c.cantidad  * precio ) AS total FROM producto,carrito c WHERE codigo = codigo_producto AND email='".$_SESSION['correo_login']."'";
         $listCantidad =  $this->select($cantidad);
         $sql = "SELECT codigo, c.cantidad, ct.nombre, producto, p.precio, c.cantidad * precio AS total_producto FROM carrito c,producto p, categorias ct WHERE email='".$_SESSION['correo_login']."' AND c.codigo_producto = p.codigo AND p.categoria = ct.id";
         $listProducto =  $this->select_all($sql);
@@ -52,7 +52,6 @@ class Carrito extends Core{
 
         $respuesta["tipoRespuesta"] = true;
         $respuesta["total"] = $requestTotal['total'];
-        // echo $requestTotal['total']  ;
         echo json_encode($respuesta);
 
     }
