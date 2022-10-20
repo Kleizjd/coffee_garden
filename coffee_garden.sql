@@ -14,6 +14,35 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+-- Volcando estructura para tabla coffee_garden.carrito
+CREATE TABLE IF NOT EXISTS `carrito` (
+  `cantidad` int(11) DEFAULT NULL,
+  `codigo_producto` int(11) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `fecha` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Volcando datos para la tabla coffee_garden.carrito: ~16 rows (aproximadamente)
+INSERT INTO `carrito` (`cantidad`, `codigo_producto`, `email`, `fecha`) VALUES
+	(1, 13, 'jose.jdgo97@gmail.com', '2022-10-19 00:00:00'),
+	(1, 5, 'jose.jdgo97@gmail.com', '2022-10-19 00:00:00'),
+	(1, 7, 'jose.jdgo97@gmail.com', '2022-10-19 13:42:58'),
+	(1, 12, 'jose.jdgo97@gmail.com', '2022-10-19 13:51:32'),
+	(2, 11, 'dianaaristizabal@gmail.com', '2022-10-19 16:39:43'),
+	(1, 9, 'dianaaristizabal@gmail.com', '2022-10-19 17:32:16'),
+	(1, 1, 'dianaaristizabal@gmail.com', '2022-10-19 20:45:27'),
+	(1, 2, 'dianaaristizabal@gmail.com', '2022-10-19 20:45:34'),
+	(1, 4, 'dianaaristizabal@gmail.com', '2022-10-19 20:46:29'),
+	(1, 5, 'dianaaristizabal@gmail.com', '2022-10-19 20:46:35'),
+	(1, 7, 'dianaaristizabal@gmail.com', '2022-10-19 20:46:45'),
+	(1, 8, 'dianaaristizabal@gmail.com', '2022-10-19 20:46:51'),
+	(1, 10, 'dianaaristizabal@gmail.com', '2022-10-19 20:47:02'),
+	(1, 12, 'dianaaristizabal@gmail.com', '2022-10-19 20:47:17'),
+	(1, 13, 'dianaaristizabal@gmail.com', '2022-10-19 20:47:22'),
+	(1, 14, 'dianaaristizabal@gmail.com', '2022-10-19 20:47:29'),
+	(1, 12345649, 'jose.jdgo97@gmail.com', '2022-10-19 22:04:30'),
+	(1, 15, 'jose.jdgo97@gmail.com', '2022-10-19 23:09:40');
+
 -- Volcando estructura para tabla coffee_garden.categorias
 CREATE TABLE IF NOT EXISTS `categorias` (
   `id` int(11) DEFAULT NULL,
@@ -34,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `comentario` (
   `codigo_producto` int(11) DEFAULT NULL,
   `comentario` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=utf8mb4;
 
 -- Volcando datos para la tabla coffee_garden.comentario: ~18 rows (aproximadamente)
 INSERT INTO `comentario` (`id`, `email`, `codigo_producto`, `comentario`) VALUES
@@ -55,7 +84,11 @@ INSERT INTO `comentario` (`id`, `email`, `codigo_producto`, `comentario`) VALUES
 	(162, 'jose.jdgo97@gmail.com', 0, 'hey'),
 	(163, 'jose.jdgo97@gmail.com', 0, 'hey'),
 	(164, 'jose.jdgo97@gmail.com', 0, 'hey'),
-	(165, 'jose.jdgo97@gmail.com', 0, 'hey');
+	(165, 'jose.jdgo97@gmail.com', 0, 'hey'),
+	(167, 'jose.jdgo97@gmail.com', 15, 'hey'),
+	(168, 'jose.jdgo97@gmail.com', 5, 'you'),
+	(169, 'jose.jdgo97@gmail.com', 12, 'come on'),
+	(170, 'dianaaristizabal@gmail.com', 9, 'hey man');
 
 -- Volcando estructura para tabla coffee_garden.pago
 CREATE TABLE IF NOT EXISTS `pago` (
@@ -90,60 +123,53 @@ CREATE TABLE IF NOT EXISTS `producto` (
   `estado` char(1) NOT NULL,
   `descripcion` varchar(250) NOT NULL,
   `portada` varchar(150) DEFAULT NULL,
+  `ruta` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`codigo`)
-) ENGINE=InnoDB AUTO_INCREMENT=12345646 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12345650 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla coffee_garden.producto: ~14 rows (aproximadamente)
-INSERT INTO `producto` (`codigo`, `producto`, `categoria`, `precio`, `cantidad`, `estado`, `descripcion`, `portada`) VALUES
-	(1, 'Nescafe', '1', 149000, 2000, 'A', 'modifica', 'Nescafe.jpg'),
-	(2, 'cafe aguila roja granulada', '1', 12000, 2000, 'A', 'jose vamos', 'cafe-granulado.jpg'),
-	(3, 'bolsa cafe sello rojo', '1', 51900, 1000, 'A', 'desarrolla', 'bolsa_cafe_sello_rojo.jpg'),
-	(4, 'vidrio cafe aroma', '1', 10000, 1000, 'A', 'bastante', 'vidrio_cafe_aroma.jpg'),
-	(5, 'vidrio cafe legal descafeinado', '1', 15000, 2000, 'A', 'yes very well', 'café_soluble_legal__.jpg'),
-	(7, 'vidrio cafe  dolca nescafe', '1', 12000, 1000, 'A', '', 'Cafe_Nescafe_Dolca_Vidrio.jpg'),
-	(8, 'vidrio cafe legal', '1', 10000, 1000, 'A', '', 'vidrio_cafe_legal.jpg'),
-	(9, 'Cafe soluble Nescafe Tasters', '1', 175000, 1000, 'A', 'barato', 'Cafe_soluble_Nescafe_Tasters.jpg'),
-	(10, 'vidrio cafe colcate descafeinado', '1', 175000, 1000, 'A', '', 'cafe_colcate_descafeina.jpg'),
-	(11, 'plastico crema para cafe nestle', '1', 29900, 1000, 'A', '', 'crema_cafe_ nestle.jpg'),
-	(12, 'carton crema para cafe vainill', '1', 30000, 1000, 'A', '', 'carton_crema_vainill.jpg'),
-	(13, 'crema para cafe aguila roja', '1', 8000, 1000, 'A', '', 'crema_para_cafe_aguila_roja.jpg'),
-	(14, 'crema  para cafe aroma', '1', 6000, 1000, 'A', '', 'Crema_cafe_AROMA.jpg'),
-	(15, 'plastico crema para cafe colcafe', '1', 15000, 1000, 'A', '', 'plastico_crema_colcafe.jpg');
+INSERT INTO `producto` (`codigo`, `producto`, `categoria`, `precio`, `cantidad`, `estado`, `descripcion`, `portada`, `ruta`) VALUES
+	(1, 'Nescafe', '1', 1000, 2000, 'A', 'modifica', 'Nescafe.jpg', NULL),
+	(2, 'cafe aguila roja granulada', '2', 10000, 2000, 'A', 'tin words, consectetur, from a Lorem Ips', 'cafe-granulado.jpg', NULL),
+	(3, 'bolsa cafe sello rojo', '3', 1100, 1000, 'A', 'tin words, consectetur, from a Lorem Ips', 'bolsa_cafe_sello_rojo.jpg', NULL),
+	(4, 'vidrio cafe aroma', '4', 12000, 1000, 'A', 'tin words, consectetur, from a Lorem Ips', 'vidrio_cafe_aroma.jpg', NULL),
+	(5, 'vidrio cafe legal descafeinado', '1', 100, 2000, 'A', 'tin words, consectetur, from a Lorem Ips', 'café_soluble_legal__.jpg', NULL),
+	(7, 'vidrio cafe  dolca nescafe', '2', 100, 1000, 'A', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a typ', 'Cafe_Nescafe_Dolca_Vidrio.jpg', NULL),
+	(8, 'vidrio cafe legal', '3', 10000, 1000, 'A', 'long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, conte', 'vidrio_cafe_legal.jpg', NULL),
+	(9, 'Cafe soluble Nescafe Tasters', '4', 175000, 1000, 'A', 'tin words, consectetur, from a Lorem Ips', 'Cafe_soluble_Nescafe_Tasters.jpg', NULL),
+	(10, 'vidrio cafe colcate descafeinado', '1', 175000, 1000, 'A', 'efault model text, and a search for \'lorem ipsum\' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, someti', 'cafe_colcate_descafeina.jpg', NULL),
+	(11, 'plastico crema para cafe nestle', '2', 125000, 1000, 'A', 'elievable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this', 'crema_cafe_ nestle.jpg', NULL),
+	(12, 'carton crema para cafe vainill', '3', 30000, 1000, 'A', 'It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ips', 'carton_crema_vainill.jpg', NULL),
+	(13, 'crema para cafe aguila roja', '4', 8000, 1000, 'A', 'It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ips', 'crema_para_cafe_aguila_roja.jpg', NULL),
+	(14, 'crema  para cafe aroma', '1', 6000, 1000, 'A', 'It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ips', 'Crema_cafe_AROMA.jpg', NULL),
+	(15, 'plastico crema para cafe colcafe', '2', 15000, 1000, 'A', 'It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ips', 'plastico_crema_colcafe.jpg', NULL);
+
+-- Volcando estructura para tabla coffee_garden.rating
+CREATE TABLE IF NOT EXISTS `rating` (
+  `email` varchar(50) DEFAULT NULL,
+  `id_producto` int(11) DEFAULT NULL,
+  `calificacion` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Volcando datos para la tabla coffee_garden.rating: ~3 rows (aproximadamente)
+INSERT INTO `rating` (`email`, `id_producto`, `calificacion`) VALUES
+	('jose.jdgo97@gmail.com', 5, 4),
+	('jose.jdgo97@gmail.com', 12, 3),
+	('dianaaristizabal@gmail.com', 15, 3);
 
 -- Volcando estructura para tabla coffee_garden.reaccion
 CREATE TABLE IF NOT EXISTS `reaccion` (
   `email` varchar(50) DEFAULT NULL,
-  `codigo_producto` int(11) DEFAULT NULL
+  `codigo_producto` int(11) DEFAULT NULL,
+  `rating` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Volcando datos para la tabla coffee_garden.reaccion: ~26 rows (aproximadamente)
-INSERT INTO `reaccion` (`email`, `codigo_producto`) VALUES
-	('dianaaristizabal@gmail.com', 1),
-	('dianaaristizabal@gmail.com', 3),
-	('jose.jdgo97@gmail.com', 3),
-	('jose.jdgo97@gmail.com', 6),
-	('jose.jdgo97@gmail.com', 1),
-	('jose.jdgo97@gmail.com', 7),
-	('jose.jdgo97@gmail.com', 2),
-	('naruto@mail.com', 7),
-	('dianaaristizabal@gmail.com', 7),
-	('dianaaristizabal@gmail.com', 4),
-	('dianaaristizabal@gmail.com', 1),
-	('dianaaristizabal@gmail.com', 3),
-	('jose.jdgo97@gmail.com', 3),
-	('jose.jdgo97@gmail.com', 6),
-	('jose.jdgo97@gmail.com', 1),
-	('jose.jdgo97@gmail.com', 7),
-	('jose.jdgo97@gmail.com', 2),
-	('naruto@mail.com', 7),
-	('dianaaristizabal@gmail.com', 7),
-	('dianaaristizabal@gmail.com', 4),
-	('jose.jdgo97@gmail.com', NULL),
-	('jose.jdgo97@gmail.com', NULL),
-	('jose.jdgo97@gmail.com', NULL),
-	('jose.jdgo97@gmail.com', NULL),
-	('jose.jdgo97@gmail.com', NULL),
-	('jose.jdgo97@gmail.com', 0);
+-- Volcando datos para la tabla coffee_garden.reaccion: ~2 rows (aproximadamente)
+INSERT INTO `reaccion` (`email`, `codigo_producto`, `rating`) VALUES
+	('jose.jdgo97@gmail.com', 5, NULL),
+	('jose.jdgo97@gmail.com', 12, NULL),
+	('jose.jdgo97@gmail.com', 15, NULL),
+	('jose.jdgo97@gmail.com', 11, NULL);
 
 -- Volcando estructura para tabla coffee_garden.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -163,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Volcando datos para la tabla coffee_garden.usuarios: 18 rows
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `password`, `email`, `estado_usuario`, `rolid`, `imagen_usuario`, `id_pregunta`, `respuesta`) VALUES
-	(1, '   José Daniel', '   Grijalba', '$2y$10$bTCrFmUyt7d9NuAU5SQiRuVtRIcPOiqhluQJ.a2uZ.QANKndigrTy', 'jose.jdgo97@gmail.com', 'A', 1, '1-1.jpg', 1, NULL),
+	(1, '   José Daniel', '   Grijalba', '$2y$10$bTCrFmUyt7d9NuAU5SQiRuVtRIcPOiqhluQJ.a2uZ.QANKndigrTy', 'jose.jdgo97@gmail.com', 'A', 1, '2-1.jpg', 1, NULL),
 	(2, 'Juan David', 'Grijalba', '$2y$10$bTCrFmUyt7d9NuAU5SQiRuVtRIcPOiqhluQJ.a2uZ.QANKndigrTy', 'juandgo1997@gmail.com', 'A', 2, '', NULL, NULL),
 	(4, '    Diana', '    Aristizabal', '$2y$10$TNQULbSAcW1Jojir7xbW/OKwAPUxAd3tE3Q.ePTsEzi.5qYFk2NxC', 'dianaaristizabal@gmail.com', 'A', 2, 'diana-diana-4.png', NULL, NULL),
 	(5, 'mario', 'hernandez', '$2y$10$Bjt2/1DXCYOQ9cWVvbJRnOuZ5bbFCjSUiZBFqDzgLJTMiJNMY8yAm', 'mario@gmail.com', 'A', 2, '2-16.jpg', NULL, NULL),
