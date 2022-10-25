@@ -32,8 +32,8 @@
                                                 <select name="rol" name="rol" class="form-control">
                                                     <option value="">Seleccione...</option>
                                                     <!-- <option value="1">Administrador</option> -->
-                                                    <option value="2">Lector</option>
-                                                    <option value="3">Columnista</option>
+                                                    <option value="2">Cliente</option>
+                                                    <option value="3">Vendedor</option>
                                                 </select>
                                             </div>
                                         </div>

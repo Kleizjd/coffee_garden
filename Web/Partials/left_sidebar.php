@@ -16,15 +16,3 @@
             </nav>
         </div>
     </div>
-<?php //else: ?>
-    <!-- <script>
-        $(document).ready(function() {
-            $(function borraClass() {
-                $("#lector").removeClass("col-md-9");
-                $("#lector").removeClass("col-lg-10");
-                $("#lector").removeClass("ml-sm-auto");
-                $("#lector").addClass("mx-auto");
-            });
-        });
-    </script> -->
-<?php //endif; ?>

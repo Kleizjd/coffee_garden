@@ -60,7 +60,6 @@ class Perfil extends Core
         // var_dump($_POST);
         $answer = array();
 
-        // $message = "la contrasena actual no es correcta";
 
         $sqlVerify = "SELECT DISTINCT id_usuario, CONCAT(nombre, ' ', apellido) AS nombre_completo, nombre, apellido, password, rolid, email,imagen_usuario FROM usuarios WHERE email='$email' ";
         $sql = $this->select($sqlVerify);

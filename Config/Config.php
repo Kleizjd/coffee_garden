@@ -1,11 +1,6 @@
 <?php
-	// $arrUrl = explode("/", $url);
-	// $last = array_pop($arrUrl);
-	// const BASE_URL = implode("/", $arrUrl);
-	// BASE_URL =  "http://" . dirname(__DIR__) . "/www/coffe_garden";
-	// BASE_URL =  "http://" . $_SERVER["HTTP_HOST"] . "/www/coffe_garden";
 // URL ABSOLUTA DE LA APLICACIÓN
-define("BASE_URL", "http://" . $_SERVER["HTTP_HOST"] . "/" . str_replace("C:/xampp/htdocs/", "", str_replace("\\", "/", "www/coffee_garden")));
+define("BASE_URL", "http://" . $_SERVER["HTTP_HOST"] . "/" . str_replace("C:/xampp/htdocs/", "", str_replace("\\", "/", "www/coffee_garden1")));
     // const BASE_URL = "http://localhost/www/coffee_garden";
 
 	const MEDIA = "/public";
