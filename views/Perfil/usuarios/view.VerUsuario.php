@@ -34,18 +34,15 @@
                             <div class="tab-pane active" id="verUserForm">
 
                                 <form action="" id=" frm_producto" method="POST" autocomplete="off">
-                                    <?php foreach ($sqlUsuario as $usuario) {
-                                    } ?>
+                                    <?php foreach ($sqlUsuario as $usuario) {} ?>
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-sm-9">
-                                                <!-- <div class="row pb-3">
-
-                                                                <div class="col-sm-3 offset-1">
-                                                                    <h4><span class="badge badge-success" id="statUsuario"><?= $usuario["estado_usuario"]; ?></span></h4>
-                                                                </div>
-                                                            </div> -->
-
+                                           <!-- <div class="row pb-3">
+                                                    <div class="col-sm-3 offset-1">
+                                                        <h4><span class="badge badge-success" id="statUsuario"><?= $usuario["estado_usuario"]; ?></span></h4>
+                                                    </div>
+                                                </div> -->
                                                 <div class="row pb-3">
                                                     <div class="col-sm-1">
                                                         <label for="code">Codigo</label>
