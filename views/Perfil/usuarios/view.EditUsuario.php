@@ -177,24 +177,12 @@
                         contentType: false
                     }).done((res) => {
                         if (res.tipoRespuesta == 'success') {
-                            swal({
-                                title: res.msg,
-                                type: res.tipoRespuesta,
-                                timer: 11100
-                            });
+                            swal({title: res.msg,type: res.tipoRespuesta,timer: 11100});
                             $("#tableSearchUser").DataTable().ajax.reload();
                         } else if (res.tipoRespuesta == 'info') {
-                            swal({
-                                title: res.msg,
-                                type: res.tipoRespuesta,
-                                timer: 11100
-                            });
+                            swal({title: res.msg,type: res.tipoRespuesta,timer: 11100});
                         } else if (res.tipoRespuesta == 'error') {
-                            swal({
-                                title: res.msg,
-                                type: res.tipoRespuesta,
-                                timer: 11100
-                            });
+                            swal({title: res.msg,type: res.tipoRespuesta,timer: 11100});
                         }
                     });
                 });
