@@ -1,6 +1,6 @@
 <?php
 // URL ABSOLUTA DE LA APLICACIÓN
-define("BASE_URL", "http://" . $_SERVER["HTTP_HOST"] . "/" . str_replace("C:/xampp/htdocs/", "", str_replace("\\", "/", "www/coffee_garden1")));
+define("BASE_URL", "http://" . $_SERVER["HTTP_HOST"] . "/" . str_replace("C:/xampp/htdocs/", "", str_replace("\\", "/", "www/coffee_garden")));
     // const BASE_URL = "http://localhost/www/coffee_garden";
 
 	const MEDIA = "/public";

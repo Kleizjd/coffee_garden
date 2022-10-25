@@ -217,11 +217,7 @@
                                 contentType: false
                             }).done((res) => {
                                 if (res.tipoRespuesta == true) {
-                                    swal({
-                                        title: 'Usuario Eliminada exitosamente',
-                                        type: 'success',
-                                        timer: 111000,
-                                        buttons: false
+                                    swal({title: 'Usuario Eliminada exitosamente',type: 'success',timer: 111000,buttons: false
                                     }).then(function() {
                                         window.location.href = "../../Web/Pages/index.php";
 
