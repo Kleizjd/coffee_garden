@@ -36,11 +36,8 @@
                                 <div class="col-sm col-lg">
                                     <div class="card-header">
                                         <form action="" id="form_EditUsuario" method="POST" autocomplete="off">
-                                            <?php foreach ($sqlUsuario as $usuario) {
-                                            } ?>
+                                            <?php foreach ($sqlUsuario as $usuario) {} ?>
                                             <div class="container-fluid">
-
-
                                                 <div class="row">
                                                     <div class="col-9">
                                                         <div class="row pb-3">
@@ -179,6 +176,8 @@
                         if (res.tipoRespuesta == 'success') {
                             swal({title: res.msg,type: res.tipoRespuesta,timer: 11100});
                             $("#tableSearchUser").DataTable().ajax.reload();
+                            $("#password_user").text("");
+                            $("#password_verify").text("");
                         } else if (res.tipoRespuesta == 'info') {
                             swal({title: res.msg,type: res.tipoRespuesta,timer: 11100});
                         } else if (res.tipoRespuesta == 'error') {

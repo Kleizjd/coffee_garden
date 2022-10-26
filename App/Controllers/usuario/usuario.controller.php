@@ -96,12 +96,14 @@ class Usuario extends Core
         // var_dump($_POST);
         $respuesta = array();
         if ($password_user != "" || $password_verify != "") {
-            if ($password_user >= 7 && $password_verify >= "") {
+            if ($password_user <= 7 && $password_verify <= 7) {
                 if ($password_user === $password_verify) {
                     //Encriptar-----------------------------------------------------------------------
                     $passEncrypt = password_hash($password_user, PASSWORD_DEFAULT); //password encripted
                     //---------------------------------------------------------------/contraseña encriptada
-                    $sql = "UPDATE usuarios SET password = '$password_verify', nombre ='$nombre', apellido = '$apellido', email = '$email', rolid = '$rol' WHERE id_usuario='$code_usuario'";
+                    $sql = "UPDATE usuarios SET password = '$passEncrypt', nombre ='$nombre', apellido = '$apellido', email = '$email', rolid = '$rol' WHERE id_usuario='$code_usuario'";
+                    $actualizarUusario = $this->select($sql);
+
                     $respuesta = array("tipoRespuesta" => 'success', "msg" => 'Usuario modificado exitosamente.');
                 } else {
                     $respuesta = array("tipoRespuesta" => 'info', "msg" => 'La contraseña no es igual.');
