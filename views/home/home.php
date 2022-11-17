@@ -30,10 +30,9 @@ include_once "App/lib/Helpers.php"; ?>
 
 <body>
   <!-- Header -->
-  <div class="header">
+  <div class="header"><!-- Navbar --><?php include_once "partials/navbar.php"; ?><!-- //Navbar --></div>
   <!-- SIDE_BAR -->
-  <div ><?php include_once base_url()+"/views/login/login.php" ?></div>
-  <!-- <div id="cargarVista"><?php include_once "App/ajax.php"; ?></div> -->
+  <div id="cargarVista"><?php include_once "App/ajax.php"; ?></div>
   <!-- !SIDE_BAR -->
 </body>
 
