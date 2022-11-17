@@ -1,7 +1,7 @@
 // INCLUIR SCRIPTS DE LAS VISTAS
 // $.getScript("../public/js/OpenViews.js");
 // INCLUIR SCRIPTS DE LAS VISTAS
-$.getScript("../../routes/route.js");
+$.getScript("routes/route.js");
 
 
 // <<<<<<<<<<<<<<<<<<<<- GENERAL FUNCTIONS AND HELPERS ->>>>>>>>>>>>>>>>>>>>
