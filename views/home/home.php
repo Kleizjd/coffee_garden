@@ -32,7 +32,7 @@ include_once "App/lib/Helpers.php"; ?>
   <!-- Header -->
   <div class="header">
   <!-- SIDE_BAR -->
-  <div ><?php include_once "<?= base_url() ?>/views/login/login.php" ?></div>
+  <div ><?php include_once base_url()."/views/login/login.php" ?></div>
   <!-- <div id="cargarVista"><?php include_once "App/ajax.php"; ?></div> -->
   <!-- !SIDE_BAR -->
 </body>
