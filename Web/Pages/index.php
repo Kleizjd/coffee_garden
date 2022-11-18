@@ -1,4 +1,4 @@
-<?php include_once "../../Config/Config.php"; include_once "../../App/lib/Helpers.php"; ?>
+<?php include_once "app/Config/Config.php"; include_once "../../App/lib/Helpers.php"; ?>
 
 <?php if (isset($_SESSION["id_usuario"])) :  ?>
 
