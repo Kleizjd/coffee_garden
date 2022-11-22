@@ -2,7 +2,7 @@
  ?>
 
 <?php
-// session_start();
+session_start();
 include_once "Config/Config.php";
 include_once "App/lib/Helpers.php"; ?>
 

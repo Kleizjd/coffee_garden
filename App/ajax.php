@@ -40,11 +40,13 @@ if (!empty($_POST)) {
     }
 } else {
     if(file_exists("views/home/listProducto.php")){
-        include_once "../../app/Config/core.php";
+        include_once "Config/core.php";
+
         $producto= new Core();
         $sql = "SELECT * FROM producto";
         $listProducto =  $producto->select_all($sql);
-        include_once "views/home/listProducto.php";       
+        include_once "views/home/listProducto.php";
+        
     } else{
         // include_once "../../views/Productos.php";
        echo "<script>
