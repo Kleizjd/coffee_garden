@@ -35,7 +35,7 @@
             <select class="form-control selectpicker" id="categoria" name="categoria" required="">
               <option value="">Seleccione...</option>
               <?php foreach ($sqlProducto as $noticia) : ?>
-                <option value="<?= $noticia["id"]; ?>"><?= $noticia["nombre"]; ?></option>
+                <option id="<?= $noticia["id"]; ?>" value="<?= $noticia["id"]; ?>"><?= $noticia["nombre"]; ?></option>
               <?php endforeach; ?>
             </select>
           </div>

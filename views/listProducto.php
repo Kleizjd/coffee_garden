@@ -28,7 +28,7 @@
 										<h6 class="card-title"><?= $list['producto']; ?></h6>
 									</li>
 									<li class="list-group-item">
-										<a type="button" class="btn btn-primary" name="<?= $list['codigo']; ?>" data-toggle="modal" id="verN" data-target="#modalProducto" title="Ver" onclick="openProducto(<?= $list['codigo']; ?>)">Ver Producto</a>
+										<a type="button" class="btn btn-primary" name="<?= $list['codigo']; ?>" data-toggle="modal" id="<?= $list['codigo']; ?>" data-target="#modalProducto" title="Ver" onclick="openProducto(<?= $list['codigo']; ?>)">Ver Producto</a>
 									</li>
 								</ul>
 							</div>

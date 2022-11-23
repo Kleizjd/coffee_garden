@@ -19,7 +19,7 @@ $(document).ready(function () {
 				contentType: false
 			}).done((res) => {
                 if (res.status == true) { 
-					
+				   $('.swal2-confirm').attr('id','btnConfirm');
 					swal({ title: res.msg , type: 'success' });
 					document.getElementById(" frm_producto").reset();
 				}else{ swal({ title: res.msg , type: 'error' });}

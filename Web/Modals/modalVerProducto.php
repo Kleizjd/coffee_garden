@@ -37,6 +37,12 @@
 	.rating:hover>input:checked~label:before {
 		opacity: 0.4
 	}
+	.modal.fade {
+    transition: opacity 0s linear 0s;
+}
+.modal.fade.show {
+    transition: opacity 0.15s linear 0s;
+}
 </style>
 <!-- Modal BUSCAR -->
 <div class="modal fade" id="modalVerProducto" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -47,7 +53,7 @@
 
 			<div class="text-center modal-header">
 				<h3 class="w-100 modal-title">Producto</h3>
-				<button type="button" class="close" data-dismiss="modal" title="Cerrar">
+				<button type="button" class="close" data-dismiss="modal" title="Cerrar" id="cerrarModalPr">
 					<i class="fa fa-window-close fa-2x text-danger"></i>
 				</button>
 			</div>
@@ -168,7 +174,7 @@
 		}).done((res) => {
 			if (res['tipoRespuesta'] == true) {
 				swal({title: "Agregado exitosamente",type: "success"});
-				
+				$('.swal2-confirm').attr('id','btnConfirm');
 				$("#addCart").removeClass("btn-primary");
 				$("#addCart").addClass("btn-secondary");
 				$("#addCart").text("Eliminar");
